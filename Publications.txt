@@ -1,0 +1,5 @@
+Pepakayala, S.C. and Mishra, A. and Beg, M.S. and Piparia, S. and Shailesh, S.R., “Smart search and navigate”, Google Patents, US Patent App. 14/937,713, Published May 11, 2017.
+
+Sudheer Singampalli and Shraddha Piparia and Suchismita Chinara “Modeling and Performance Analysis of AODV routing protocol using CPN”, Lambert publications, Feb 2016.
+
+Shraddha Piparia and S. Chinara, “Modeling of AODV routing protocols using Time Petri-nets”, International Conference on Global Innovations in Technology and Sciences (ICGITS), 283-288, 4th-6th April 2013.
