@@ -11,8 +11,9 @@ body{
 }
 .navbar li{
 	display: inline-block;
-	margin: 6px;
+	margin: 10px;
 	list-style: none;
+	text-align: right;
 }
 .navbar li a{
 	color: white;
