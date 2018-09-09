@@ -11,13 +11,14 @@ body{
 }
 .navbar li{
 	display: inline-block;
-	max-width: 300px;
-	overflow: visible;
-	position: relative;
-	text-align: left;
-	transition: opacity 0ms 300ms;
-	vertical-align: middle;
-	white-space: nowrap;
+	margin: 6px;
+	list-style: none;
+}
+.navbar li a{
+	color: white;
+	text-decoration: none;
+	font-size: 60px;
+	transition: all ease-in-out 250ms;
 }
 .box{
 	width: 450px;
