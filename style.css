@@ -4,6 +4,21 @@ body{
 	background: url(bg.jpg) no-repeat;
 	background-size: cover;
 }
+.navbar{
+	display: table-cell;
+	text-align: right;
+	vertical-align: middle;
+}
+.navbar li{
+	display: inline-block;
+	max-width: 300px;
+	overflow: visible;
+	position: relative;
+	text-align: left;
+	transition: opacity 0ms 300ms;
+	vertical-align: middle;
+	white-space: nowrap;
+}
 .box{
 	width: 450px;
 	background: rgba(0,0,0,0.4);
