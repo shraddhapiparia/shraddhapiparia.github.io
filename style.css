@@ -11,7 +11,7 @@ body{
 }
 .navbar li{
 	display: inline-block;
-	margin: 10px;
+	margin: 15px;
 	list-style: none;
 	text-align: right;
 }
@@ -66,4 +66,14 @@ ul{
 }
 .box li a:hover{
 	color: #b9b9b9;
+}
+.pagebox{
+	width: 750px;
+	background: rgba(0,0,0,0.4);
+	padding: 40px;
+	text-align: center;
+	margin: auto;
+	margin-top: 5%;
+	color: white;
+	font-family: 'Century Gothic',sans-serif;
 }
