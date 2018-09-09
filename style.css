@@ -5,10 +5,12 @@ body{
 	background-size: cover;
 }
 .navbar{
+	width: 800px;
+	background: rgba(0,0,0,0.4);
+	padding: 40px;
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
-	align: right;
 }
 .navbar li{
 	display: inline-block;
