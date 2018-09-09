@@ -8,6 +8,7 @@ body{
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
+	align: right;
 }
 .navbar li{
 	display: inline-block;
