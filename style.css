@@ -7,7 +7,7 @@ body{
 .navbar{
 	width: 800px;
 	background: rgba(0,0,0,0.4);
-	padding: 40px;
+	padding: 20px;
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
