@@ -85,3 +85,9 @@ ul{
 	letter-spacing: 4px;
 	font-weight: 100;
 }
+.pagebox h5{
+	font-size: 20px;
+	letter-spacing: 3px;
+	font-weight: 100;
+	text-align: left;
+}
