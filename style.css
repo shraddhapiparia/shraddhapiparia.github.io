@@ -80,6 +80,11 @@ ul{
 	color: white;
 	font-family: 'Century Gothic',sans-serif;
 }
+.pagebox p{
+	font-size: 30px;
+	letter-spacing: 4px;
+	font-weight: 100;
+}
 .pagebox h1{
 	font-size: 40px;
 	letter-spacing: 4px;
