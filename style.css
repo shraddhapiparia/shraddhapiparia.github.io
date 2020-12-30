@@ -26,9 +26,9 @@ body{
 	transition: all ease-in-out 250ms;
 }
 .box{
-	width: 550px;
+	width: 75%;
 	background: rgba(0,0,0,0.6);
-	padding: 40px;
+	padding: 2%;
 	text-align: center;
 	margin: auto;
 	margin-top: 5%;
@@ -37,11 +37,11 @@ body{
 }
 .box-img{
 	border-radius: 50%;
-	width: 200px;
-	height: 200px;	
+	width: 40%;
+	height: 40%;	
 }
 .box h1{
-	font-size: 40px;
+	font-size: 4px;
 	letter-spacing: 4px;
 	font-weight: 100;
 }
@@ -72,7 +72,7 @@ ul{
 	color: #b9b9b9;
 }
 .pagebox{
-	width: 850px;
+	width: 90%;
 	background: rgba(0,0,0,0.8);
 	padding: 40px;
 	text-align: left;
