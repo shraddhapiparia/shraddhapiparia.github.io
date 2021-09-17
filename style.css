@@ -72,7 +72,31 @@ ul{
 	font-family: 'Century Gothic',sans-serif;
 }
 .pagebox p{
-	font-size: 15%;
+	font-size: 30%;
 	letter-spacing: 4%;
 	font-weight: 100;
 }
+
+/*.pagebox h1{
+	font-size: 18%;
+	letter-spacing: 4%;
+	font-weight: 100;
+}
+.pagebox h5{
+	font-size: 4%;
+	letter-spacing: .3%;
+	font-weight: 100;
+	text-align: left;
+}
+.box h1{
+	font-size: 8%;
+	letter-spacing: 0.5%;
+	font-weight: 100;
+}
+.box h5{
+	font-size: 8%;
+	letter-spacing: 0.3%;
+	font-weight: 100;
+}*/
+
+
