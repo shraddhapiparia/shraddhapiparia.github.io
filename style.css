@@ -8,21 +8,21 @@ body{
 .navbar{
 	width: 100%;
 	background: rgba(0,0,0,0.4);
-	padding: 20px;
+	padding: 2%;
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
 }
 .navbar li{
 	display: inline-block;
-	margin: 15px;
+	margin: 1.5%;
 	list-style: none;
 	text-align: right;
 }
 .navbar li a{
 	color: white;
 	text-decoration: none;
-	font-size: 25px;
+	font-size: 2.5p%;
 	transition: all ease-in-out 250ms;
 }
 .box{
@@ -43,12 +43,12 @@ body{
 }
 .box h1{
 	font-size: 8%;
-	letter-spacing: 4px;
+	letter-spacing: 0.5%;
 	font-weight: 100;
 }
 .box h5{
 	font-size: 8%;
-	letter-spacing: 3px;
+	letter-spacing: 0.3%;
 	font-weight: 100;
 }
 .box p{
@@ -60,13 +60,13 @@ ul{
 }
 .box li{
 	display: inline-block;
-	margin: 6px;
+	margin: 0.6%;
 	list-style: none;
 }
 .box li a{
 	color: white;
 	text-decoration: none;
-	font-size: 60px;
+	font-size: 6%;
 	transition: all ease-in-out 250ms;
 }
 .box li a:hover{
@@ -75,7 +75,7 @@ ul{
 .pagebox{
 	width: 90%;
 	background: rgba(0,0,0,0.8);
-	padding: 40px;
+	padding: 4%;
 	text-align: left;
 	margin: auto;
 	margin-top: 5%;
@@ -85,17 +85,17 @@ ul{
 }
 .pagebox p{
 	font-size: 7%;
-	letter-spacing: 4px;
+	letter-spacing: .4%;
 	font-weight: 100;
 }
 .pagebox h1{
 	font-size: 8%;
-	letter-spacing: 4px;
+	letter-spacing: .4%;
 	font-weight: 100;
 }
 .pagebox h5{
 	font-size: 4%;
-	letter-spacing: 3px;
+	letter-spacing: .3%;
 	font-weight: 100;
 	text-align: left;
 }
