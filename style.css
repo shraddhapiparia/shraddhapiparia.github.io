@@ -11,6 +11,8 @@
   --clr-text: #1a1a1a;
   --clr-accent: #0077b6;
   --clr-muted: #f1f5f9;
+
+  --site-width: 64rem;
 }
 /* Dark-mode support */
 @media (prefers-color-scheme: dark) {
@@ -43,6 +45,12 @@ body {
   opacity: 0.7;
   font-style: italic;
 }
+.pagebox {
+  max-width: var(--site-width);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+}
 
 /* ===== Header / Nav ===== */
 .header {
@@ -53,7 +61,7 @@ body {
   z-index: 10;
 }
 .nav {
-  max-width: 64rem;
+  max-width: var(--site-width);
   margin: auto;
   display: flex;
   align-items: center;
@@ -116,6 +124,21 @@ body {
   text-align: center;
   padding: 6rem 1.25rem;
 }
+
+.hero,
+#education {
+  display: none;
+}
+
+body.home .hero,
+body.home #education {
+  display: block;
+}
+
+body:not(.home) .pagebox {
+  padding-top: 3rem; /* pushes content below sticky nav */
+}
+
 .hero__content {
   backdrop-filter: blur(4px);
   background: rgb(0 0 0 / .45);
