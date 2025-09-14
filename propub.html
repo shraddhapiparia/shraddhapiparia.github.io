@@ -11,18 +11,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar">
-       <a href="index.html">Home</a>
-       <a href="propub.html" aria-current="page">Select Publications</a>
-       <a href="bookshelf.html">Book Shelf</a>>
-       <a href="awards.html">Awards</a>
-       <a href="articles.html">Articles</a>
-     </nav> 
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="propub.html" aria-current="page">Select Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="bookshelf.html" >Book&nbsp;Shelf</a></li>
+        <li><a href="articles.html">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main class="pagebox">
 
-    <h1>Publications</h1>
-    <hr>
     <h2>Peer-reviewed articles, patents & papers</h2>
 
     <ol>
@@ -46,7 +49,13 @@
 
       <li>Piparia S, Chinara S. “Modeling of AODV routing protocols using Time Petri-nets.” In: <em>ICGITS</em>; Apr 2013: 283-288.</li>
     </ol>
-  </main>
+    </main>
 
+  <script>
+    /* ===== Mobile nav toggle ===== */
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
 </body>
 </html>

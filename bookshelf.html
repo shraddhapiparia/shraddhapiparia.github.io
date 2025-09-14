@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shraddha Piparia | Book Shelf</title>
 
   <script defer src="https://use.fontawesome.com/d1341f9b7a.js"></script>
-
-  <!-- Site styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <nav class="navbar">
-       <a href="index.html">Home</a>
-       <a href="propub.html">Select Publications</a>
-       <a href="bookshelf.html">Book Shelf</a>>
-       <a href="awards.html"  aria-current="page">Awards</a>
-       <a href="articles.html">Articles</a>
-     </nav> 
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="propub.html">Select Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="bookshelf.html" aria-current="page">Book&nbsp;Shelf</a></li>
+        <li><a href="articles.html">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main class="pagebox">
-
-  <!-- Always visible -->
-  <h3>2023</h3>
-  <ul>
-    <li> Sapiens: A Brief History of Humankind by Yuval Noah Harari. </li>
-    <li> Basic & Clinical Biostatistics, Fifth Edition, by Susan White. </li>
-    <li> Gordis Epidemiology, Sixth Edition, 2020. </li>
-    <li> The Double Helix by James D. Watson. </li>
-    <li> The Origin of Species by Charles Darwin. </li>
-    <li> Jaws: The Story of a Hidden Epidemic by Sandra Kahn, Paul R. Ehrlich </li>
-  </ul>
-
-  <!-- Collapsible years -->
-  <details>
-    <summary>2022</summary>
+    <h2>2023</h2>
     <ul>
-      <li><cite>Why We Sleep: Unlocking the Power of Sleep and Dreams</cite>, Matthew Walker</li>
-      <li><cite>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</cite>, Jerome H. Friedman, Robert Tibshirani & Trevor Hastie</li>
+      <li><cite>Sapiens: A Brief History of Humankind</cite>, Yuval Noah Harari</li>
+      <li><cite>Basic &amp; Clinical Biostatistics, 5th Ed.</cite>, Susan White</li>
+      <li><cite>Gordis Epidemiology, 6th Ed.</cite></li>
+      <li><cite>The Double Helix</cite>, James D. Watson</li>
+      <li><cite>The Origin of Species</cite>, Charles Darwin</li>
+      <li><cite>Jaws: The Story of a Hidden Epidemic</cite>, Sandra Kahn &amp; Paul R. Ehrlich</li>
     </ul>
-  </details>
 
-  <details>
-    <summary>2021</summary>
-    <ul>
-      <li><cite>Range: Why Generalists Triumph in a Specialized World</cite>, David Epstein</li>
-      <li><cite>How Emotions Are Made: The Secret Life of the Brain</cite>, Lisa Feldman Barrett</li>
-    </ul>
-  </details>
+    <!-- Collapsible years -->
+    <details>
+      <summary>2022</summary>
+      <ul>
+        <li><cite>Why We Sleep</cite>, Matthew Walker</li>
+        <li><cite>The Elements of Statistical Learning</cite>, Friedman, Tibshirani &amp; Hastie</li>
+      </ul>
+    </details>
 
-  <details>
+    <details>
+      <summary>2021</summary>
+      <ul>
+        <li><cite>Range</cite>, David Epstein</li>
+        <li><cite>How Emotions Are Made</cite>, Lisa Feldman&nbsp;Barrett</li>
+      </ul>
+    </details>
+
+    <details>
     <summary>2020</summary>
     <ul>
       <li><cite>Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow</cite>, Aurélien Géron</li>
@@ -108,8 +110,16 @@
       <li><cite>Operating System Principles</cite>, Silberschatz, Galvin & Gagné</li>
     </ul>
   </details>
-</section>
-		</main>
+  </main>
 
+  <script>
+    /* ===== Mobile nav toggle ===== */
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
 </body>
 </html>
+
+
+  
