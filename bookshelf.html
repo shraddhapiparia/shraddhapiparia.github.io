@@ -1,80 +1,115 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
-		<link rel="stylesheet" href="style.css">
-		<title>Shraddha Piparia's Book Shelf</title>
-	</head>
-	<body>
-		<div class="navbar">
-			<nav style="visibility: visible;">
-			<ul>
-				<li><a href="/index.html"> About Me </a></li>
-				<li><a href="/edu.html"> Education & Experience </a></li>
-				<li><a href="/services.html"> Services </a></li>
-				<li><a href="/propub.html"> Projects & Publications </a></li>
-				<li><a href="/awards.html"> Awards </a><li>
-				<li><a href="#"> Book Shelf </a></li>
-				<li><a href="/Interview-guide.html"> Article </a></li>
-			</ul>
-			</nav>
-		</div>
-		<div class="pagebox">
-			<p> Books that I have read completely (or in part) and found them useful.</p>
-			<hr>
-			<h5> 2023 </h5>
-				<p><ul>
-						<li> Sapiens: A Brief History of Humankind by Yuval Noah Harari. </li>
-						<li> Basic & Clinical Biostatistics, Fifth Edition, by Susan White. </li>
-						<li> Gordis Epidemiology, Sixth Edition, 2020. </li>
-						<li> The Double Helix by James D. Watson. </li>
-						<li> The Origin of Species by Charles Darwin. </li>
-						<li> Jaws: The Story of a Hidden Epidemic by Sandra Kahn, Paul R. Ehrlich </li>
-				</ul></p>
-			<h5> 2022 </h5>
-				<p><ul>
-						<li> Why we sleep. Unlocking the power of sleep and dreams by Matthew Walker.</li> 
-						<li> The Elements of Statistical Learning: Data Mining, Inference, and Prediction by Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie. </li>
-				</ul></p>
-			<h5> 2021 </h5>
-				<p><ul>
-						<li> Range : Why Generalists Triumph in a Specialized World by David Epstein.</li>
-						<li> How Emotions Are Made: The Secret Life of the Brain by Lisa Feldman Barrett. </li>
-				</ul></p>
-			<h5> 2020 </h5>
-				<p><ul>
-						<li> Hands-on Machine Learning with Scikit-Learn, Keras & Tensorflow by Aurélien Géron.</li>
-						<li> Linear Algebra by Jorg Liesen & Volker Mehrmann. </li>
-						<li> System Analysis and Design, Eleventh Edition by Scott Tilley & Harry Rosenblatt. </li>
-						<li> Introduction to Scientific computing by Charles F. Van Loan. </li>
-						<li> Parallel Programming Techniques and Applications Using Networked Workstations and Parallel Computers by Barry Wilkinson and Michael Allen. </li>
-				</ul></p>
-			<h5> 2018 </h5>
-				<p><ul><li> Interaction Design : beyond human-computer interaction by Sharp, Rogers & Preece. </li>
-					<li> Artificial Intelligence: A New Synthesis by Nils J. Nilsson. </li>
-				</ul></p>
-			<h5> 2017 </h5>
-				<p><ul><li> Android Programming: The Big Nerd Ranch Guide by Bill Phillips and Brian Hardy. </li>
-				</ul></p>
-			<h5> 2013 </h5>
-				<p><ul><li> Colored Petri Nets by Jensen & Kristensen. </li>
-				</ul><p>
-			<h5> 2012 </h5>
-				<p><ul><li> Cryptography and Network Security by Behrouz Forouzan.</li>
-					<li> Information Theory, Coding & Cryptography by Ranjan Bose.</li>
-				</ul></p>
-			<h5> 2011 </h5>
-				<p><ul><li> Cryptography and Network Security by William Stalling. </li>
-					<li> Principle of Compiler Design by Alfred V. Aho & Jeffrey D. Ullman.</li>
-					<li> Database System Concepts by Silberschatz, Korth & Sudarshan.</li>
-					<li> Computer Networks by Andrew Tanenbaum. </li>
-				</ul></p>
-			<h5> 2010 </h5>
-				<p><ul><li> Introduction to Algorithms by Thomas Cormen et al. </li>
-					<li> Fundamentals of Database System by Navathe. </li>
-					<li> Operating System Principles by Silberschatz, Galvin & Gagne.</li>
-				</ul></p>
-		</div>
-	</body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shraddha Piparia | Book Shelf</title>
+
+  <script defer src="https://use.fontawesome.com/d1341f9b7a.js"></script>
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+       <a href="index.html">Home</a>
+       <a href="propub.html">Select Publications</a>
+       <a href="bookshelf.html">Book Shelf</a>>
+       <a href="awards.html"  aria-current="page">Awards</a>
+       <a href="articles.html">Articles</a>
+     </nav> 
+
+  <main class="pagebox">
+
+  <!-- Always visible -->
+  <h3>2023</h3>
+  <ul>
+    <li> Sapiens: A Brief History of Humankind by Yuval Noah Harari. </li>
+    <li> Basic & Clinical Biostatistics, Fifth Edition, by Susan White. </li>
+    <li> Gordis Epidemiology, Sixth Edition, 2020. </li>
+    <li> The Double Helix by James D. Watson. </li>
+    <li> The Origin of Species by Charles Darwin. </li>
+    <li> Jaws: The Story of a Hidden Epidemic by Sandra Kahn, Paul R. Ehrlich </li>
+  </ul>
+
+  <!-- Collapsible years -->
+  <details>
+    <summary>2022</summary>
+    <ul>
+      <li><cite>Why We Sleep: Unlocking the Power of Sleep and Dreams</cite>, Matthew Walker</li>
+      <li><cite>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</cite>, Jerome H. Friedman, Robert Tibshirani & Trevor Hastie</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2021</summary>
+    <ul>
+      <li><cite>Range: Why Generalists Triumph in a Specialized World</cite>, David Epstein</li>
+      <li><cite>How Emotions Are Made: The Secret Life of the Brain</cite>, Lisa Feldman Barrett</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2020</summary>
+    <ul>
+      <li><cite>Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow</cite>, Aurélien Géron</li>
+      <li><cite>Linear Algebra</cite>, Jörg Liesen & Volker Mehrmann</li>
+      <li><cite>Systems Analysis and Design, 11th Ed.</cite>, Scott Tilley & Harry Rosenblatt</li>
+      <li><cite>Introduction to Scientific Computing</cite>, Charles F. Van Loan</li>
+      <li><cite>Parallel Programming Techniques and Applications Using Networked Workstations and Parallel Computers</cite>, Barry Wilkinson & Michael Allen</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2018</summary>
+    <ul>
+      <li><cite>Interaction Design: Beyond Human-Computer Interaction</cite>, Sharp, Rogers & Preece</li>
+      <li><cite>Artificial Intelligence: A New Synthesis</cite>, Nils J. Nilsson</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2017</summary>
+    <ul>
+      <li><cite>Android Programming: The Big Nerd Ranch Guide</cite>, Bill Phillips & Brian Hardy</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2013</summary>
+    <ul>
+      <li><cite>Colored Petri Nets</cite>, Jens Jensen & Lars Kristensen</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2012</summary>
+    <ul>
+      <li><cite>Cryptography and Network Security</cite>, Behrouz Forouzan</li>
+      <li><cite>Information Theory, Coding & Cryptography</cite>, Ranjan Bose</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2011</summary>
+    <ul>
+      <li><cite>Cryptography and Network Security</cite>, William Stallings</li>
+      <li><cite>Principles of Compiler Design</cite>, Alfred V. Aho & Jeffrey D. Ullman</li>
+      <li><cite>Database System Concepts</cite>, Silberschatz, Korth & Sudarshan</li>
+      <li><cite>Computer Networks</cite>, Andrew Tanenbaum</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>2010</summary>
+    <ul>
+      <li><cite>Introduction to Algorithms</cite>, Thomas Cormen et al.</li>
+      <li><cite>Fundamentals of Database Systems</cite>, Ramez Elmasri & Shamkant Navathe</li>
+      <li><cite>Operating System Principles</cite>, Silberschatz, Galvin & Gagné</li>
+    </ul>
+  </details>
+</section>
+		</main>
+
+</body>
 </html>
