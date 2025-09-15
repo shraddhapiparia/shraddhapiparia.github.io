@@ -67,7 +67,7 @@
   </section>
 
   <script>
-fetch('articles.json')
+fetch('article.json')
   .then(r => r.json())
   .then(posts => {
     posts.sort((a,b) => new Date(b.date) - new Date(a.date));
