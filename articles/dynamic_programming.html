@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How Sequence Alignment Mirrors Classic String Matching | Shraddha Piparia</title>
+
+  <!-- site-wide stylesheet and fonts -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========= HEADER / NAV ========= -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Select Publications</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========= ARTICLE ========= -->
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>How Sequence Alignment Mirrors Classic String Matching</h1>
+        <p class="post__meta">
+          Published&nbsp;<time datetime="2025-09-14">14&nbsp;September&nbsp;2025</time>
+        </p>
+      </header>
+
+      <p>
+        Sequence alignment may sound like a specialist bioinformatics task, but the core ideas come straight from classic string-matching
+        problems covered in an introductory algorithms course. Below, the familiar concepts of dynamic programming, hashing, and suffix
+        arrays re-appear with only minor tweaks to handle biological strings.
+      </p>
+
+      <h2>From Exact Match to Similarity Score</h2>
+      <p>
+        In textbook search we tend to ask, “Does pattern <em>P</em> occur in text <em>T</em>?” Algorithms such as Knuth–Morris–Pratt or Boyer–Moore
+        give a yes/no answer plus the location. In biology, we rarely see perfect matches, so the question becomes, “How similar are
+        these two strings if we allow edits?” A scoring scheme assigns points to matches, penalties to mismatches, and larger penalties
+        to gaps. The result is not an index but an alignment and an overall similarity score.
+      </p>
+
+      <h2>Dynamic Programming as the go-getter</h2>
+      <p>
+        Needleman–Wunsch (global) and Smith–Waterman (local) extend the Levenshtein-distance DP. Build an (m + 1) × (n + 1) matrix and fill
+        each cell with the best score reachable by matching/mismatching (diagonal), deleting (up), or inserting (left). Smith–Waterman
+        adds a zero option to reset for local alignment. The time complexity remains <em>O</em>(mn); a traceback from the highest cell
+        reveals the aligned substrings. It is the same dynamic-programming pattern taught in CS, repurposed for DNA.
+      </p>
+
+      <h2>Scaling Up with Seed-and-Extend</h2>
+      <p>
+        Whole genomes make a full <em>O</em>(mn) DP too costly. BLAST accelerates the task by hashing all fixed-length <em>k</em>-mers of
+        the database. Exact <em>k</em>-mer hits act as seeds. Around each seed, BLAST runs a narrow, banded Smith–Waterman, examining only
+        a small diagonal strip. Most of the DP table is skipped, yet high-quality alignments still surface quickly.
+      </p>
+
+      <h2>Suffix Arrays and the FM-Index</h2>
+      <p>
+        Modern aligners for next-generation sequencing go further by indexing the reference genome with a suffix array or FM-index.
+        Candidate positions are fetched in sub-linear time, and a limited DP extends each candidate. These index structures, familiar
+        from classics such as Gusfield’s <em>Algorithms on Strings, Trees and Sequences</em>, power billion-read pipelines today.
+      </p>
+
+      <h2>Takeaway</h2>
+      <p>
+        Sequence alignment is simply approximate string matching at scale. Dynamic programming guarantees the optimal alignment, while
+        hashing and suffix-array-style indexes make the computation practical on large data sets. The algorithms we learn in Algorithms 101 remain central—only the alphabet is smaller and the strings are much longer.
+      </p>
+    </article>
+  </main>
+
+  <!-- ========= JS: mobile-nav toggle ========= -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
