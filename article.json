@@ -9,6 +9,18 @@
   "title": "Algorithms in Biotech",
   "date": "2025-09-12",
   "url": "articles/dynamic_programming.html",
-  "description": "An intuitive guide to dynamic programming with simple examples and narratives that make complex problems easier to grasp."
-}
+  "description": "My personal rediscovery of dynamic programming—seeing its practical applications in a fresh, intuitive way."
+  },
+  {
+    "title": "Why PCA Isn’t Enough for Genetics",
+    "date": "2025-09-20",
+    "url": "articles/pca-genetics.html",
+    "description": "PCA is great for population structure, but it misses the non-linear twists of real genetic variation. Here’s why we need autoencoders and beyond."
+  },
+  {
+    "title": "Heatmaps Are Tricking You",
+    "date": "2025-09-18",
+    "url": "articles/heatmaps.html",
+    "description": "Heatmaps look simple. Pretty, even. But most people — even scientists — don’t really understand what they’re showing."
+  }
 ]
