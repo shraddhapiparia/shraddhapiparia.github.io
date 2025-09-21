@@ -38,45 +38,58 @@
       </header>
 
       <p>
-        Sequence alignment may sound like a specialist bioinformatics task, but the core ideas come straight from classic string-matching
-        problems covered in an introductory algorithms course. Below, the familiar concepts of dynamic programming, hashing, and suffix
-        arrays re-appear with only minor tweaks to handle biological strings.
+        I used to think of sequence alignment as a specialist bioinformatics trick. But when I came across it first time, I realized the core ideas
+        come straight from the classic string-matching problems we see in introductory algorithms. Dynamic programming,
+        hashing, and suffix arrays all reappear — only slightly adapted for biological strings. For me, it felt like
+        rediscovering something familiar in a new context.
       </p>
 
       <h2>From Exact Match to Similarity Score</h2>
       <p>
-        In textbook search we tend to ask, “Does pattern <em>P</em> occur in text <em>T</em>?” Algorithms such as Knuth–Morris–Pratt or Boyer–Moore
-        give a yes/no answer plus the location. In biology, we rarely see perfect matches, so the question becomes, “How similar are
-        these two strings if we allow edits?” A scoring scheme assigns points to matches, penalties to mismatches, and larger penalties
-        to gaps. The result is not an index but an alignment and an overall similarity score.
+        In algorithms class, the question was simple: “Does pattern <em>P</em> occur in text <em>T</em>?” Methods like
+        Knuth–Morris–Pratt or Boyer–Moore gave a yes/no answer plus the location. Biology rarely works that cleanly.
+        Here, the question becomes, “How similar are these two strings if we allow edits?” A scoring scheme turns matches into
+        points, mismatches into penalties, and gaps into bigger penalties. The output is not just an index, but an alignment and
+        an overall similarity score.
       </p>
 
-      <h2>Dynamic Programming as the go-getter</h2>
+      <h2>Dynamic Programming as the Go-Getter</h2>
       <p>
-        Needleman–Wunsch (global) and Smith–Waterman (local) extend the Levenshtein-distance DP. Build an (m + 1) × (n + 1) matrix and fill
-        each cell with the best score reachable by matching/mismatching (diagonal), deleting (up), or inserting (left). Smith–Waterman
-        adds a zero option to reset for local alignment. The time complexity remains <em>O</em>(mn); a traceback from the highest cell
-        reveals the aligned substrings. It is the same dynamic-programming pattern taught in CS, repurposed for DNA.
+        Needleman–Wunsch (global) and Smith–Waterman (local) extend the same Levenshtein-distance DP I first saw in CS courses.
+        You build an (m + 1) × (n + 1) matrix, filling each cell by matching/mismatching (diagonal), deleting (up), or
+        inserting (left). Smith–Waterman even adds a zero option for local resets. Time complexity is still <em>O</em>(mn), and
+        a traceback from the top cell gives the aligned substrings. It’s the same DP pattern I learned years ago — now applied
+        to DNA.
       </p>
 
       <h2>Scaling Up with Seed-and-Extend</h2>
       <p>
-        Whole genomes make a full <em>O</em>(mn) DP too costly. BLAST accelerates the task by hashing all fixed-length <em>k</em>-mers of
-        the database. Exact <em>k</em>-mer hits act as seeds. Around each seed, BLAST runs a narrow, banded Smith–Waterman, examining only
-        a small diagonal strip. Most of the DP table is skipped, yet high-quality alignments still surface quickly.
+        Whole genomes make a full <em>O</em>(mn) DP far too heavy. That’s where BLAST feels clever: hash all fixed-length
+        <em>k</em>-mers of the database, use exact hits as seeds, then run a narrow, banded Smith–Waterman around each seed.
+        Most of the DP table is skipped, but strong alignments still appear quickly. It reminded me that smart shortcuts can
+        keep old algorithms useful at scale.
       </p>
 
       <h2>Suffix Arrays and the FM-Index</h2>
       <p>
-        Modern aligners for next-generation sequencing go further by indexing the reference genome with a suffix array or FM-index.
-        Candidate positions are fetched in sub-linear time, and a limited DP extends each candidate. These index structures, familiar
-        from classics such as Gusfield’s <em>Algorithms on Strings, Trees and Sequences</em>, power billion-read pipelines today.
+        Modern aligners go further, indexing the reference genome with a suffix array or FM-index. Candidate positions come in
+        sub-linear time, and a limited DP extends each candidate. These index structures, which I first saw in Gusfield’s
+        <em>Algorithms on Strings, Trees and Sequences</em>, now power billion-read pipelines. The continuity between theory
+        and practice is striking.
       </p>
 
-      <h2>Takeaway</h2>
+      <h2>Personal Takeaway</h2>
       <p>
-        Sequence alignment is simply approximate string matching at scale. Dynamic programming guarantees the optimal alignment, while
-        hashing and suffix-array-style indexes make the computation practical on large data sets. The algorithms we learn in Algorithms 101 remain central—only the alphabet is smaller and the strings are much longer.
+        Sequence alignment is just approximate string matching at scale. Dynamic programming guarantees optimal alignments,
+        while hashing and index structures make them practical on massive datasets. What struck me is how the Algorithms 101
+        toolkit still underpins modern genomics — same principles, new alphabets, and much longer strings.
+      </p>
+
+
+      <p>
+        For me, the rediscovery is this: dynamic programming isn’t just a classroom exercise, it’s a workhorse that keeps
+        showing up in new domains. Seeing it power genome alignment reminded me that the basics we learn early on can become
+        surprisingly practical — even decades later — when the problems get bigger and the context changes.
       </p>
     </article>
   </main>

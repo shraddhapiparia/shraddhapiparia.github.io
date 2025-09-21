@@ -1,5 +1,14 @@
 [
-  { "title": "Surviving Future Shock in Research", "url": "articles/futureshock.html", "date": "2025-04-14" },
-  { "title": "Algorithms in Biotech", "url": "articles/dynamic_programming.html", "date": "2024-08-18" },
-  { "title": "Genome Embeddings", "url": "articles/genome_embeddings.html", "date": "2025-09-09" }
+  {
+  "title": "Surviving Future Shock in Research",
+  "date": "2025-09-14",
+  "url": "articles/futureshock.html",
+  "description": "My personal takeaways from Toffler’s *Future Shock*—lessons on how researchers can stay adaptable, maintain focus, and thrive in times of rapid change."
+  },
+  {
+  "title": "Algorithms in Biotech",
+  "date": "2025-09-12",
+  "url": "articles/dynamic_programming.html",
+  "description": "An intuitive guide to dynamic programming with simple examples and narratives that make complex problems easier to grasp."
+}
 ]

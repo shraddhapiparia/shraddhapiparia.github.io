@@ -37,22 +37,23 @@
   fetch('article.json')
     .then(r => r.json())
     .then(posts => {
-      // newest → oldest
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       const list = document.getElementById('articles-list');
 
       posts.forEach(p => {
         const li = document.createElement('li');
-        li.innerHTML =
-          `<a href="${p.url}">${p.title}</a> ` +
-          `<small>(${new Date(p.date)
-              .toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})</small>`;
+        li.innerHTML = `
+          <a href="${p.url}"><strong>${p.title}</strong></a> 
+          <small>(${new Date(p.date)
+              .toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})</small>
+          <p class="article-desc">${p.description}</p>
+        `;
         list.appendChild(li);
       });
     })
     .catch(err => console.error('Could not load article.json', err));
-  </script>
+</script>
 
   <script>
     /* ===== Mobile nav toggle ===== */

@@ -208,3 +208,32 @@ body:not(.home) .pagebox {
   background: var(--clr-muted);
   color: var(--clr-text);
 }
+
+/* ===== Articles List ===== */
+#articles-list {
+  list-style: none;
+  padding: 0;
+}
+
+#articles-list li {
+  margin-bottom: 2rem;
+}
+
+#articles-list a {
+  font-size: 1.2rem;
+  color: var(--clr-text); /* use theme variable instead of hard #333 */
+  text-decoration: none;
+}
+
+#articles-list a:hover {
+  color: var(--clr-accent);
+  text-decoration: underline;
+}
+
+.article-desc {
+  margin: 0.3rem 0 0;
+  color: var(--clr-text);
+  opacity: 0.8; /* softer look */
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
