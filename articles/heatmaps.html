@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Heatmaps Are Tricking You | Shraddha Piparia</title>
+
+  <!-- site-wide stylesheet and fonts -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========= HEADER / NAV ========= -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Select Publications</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========= ARTICLE ========= -->
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Heatmaps Are Tricking You</h1>
+        <p class="post__meta">
+          Published&nbsp;<time datetime="2025-09-18">14&nbsp;September&nbsp;2025</time>
+        </p>
+      </header>
+        <p>Heatmaps look harmless. A grid of colors, maybe some clustering on the side. We use them in biology all the time. But there’s a catch: the picture you see is not always the math you think you’re seeing.</p>
+
+        <p>I learned this the hard way. A heatmap my analysis grouped in a way that made no sense. Later I realized: the software had quietly decided how to measure similarity. I was reading the colors as truth, but the clustering was speaking a different language.</p>
+
+        <h2>The hidden step</h2>
+        <p>Most R functions do a secret step: they cluster first, then scale, then paint the colors. That means the display can show “similar shapes” in one color range, while the clustering actually happened on raw magnitudes. You think two patterns are grouped because they look alike — but they were grouped because both were simply large numbers.</p>
+
+        <h2>Why it matters</h2>
+        <p>If you’re studying gene expression, this is the difference between “these two genes behave the same way” and “these two genes just happen to be high overall.” That’s not a small mistake. It changes the story you tell in your paper or your presentation.</p>
+
+        <h2>A better habit</h2>
+        <p>The fix isn’t complicated. Decide what similarity means for <em>your question</em>. Do you care about absolute levels? Use Euclidean distance. Do you care about shared patterns over time? Scale first, or use correlation. The point is: don’t let the defaults decide for you.</p>
+
+        <h2>Takeaway</h2>
+        <p>Heatmaps are not just presentation. They are math plus defaults plus color. If you don’t know which part came first, the colors will trick you. Slow down, peek under the hood, and choose your definition of “similar.”</p>
+      
+      
+    </article>
+  </main>
+
+  <!-- ========= JS: mobile-nav toggle ========= -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

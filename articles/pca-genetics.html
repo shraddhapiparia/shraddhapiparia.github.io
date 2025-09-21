@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Why PCA Isn’t Enough for Genetics | Shraddha Piparia</title>
+
+  <!-- site-wide stylesheet and fonts -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========= HEADER / NAV ========= -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Select Publications</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========= ARTICLE ========= -->
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Why PCA Isn’t Enough for Genetics</h1>
+        <p class="post__meta">
+          Published&nbsp;<time datetime="2025-09-20">14&nbsp;September&nbsp;2025</time>
+        </p>
+      </header>
+
+      <p>The scale of genetics feels overwhelming. Millions of SNPs, thousands of people, and endless rows of A, T, C, and G. How to even begin to make sense of it?</p>
+
+      <p>For decades, the classic shortcut has been <strong>Principal Component Analysis (PCA)</strong>. It’s simple, linear, and fast. PCA takes this mountain of data and flattens it down into a handful of axes that explain most of the variation. More like taking a 3D object and snapping a 2D photo to save space, but you lose depth.</p>
+
+      <h2>What PCA Gets Right</h2>
+      <p>PCA has earned its place in genetics. It’s the backbone of population structure analysis and ancestry correction. If the dataset is a straight road, PCA is a perfect way to map it: we’ll see individuals neatly cluster by ancestry, and the big patterns jump out.</p>
+
+      <h2>The Trouble with PCA</h2>
+      <p>SNPs don’t always act in simple, additive ways. Some signals only appear in combination, or bend in nonlinear patterns. PCA, being linear, tends to iron over those subtleties. We end up with a flattened slope where the real story was a sharp turn.</p>
+
+      <h2>Enter Autoencoders</h2>
+      <p>Autoencoders are neural networks designed for compression. Like PCA, they reduce data into fewer dimensions. Unlike PCA, they don’t force everything onto a straight line. They can curve, bend, and adapt to the structure of the genome.</p>
+
+      <h2>Why LD Matters</h2>
+      <p>There’s another layer to this story: <strong>linkage disequilibrium (LD)</strong>. SNPs that sit close together on the genome often act together because of inherited haplotype structure. Ignoring LD can dilute signals or inflate noise, which is why many biotech and genomics pipelines organize SNPs into haploblocks. By applying autoencoders to each block, we can respect the biological architecture of the genome while keeping the computation tractable.</p>
+
+
+      <h2>The Big Takeaway</h2>
+      <p>PCA is useful, but limited. It provides a coarse overview of genomic variation and works well for tasks like ancestry correction. However, many applications in biotechnology and medical genomics require capturing non-linear structure and LD-aware features to preserve biological signal. Autoencoders trained at the haploblock level achieve this balance—compressing the genome efficiently while retaining information critical for downstream tasks such as disease risk prediction, association studies, and biomarker discovery.</p>
+
+
+      <p><em>PCA flattens the genome, but autoencoders bend with it.</em></p>
+    </article>
+  </main>
+
+  <!-- ========= JS: mobile-nav toggle ========= -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
