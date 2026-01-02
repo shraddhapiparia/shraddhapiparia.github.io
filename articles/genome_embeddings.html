@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Turning “Future Shock” into a Research Advantage | Shraddha Piparia</title>
+  <title>Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs | Shraddha Piparia</title>
 
   <!-- site-wide stylesheet and fonts -->
   <link rel="stylesheet" href="../style.css" />
@@ -31,17 +31,85 @@
   <main class="pagebox">
     <article class="post">
       <header class="post__header">
-        <h1>Genome embeddings (Soon to appear)</h1>
+        <h1>Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs</h1>
         <p class="post__meta">
           Published&nbsp;<time datetime="2025-09-09">14&nbsp;September&nbsp;2025</time>
         </p>
       </header>
 
       <p>
-        
+        The scale of genotype data is intimidating. Millions of variants, thousands of individuals, and matrices that grow wider far faster than they grow tall. The natural temptation is to treat this as a representation learning problem: reduce dimensionality, learn embeddings, and let downstream models discover structure.  
       </p>
+      <p>
+        But in genetics, how you compress the data matters as much as how much you compress it. The genome is not a bag of independent features. Its structure is biological, inherited, and unevenly distributed. Any embedding that ignores this structure risks being mathematically elegant and biologically hollow. This post is not about proposing a single “best” model. It is about laying out the design constraints that shape LD-aware genome embeddings, and the trade-offs that follow from them.
+      </p>
+      <h2>Why SNP-level representations are insufficient </h2>
+      <p> At first glance, SNP data looks well suited to modern machine learning: discrete inputs, large feature space, and clear downstream objectives. In practice, SNP-level representations break down quickly.
+      </p>
+      <p> The fundamental issue is dimensionality. Even modest genotyping arrays contain hundreds of thousands of variants, while cohort sizes are typically in the thousands. Treating each SNP as an independent feature creates an extreme imbalance that encourages overfitting and unstable representations.
+      </p>
+      <p>More subtly, SNPs are not independent. Many neighboring variants are highly correlated due to shared inheritance. A model that treats them as separate inputs is forced to relearn the same signal repeatedly, diluting meaningful variation and amplifying noise. Increasing model capacity does not solve this - it often makes it worse. </p>
 
-      
+      <h2> Linkage disequilibrium as a modeling constraint </h2>
+      <p>Linkage disequilibrium (LD) is often introduced as a technical complication: something to correct for, prune away, or adjust out. From a representation learning perspective, LD is better understood as a structural prior.
+      </p><p>
+      LD tells us which variants tend to travel together through generations. It encodes cis-level dependencies that reflect recombination history, population structure, and local genomic architecture. Ignoring LD is equivalent to assuming that nearby variants are exchangeable, which they are not.
+      </p><p>
+      This has direct consequences for embeddings. If correlated SNPs are embedded independently, the resulting latent space reflects redundancy rather than biology. Conversely, grouping correlated variants forces the model to respect the genome’s natural units of variation.
+      </p><p>
+      LD is not noise to be removed; it is information about how the genome is organized.
+    </p>
+
+    <h2>Why embeddings are needed at all </h2>
+    <p>
+    Classic linear methods like PCA succeed precisely because they exploit correlation structure. They compress variance efficiently and reveal broad population patterns. But PCA flattens the genome into global axes, prioritizing dominant sources of variation—often ancestry—over subtler, biologically local effects.
+    </p><p>
+    Many questions in medical and functional genomics live in that middle ground: beyond raw SNPs, but below genome-wide averages. We want representations that are compact, continuous, and flexible enough to support downstream modeling, while still preserving local biological signal.
+    </p><p>
+    This is where learned embeddings become attractive. Unlike fixed linear projections, embeddings can adapt to non-linear structure and distribute information across dimensions in a way that better reflects the data. The challenge is ensuring that what they learn aligns with biology rather than artifacts.
+  </p>
+
+  <h2>LD blocks as a necessary compromise</h2>
+  <p>
+    Organizing variants into LD blocks is an imperfect but practical response to these constraints. Blocks impose locality, reduce redundancy, and define units that are large enough to capture cis structure while small enough to remain computationally manageable. </p>
+    <p>
+    No block definition is “correct” in an absolute sense. Different thresholds reflect different assumptions about how much correlation is meaningful. Smaller blocks preserve resolution but risk fragmentation; larger blocks capture broader structure but blur distinct signals. Choosing a block scheme is not a preprocessing detail—it is a modeling decision. </p>
+    <p>
+    Importantly, blocks are a compromise. They respect local structure but deliberately ignore interactions beyond their boundaries. Any downstream model must consider what is lost at that interface.</p>
+
+    <h2>Why a VAE, not just another compressor</h2>
+    <p>
+    Once blocks are defined, the next question is how to represent them. Linear compression methods are fast and interpretable, but they assume that variation lies along straight axes. Genomic variation rarely does. </p>
+    <p>
+    Variational autoencoders (VAEs) offer a different perspective. By learning a continuous latent space with explicit regularization, VAEs encourage smoothness: nearby genotypes map to nearby representations. This is less about reconstruction accuracy and more about latent space health—whether the embedding behaves in a stable, meaningful way across samples. </p>
+    <p>
+    Regularization choices matter here. Strong constraints improve stability and comparability but may oversimplify local variation. Weaker constraints preserve detail but risk fragmentation. These are not hyperparameters to tune blindly; they encode assumptions about biological continuity. </p>
+
+    <h2>Scaling beyond local structure</h2>
+
+    <p>LD-aware block embeddings solve one problem and expose another. While they capture cis-level dependencies, they deliberately discard long-range and trans interactions. Yet many phenotypes emerge from coordinated effects across the genome.</p>
+
+    <p>Scaling up therefore becomes a conceptual problem, not just a computational one. How should local embeddings be combined? In what order? With what inductive biases? Treating block embeddings as independent tokens ignores the very interactions we hope to study.</p>
+
+    <p>Second-stage models—often attention-based—are a natural place to reintroduce global context. But their role is different from sequence language models. Here, attention operates over biologically compressed units, not raw sequence. The goal is not to learn genomic grammar, but to model relationships between learned representations. </p>
+
+    <h2>A brief contrast with sequence language models</h2>
+
+    <p>It is tempting to ask why these problems are not solved directly by genomic language models. Sequence models excel at learning local rules from contiguous DNA: motifs, spacing, and regulatory grammar. They operate on a single reference genome and are largely free of population-level confounding.</p>
+
+    <p>Genotype data answers a different question. It reflects how those rules are instantiated across individuals, shaped by LD, ancestry, and polygenic architecture. The representations needed here must absorb population context, not abstract away from it.</p>
+
+    <p>In this sense, LD-aware embeddings are not alternatives to sequence language models. They address a downstream problem that begins where sequence grammar is already known.</p>
+
+    <h2> Interpretability constrains what kinds of models are worth building, even if interpretation is applied later </h2>
+    <p>Interpretability in genotype embeddings is often framed as a question of attribution: which variants, blocks, or regions drive a particular prediction. While important, attribution is not the first problem to solve.</p>
+
+    <p>For representation learning, the more immediate concern is whether the embedding itself is stable, meaningful, and biologically grounded. Latent spaces that drift across runs, collapse onto population axes, or vary dramatically with minor preprocessing choices are difficult to interpret regardless of how attribution is computed.</p>
+
+    <h2> What LD-Aware embeddings make possible </h2>
+    <p> LD-aware genome embeddings introduce their own assumptions and limitations, particularly when LD structure is specific to a given population. </p>
+    <p> Within a defined ancestry, however, such embeddings make it possible to model polygenic structure without being trivially dominated by population axes or redundant local correlations. By compressing correlated variants into biologically grounded units, they provide a representation that is more stable and expressive than raw SNP matrices while remaining computationally tractable. </p>
+    <p> This framework lays the groundwork for downstream analyses that depend on intermediate representations—such as exploring polygenic architecture, relating genetic structure to phenotypes, or assessing consistency across modeling choices—without presuming transferability across ancestries. Extending these ideas beyond a single population remains an open and separate challenge, closely tied to how LD itself varies across cohorts. </p>
     </article>
   </main>
 

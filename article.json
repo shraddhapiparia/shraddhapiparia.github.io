@@ -1,13 +1,13 @@
 [
   {
   "title": "Surviving Future Shock in Research",
-  "date": "2025-09-14",
+  "date": "2025-07-14",
   "url": "articles/futureshock.html",
   "description": "My personal takeaways from Toffler’s Future Shock —lessons on how researchers can stay adaptable, maintain focus, and thrive in times of rapid change."
   },
   {
   "title": "Algorithms in Biotech",
-  "date": "2025-09-12",
+  "date": "2025-07-12",
   "url": "articles/dynamic_programming.html",
   "description": "My personal rediscovery of dynamic programming—seeing its practical applications in a fresh, intuitive way."
   },
@@ -21,6 +21,12 @@
     "title": "Heatmaps Are Tricking You",
     "date": "2025-09-18",
     "url": "articles/heatmaps.html",
-    "description": "Heatmaps look simple. Pretty, even. But most people — even scientists — don’t really understand what they’re showing."
+    "description": "Heatmaps look simple. Pretty, even. However, the implications of these displays are often misunderstood."
+  },
+  {
+    "title": "Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs",
+    "date": "2025-12-18",
+    "url": "articles/genome_embeddings.html",
+    "description": "Heatmaps look simple. Pretty, even. However, the implications of these displays are often misunderstood."
   }
 ]
