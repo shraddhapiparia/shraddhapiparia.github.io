@@ -27,6 +27,13 @@
     "title": "Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs",
     "date": "2025-12-18",
     "url": "articles/genome_embeddings.html",
-    "description": "Heatmaps look simple. Pretty, even. However, the implications of these displays are often misunderstood."
+    "description": "How LD and cis structure guide genome representation learning."
+  },
+  {
+    "title": "Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs",
+    "date": "2025-12-09",
+    "url": "articles/regularization.html",
+    "description": "Regularization demystified: KL vs MMD for meaningful latent spaces."
   }
+
 ]
