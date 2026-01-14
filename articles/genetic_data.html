@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>What Is Genetic Data? DNA, RNA, and Why We Measure Them | Shraddha Piparia</title>
+
+  <!-- site-wide stylesheet and fonts -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========= HEADER / NAV ========= -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========= ARTICLE ========= -->
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>What Is Genetic Data? DNA, RNA, and Why We Measure Them</h1>
+        <!-- <p class="post__meta">
+          Published&nbsp;<time datetime="2026-01-13">13&nbsp;January&nbsp;2026</time>
+        </p> -->
+      </header>
+
+      <p>This article is part of the Foundations of Genomic Data series.</p>
+
+      <h2>What is genetic data?</h2>
+      <p>In biological research, genetic data refers to measurements derived from molecules that encode, regulate, or reflect biological function. Most commonly, this means DNA and RNA.</p>
+
+      <p>Although DNA and RNA are closely related, they represent fundamentally different aspects of biology. As a result, they are measured using different technologies and are used to answer different scientific questions.</p>
+
+      <p>Understanding this distinction is essential before discussing sequencing technologies, genotyping arrays, or downstream analyses.</p>
+
+      <h2>DNA and RNA represent different layers of biology</h2>
+      <p>DNA encodes the genetic information of an organism. With rare exceptions, an individual’s DNA sequence is stable across cells and over time. Differences in DNA sequence capture inherited variation, such as single-nucleotide variants or structural changes.</p>
+
+      <p>RNA, in contrast, reflects gene activity. RNA molecules are transcribed from DNA and their abundance varies across tissues, cell types, developmental stages, and environmental conditions. RNA therefore represents a dynamic readout of how genetic information is being used.</p>
+
+      <p>This distinction is central:</p>
+      <p>DNA describes what could happen. RNA describes what is happening.</p>
+
+      <p>Because these layers capture different biological signals, no single data type is sufficient on its own.</p>
+
+      <h2>Why multiple technologies exist</h2>
+      <p>There is no single best way to measure genetic information because different research questions require access to different biological layers.</p>
+
+      <p>Some studies aim to identify inherited risk factors for disease. Others focus on how cells respond to treatment, infection, or environmental exposure. These goals naturally lead to different measurement strategies.</p>
+
+      <p>Broadly, genetic data technologies fall into three categories:</p>
+      <p>Methods that read DNA sequence. Methods that measure RNA abundance. Methods that assay selected genetic variants without full sequencing.</p>
+
+      <p>Each approach trades off resolution, cost, scale, and interpretability.</p>
+
+      <h2>Sequencing versus measurement</h2>
+      <p>DNA and RNA sequencing are often discussed together, but they are conceptually distinct.</p>
+
+      <p>DNA sequencing reads the underlying genetic code. It is well suited for identifying variants, rare mutations, and structural changes that are not captured by targeted assays.</p>
+
+      <p>RNA sequencing measures transcripts derived from DNA. It provides quantitative information about gene expression, splicing, and cellular state, but does not directly observe most genetic variation.</p>
+
+      <p>A third class of technologies, genotyping arrays, does not sequence DNA at all. Instead, they measure predefined genetic variants across the genome. While more limited in scope, these assays scale efficiently to very large populations and are widely used in genetic association studies.</p>
+
+      <h2>Why this distinction matters</h2>
+      <p>Confusion often arises when different data types are treated as interchangeable. In practice, they answer different questions.</p>
+
+      <p>DNA-focused data explains inherited differences. RNA-focused data explains functional activity. Genotyping enables population-scale genetic inference.</p>
+
+      <p>Choosing the right data type is not a technical detail; it determines what biological conclusions are possible.</p>
+
+      <h2>Looking ahead</h2>
+      <p>Later posts in this series examine DNA sequencing, RNA sequencing, and genotyping in detail, followed by a comparative discussion of when each approach is most appropriate. We then connect these data types through integrative and multi-omic analyses.</p>
+
+      <p>Understanding what genetic data represents is the foundation for all of these discussions.</p>
+    </article>
+  </main>
+
+  <!-- ========= JS: mobile-nav toggle ========= -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
