@@ -39,13 +39,13 @@
     "title": "What Is Genetic Data? DNA, RNA, and Why We Measure Them",
     "date": "2025-12-13",
     "url": "articles/genetic_data.html",
-    "description": "What DNA and RNA data represent."
+    "description": "Foundations of Genomic Data Part I: What DNA and RNA data represent."
   },
   {
     "title": "DNA Sequencing Explained: What Does Reading the Genome Mean?",
     "date": "2025-12-13",
     "url": "articles/DNA_sequencing.html",
-    "description": "What is DNA Sequencing."
+    "description": "Foundations of Genomic Data Part II: What is DNA Sequencing."
   }
 
 ]
