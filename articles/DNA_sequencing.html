@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DNA Sequencing Explained: What Does Reading the Genome Mean? | Shraddha Piparia</title>
+
+  <!-- site-wide stylesheet and fonts -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========= HEADER / NAV ========= -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========= ARTICLE ========= -->
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>DNA Sequencing Explained: What Does Reading the Genome Mean?</h1>
+      </header>
+
+      <p>This article is part of the Foundations of Genomic Data series.</p>
+
+      <h2>What does DNA sequencing capture?</h2>
+      <p>DNA sequencing is the process of reading the order of nucleotides along the genome. Conceptually, it provides access to the complete genetic code an individual carries.</p>
+
+      <p>Importantly, sequencing does not selectively read genes. It reads whatever DNA is present in the sampled material. This includes protein-coding regions, noncoding regions, regulatory elements, and repetitive sequences.</p>
+
+      <p>As a result, DNA sequencing captures potential biological variation rather than biological activity.</p>
+
+      <h2>Most of the genome is not protein-coding</h2>
+      <p>A common misconception is that DNA sequencing is primarily about genes. In reality, protein-coding regions account for only a small fraction of the genome.</p>
+
+      <p>The figure below summarizes the approximate composition of the human genome. Only a small portion corresponds to protein-coding exons, while much larger fractions consist of intronic, regulatory, and repetitive sequences.</p>
+
+      <figure class="post__figure">
+        <img
+          src="../images/genome_composition_pie.png"
+          alt="Pie chart of approximate human genome composition: protein-coding exons ~2%, introns ~24%, regulatory and other noncoding ~20%, repetitive DNA and transposable elements ~54%."
+          loading="lazy"
+        />
+        <figcaption>
+          Approximate composition of the human genome. Protein-coding exons are a small fraction of the sequence.
+        </figcaption>
+      </figure>
+
+      <p>This matters because DNA sequencing inherently measures far more than gene-coding changes. Many variants identified through sequencing lie outside exons and influence biology indirectly, through regulation or genome structure.</p>
+
+      <h2>Types of DNA sequencing</h2>
+      <p>DNA sequencing is applied at different scopes depending on the scientific question.</p>
+
+      <p>Whole Genome Sequencing (WGS) reads nearly the entire genome. It provides the most comprehensive view of genetic variation, including noncoding and structural variants.</p>
+
+      <p>Whole Exome Sequencing (WES) targets only protein-coding regions. While more limited, it is efficient for studies focused on coding mutations, particularly in rare disease settings.</p>
+
+      <p>Targeted sequencing focuses on predefined genomic regions. This approach is useful when prior biological knowledge narrows the search space.</p>
+
+      <p>Each strategy reflects a tradeoff between coverage, cost, and interpretability.</p>
+
+      <h2>What DNA sequencing is good at</h2>
+      <p>DNA sequencing is particularly well suited for identifying inherited genetic variation. Common applications include:</p>
+
+      <p>Discovery of single-nucleotide variants and small insertions or deletions.</p>
+      <p>Detection of structural variants.</p>
+      <p>Characterization of rare mutations.</p>
+      <p>Population-level genetic analysis.</p>
+
+      <p>Because DNA is largely stable across cells, sequencing provides a consistent reference layer that supports downstream analyses.</p>
+
+      <h2>What DNA sequencing does not measure</h2>
+      <p>DNA sequencing does not indicate whether a gene is active, suppressed, or differentially expressed. Two individuals with identical DNA sequences may show very different biological behavior at the RNA or protein level.</p>
+
+      <p>This limitation is not a flaw; it reflects the biological role of DNA itself. Sequencing reveals the genetic substrate, not its real-time execution.</p>
+
+      <h2>Why sequencing is only one part of the picture</h2>
+      <p>DNA sequencing explains what genetic variation exists, but not how that variation manifests in cells or tissues. For this reason, sequencing is often complemented by RNA-based measurements and other molecular assays.</p>
+
+      <p>Later articles in this series discuss how RNA sequencing and genotyping approaches build on DNA sequencing to answer different biological questions, and how these layers can be integrated.</p>
+    </article>
+  </main>
+
+  <!-- ========= JS: mobile-nav toggle ========= -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

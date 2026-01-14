@@ -25,7 +25,7 @@
   },
   {
     "title": "Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs",
-    "date": "2025-12-18",
+    "date": "2025-12-12",
     "url": "articles/genome_embeddings.html",
     "description": "How LD and cis structure guide genome representation learning."
   },
@@ -40,6 +40,12 @@
     "date": "2025-12-13",
     "url": "articles/genetic_data.html",
     "description": "What DNA and RNA data represent."
+  },
+  {
+    "title": "DNA Sequencing Explained: What Does Reading the Genome Mean?",
+    "date": "2025-12-13",
+    "url": "articles/DNA_sequencing.html",
+    "description": "What is DNA Sequencing."
   }
 
 ]
