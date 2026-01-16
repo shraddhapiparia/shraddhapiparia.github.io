@@ -46,6 +46,13 @@
     "date": "2025-12-13",
     "url": "articles/DNA_sequencing.html",
     "description": "Foundations of Genomic Data Part II: What is DNA Sequencing."
-  }
+  },
+  {
+  "title": "What Are Complex Diseases?",
+  "date": "2025-12-14",
+  "url": "articles/complex_diseases.html",
+  "description": "Why common diseases emerge from interacting biological systems."
+}
+
 
 ]

@@ -56,9 +56,20 @@
       LD tells us which variants tend to travel together through generations. It encodes cis-level dependencies that reflect recombination history, population structure, and local genomic architecture. Ignoring LD is equivalent to assuming that nearby variants are exchangeable, which they are not.
       </p><p>
       This has direct consequences for embeddings. If correlated SNPs are embedded independently, the resulting latent space reflects redundancy rather than biology. Conversely, grouping correlated variants forces the model to respect the genome’s natural units of variation.
-      </p><p>
-      LD is not noise to be removed; it is information about how the genome is organized.
-    </p>
+      </p>
+      <h2>LD pruning as a practical simplification</h2>
+      <p>
+      One common response to linkage disequilibrium is pruning: removing correlated variants until the remaining set is approximately independent. This strategy is widespread because it directly addresses the dimensionality problem. By reducing redundancy, LD pruning produces genotype matrices that are easier to store, model, and interpret.
+      </p>
+      <p>
+      From a modeling perspective, LD pruning makes an explicit trade-off. It preserves global patterns of variation while discarding much of the local correlation structure. For tasks focused on association testing or population-level summaries, this is often acceptable and even desirable.
+      </p>
+      <p>
+      However, pruning changes the question being asked. Instead of modeling how variants co-vary within genomic neighborhoods, the model sees a sparse representation in which local structure has already been collapsed. This simplification stabilizes learning, but it also limits what the representation can express about cis-level organization.
+      </p>
+      <p>
+      LD is often treated as redundancy to be reduced, but it also encodes information about how the genome is organized.
+      </p> 
 
     <h2>Why embeddings are needed at all </h2>
     <p>
