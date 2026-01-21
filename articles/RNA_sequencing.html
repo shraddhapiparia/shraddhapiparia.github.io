@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RNA Sequencing Explained: Measuring Gene Expression | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>RNA Sequencing Explained: Measuring Gene Expression</h1>
+      </header>
+
+      <p>
+        This article is part of the Foundations of Genomic Data series.
+      </p>
+
+      <h2>What does RNA sequencing capture?</h2>
+
+      <p>
+        RNA sequencing measures the abundance and composition of RNA molecules present in a biological sample at a given moment.
+      </p>
+
+      <p>
+        Unlike DNA sequencing, which records a largely stable genetic sequence, RNA sequencing reflects active biological processes. It captures which genes are being transcribed, how strongly, and in some cases how transcripts are processed.
+      </p>
+
+      <p>
+        For this reason, RNA sequencing is best understood as a snapshot of gene activity rather than genetic potential.
+      </p>
+
+      <h2>From DNA to RNA</h2>
+
+      <p>
+        Cells share the same DNA but differ in function because they express different sets of genes. RNA serves as the intermediate layer that connects genetic information to cellular behavior.
+      </p>
+
+      <p>
+        Measuring RNA therefore provides insight into regulatory programs, environmental responses, and cell identity that are not visible at the DNA level alone.
+      </p>
+
+      <h2>Types of RNA sequencing</h2>
+
+      <p>
+        RNA sequencing can be applied in several forms, depending on the biological question.
+      </p>
+
+      <p>
+        Bulk RNA sequencing measures average gene expression across a population of cells. It is well suited for comparing conditions, tissues, or disease states.
+      </p>
+
+      <p>
+        Single-cell RNA sequencing measures expression at the level of individual cells. This enables the study of cellular heterogeneity, rare cell populations, and developmental trajectories.
+      </p>
+
+      <p>
+        Small RNA sequencing focuses on short RNA species such as microRNAs. These molecules play regulatory roles and are often studied in the context of post-transcriptional control.
+      </p>
+
+      <h2>Library preparation as a modeling choice</h2>
+
+      <p>
+        RNA sequencing does not measure all RNA molecules equally. Library preparation determines which transcripts are captured and quantified.
+      </p>
+
+      <p>
+        Poly-A selection enriches for messenger RNA by targeting polyadenylated transcripts. This approach emphasizes protein-coding genes.
+      </p>
+
+      <p>
+        Ribosomal RNA depletion removes abundant ribosomal RNA, allowing a broader range of coding and noncoding transcripts to be measured.
+      </p>
+
+      <p>
+        These choices influence what aspects of gene regulation are observable and should be considered part of the experimental design rather than a technical detail.
+      </p>
+
+      <h2>What RNA sequencing is well suited for</h2>
+
+      <p>
+        RNA sequencing is commonly used to quantify gene expression and compare transcriptional states across samples.
+      </p>
+
+      <p>
+        It supports analyses such as differential expression, splicing variation, transcript discovery, and inference of cell-type composition.
+      </p>
+
+      <p>
+        Because RNA levels can change rapidly, RNA sequencing is particularly informative for studying dynamic biological responses.
+      </p>
+
+      <h2>What RNA sequencing does not measure</h2>
+
+      <p>
+        RNA sequencing does not directly measure protein abundance or activity. Post-transcriptional and post-translational processes can further modify cellular behavior.
+      </p>
+
+      <p>
+        It also does not capture genetic variation with the same completeness or accuracy as DNA sequencing.
+      </p>
+
+      <h2>RNA sequencing as part of a larger picture</h2>
+
+      <p>
+        RNA sequencing provides a functional layer between genotype and phenotype. On its own, it offers partial insight.
+      </p>
+
+      <p>
+        When combined with DNA sequencing and other molecular measurements, it helps reveal how genetic variation translates into biological outcomes.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comparative Analysis: What Each Measures and Why | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Comparative Analysis: What Each Measures and Why</h1>
+      </header>
+
+      <p>
+        This article is part of the Foundations of Genomic Data series.
+      </p>
+
+      <p>
+        DNA sequencing, RNA sequencing, and genotyping arrays are often presented as competing technologies. In practice, they are different measurement layers that answer different types of biological questions.
+      </p>
+
+      <p>
+        The goal of this comparison is not to rank them. It is to clarify what each one measures, what it does not measure, and why these differences shape study design.
+      </p>
+
+      <h2>A shared frame for “genomic data”</h2>
+
+      <p>
+        Genomic data can refer to multiple things that happen to share the same vocabulary. DNA-based assays measure inherited genetic variation. RNA-based assays measure which parts of the genome are being used in a particular context.
+      </p>
+
+      <p>
+        Genotyping arrays sit between these extremes. They measure genetic variation, but only at a predefined set of sites chosen for scalability and consistency.
+      </p>
+
+      <p>
+        These layers are complementary because the biological system is layered. DNA is relatively stable. RNA is dynamic. The measurement technology determines which layer is observed.
+      </p>
+
+      <h2>DNA sequencing</h2>
+
+      <p>
+        DNA sequencing measures the nucleotide sequence present in a sample. In most applications, it is used to identify genetic variants, ranging from single-nucleotide changes to larger genomic alterations.
+      </p>
+
+      <p>
+        Because it can read broadly across the genome, sequencing supports both discovery and completeness. It provides the most direct view of genetic variation, including variants that are rare or not previously cataloged.
+      </p>
+
+      <p>
+        What DNA sequencing does not measure is how genetic information is used. Two individuals with similar DNA sequences can show very different cellular behavior because regulation and environment act downstream of DNA.
+      </p>
+
+      <h2>RNA sequencing</h2>
+
+      <p>
+        RNA sequencing measures the abundance and composition of RNA transcripts present in a sample. It is commonly interpreted as a readout of gene expression.
+      </p>
+
+      <p>
+        Unlike DNA, RNA is context-dependent. Expression can change across tissues, cell types, developmental stages, and disease states. RNA sequencing therefore reflects a biological state rather than a stable genetic substrate.
+      </p>
+
+      <p>
+        RNA sequencing does not replace DNA sequencing for genetic variation. While variants can sometimes be observed in RNA reads, the measurement is shaped by expression levels and does not provide genome-wide coverage of inherited variation.
+      </p>
+
+      <p>
+        RNA sequencing also does not directly measure protein abundance or function. Transcription is one layer of regulation, but it is not the final layer that determines phenotype.
+      </p>
+
+      <h2>Genotyping arrays</h2>
+
+      <p>
+        Genotyping arrays measure genetic variation at a predefined set of variants, most commonly single-nucleotide polymorphisms. The array does not read continuous DNA sequence. It queries whether specific known variants are present.
+      </p>
+
+      <p>
+        This design makes arrays efficient for large cohorts. Because the measurement sites are standardized, they enable consistent comparisons across many samples and across studies.
+      </p>
+
+      <p>
+        Genotyping arrays do not discover new variants outside their design. While modern arrays may include some rare variants, coverage is uneven and biased toward variants that are common or well characterized in prior datasets.
+      </p>
+
+      <p>
+        Arrays also represent structural and complex variation less effectively than sequencing. Many studies therefore use arrays as a scalable base and rely on imputation to infer additional variants using linkage disequilibrium patterns from reference panels.
+      </p>
+
+      <h2>Coverage, resolution, and confidence</h2>
+
+      <p>
+        Coverage describes how much of the molecular landscape is observed. DNA sequencing can be broad, RNA sequencing focuses on expressed transcripts, and genotyping arrays measure a sparse set of predefined sites.
+      </p>
+
+      <p>
+        Resolution describes what kinds of differences the data can reveal. Sequencing can support discovery of diverse variant types. RNA sequencing can reveal changes in expression programs and transcriptional states. Arrays provide a stable survey of known variation at population scale.
+      </p>
+
+      <p>
+        Confidence, in practice, is shaped by both the technology and the study design. RNA measurements are sensitive to context and sample handling. DNA variation is more stable but may require deeper sequencing for rare variant detection. Arrays are consistent for typed variants but limited by what they choose to measure.
+      </p>
+
+      <h2>Trade-offs that shape study design</h2>
+
+      <p>
+        Cost and scalability influence what is feasible. Arrays and bulk RNA sequencing are commonly used when large sample sizes are needed, while whole genome sequencing is often reserved for smaller cohorts or targeted discovery settings.
+      </p>
+
+      <p>
+        Another trade-off is discovery versus standardization. Sequencing is well suited when the goal includes identifying novel variation. Arrays are well suited when the goal is consistent measurement across many samples.
+      </p>
+
+      <p>
+        Interpretation also differs. DNA-based variation is often linked to risk and predisposition, while RNA-based expression reflects cellular response and regulatory state. These signals can align, but they represent different layers of causality.
+      </p>
+
+      <h2>When to use which technology</h2>
+
+      <p>
+        If the question is about inherited genetic variation, DNA sequencing and genotyping arrays are the primary tools. Sequencing is chosen when discovery or comprehensive coverage is needed. Arrays are chosen when scale and consistency are the priority.
+      </p>
+
+      <p>
+        If the question is about cellular behavior, RNA sequencing is often more appropriate because it captures gene activity and state. This is especially important when differences are driven by context, environment, treatment, or cell-type composition.
+      </p>
+
+      <p>
+        Many studies use more than one layer because the biological problem spans more than one layer. DNA can explain predisposition. RNA can reveal active pathways and regulatory changes. Together they offer a more complete view than either alone.
+      </p>
+
+      <h2>Why these layers are complementary</h2>
+
+      <p>
+        No single assay provides a full explanation of disease biology. DNA describes potential sources of variation. RNA describes active molecular programs. Genotyping arrays provide scalable access to genetic variation across populations.
+      </p>
+
+      <p>
+        Once these measurement layers are clear, the next challenge is representation. The question becomes how to encode high-dimensional genomic signals so that structure, similarity, and variation can be analyzed in a principled way.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

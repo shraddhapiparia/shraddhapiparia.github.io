@@ -37,7 +37,7 @@
   },
   {
     "title": "What We Mean by Genetic Data: DNA and RNA",
-    "date": "2025-12-13",
+    "date": "2025-12-12",
     "url": "articles/genetic_data.html",
     "description": "Foundations of Genomic Data Part I: an introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support."
   },
@@ -48,8 +48,26 @@
     "description": "Foundations of Genomic Data Part II: a practical overview of what DNA sequencing measures and how it differs from other genomic data types."
   },
   {
+  "title": "RNA Sequencing Explained: Measuring Gene Expression",
+  "date": "2025-12-14",
+  "url": "articles/RNA_sequencing.html",
+  "description": "Foundations of Genomic Data Part III: an overview of what RNA sequencing measures and how gene expression differs from genetic variation."
+  },
+  {
+  "title": "Genotyping Arrays Explained: Measuring Selected Genetic Variation",
+  "date": "2025-12-15",
+  "url": "articles/genotyping_arrays.html",
+  "description": "Foundations of Genomic Data Part IV: what genotyping arrays measure, how imputation expands coverage, and why arrays remain central to large-scale GWAS."
+  },
+  {
+  "title": "Comparative Analysis: What Each Measures and Why",
+  "date": "2025-12-16",
+  "url": "articles/comparative_genomic_data.html",
+  "description": "Foundations of Genomic Data Part V: a conceptual comparison of DNA sequencing, RNA sequencing, and genotyping arrays, and how their measurement trade-offs shape study design."
+  },
+  {
     "title": "What Are Complex Diseases?",
-    "date": "2025-12-14",
+    "date": "2025-01-14",
     "url": "articles/complex_diseases.html",
     "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems."
   }

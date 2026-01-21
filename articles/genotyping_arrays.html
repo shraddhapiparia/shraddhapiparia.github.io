@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Genotyping Arrays Explained: Measuring Selected Genetic Variation | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Genotyping Arrays Explained: Measuring Selected Genetic Variation</h1>
+      </header>
+
+      <p>
+        This article is part of the Foundations of Genomic Data series.
+      </p>
+
+      <h2>What do genotyping arrays measure?</h2>
+
+      <p>
+        Genotyping arrays measure variation at a predefined set of genetic locations across the genome. Each location corresponds to a known genetic variant, most commonly a single-nucleotide polymorphism.
+      </p>
+
+      <p>
+        Unlike DNA sequencing, genotyping arrays do not read continuous stretches of DNA. Instead, they query whether specific variants are present or absent in a sample.
+      </p>
+
+      <p>
+        The resulting data represent a sparse but structured snapshot of genetic variation.
+      </p>
+
+      <h2>Designed measurement rather than discovery</h2>
+
+      <p>
+        The variants included on a genotyping array are selected in advance. Their choice reflects prior knowledge about population genetics, disease associations, and linkage disequilibrium structure.
+      </p>
+
+      <p>
+        As a result, genotyping arrays are designed to measure known variation efficiently rather than to discover novel mutations.
+      </p>
+
+      <h2>Types of genotyping platforms</h2>
+
+      <p>
+        Most modern genotyping arrays are based on SNP microarray technology and are produced by platforms such as Illumina and Affymetrix.
+      </p>
+
+      <p>
+        Some arrays are designed for specific populations or traits, while others aim to provide broad genome-wide coverage.
+      </p>
+
+      <p>
+        Multi-ethnic arrays attempt to capture variation across diverse ancestral backgrounds by including variants informative in multiple populations.
+      </p>
+
+      <h2>From sparse measurement to genome-wide coverage</h2>
+
+      <p>
+        Although genotyping arrays directly measure only a subset of variants, their coverage can be expanded through imputation.
+      </p>
+
+      <p>
+        Imputation uses reference panels, such as the 1000 Genomes Project, HRC, or TOPMed, to infer unmeasured variants based on patterns of linkage disequilibrium.
+      </p>
+
+      <p>
+        This process leverages the structured correlation between nearby variants to infer a denser representation of genetic variation.
+      </p>
+
+      <h2>What genotyping arrays are well suited for</h2>
+
+      <p>
+        Genotyping arrays are widely used in large-scale population studies where cost, consistency, and sample size are critical considerations.
+      </p>
+
+      <p>
+        Common applications include genome-wide association studies, polygenic risk score construction, ancestry inference, and epidemiological research.
+      </p>
+
+      <p>
+        Their standardized design enables direct comparison across cohorts and studies.
+      </p>
+
+      <h2>What genotyping arrays do not measure</h2>
+
+      <p>
+        Genotyping arrays do not capture rare or novel variants outside their predefined set. Structural variants and non-SNP variation are also poorly represented.
+      </p>
+
+      <p>
+        Like DNA sequencing, arrays do not provide information about gene expression or regulatory activity.
+      </p>
+
+      <h2>Genotyping arrays as one layer of genomic data</h2>
+
+      <p>
+        Genotyping arrays occupy a middle ground between comprehensive sequencing and functional assays. They provide scalable access to genetic variation while relying on population structure for inference.
+      </p>
+
+      <p>
+        In combination with sequencing, RNA measurements, and other data types, genotyping arrays contribute to a layered understanding of genotype–phenotype relationships.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
