@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>What Representation Learning Means in Genomics | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>What Representation Learning Means in Genomics</h1>
+      </header>
+
+      <p>
+        This article is part of the From Measurement to Modeling series.
+      </p>
+
+      <p>
+        In earlier articles, we focused on what different genomic technologies measure. That measurement layer is the starting point, but it is not the end of the analysis. Once data exist, the next question is how to represent it in a form that makes biological structure easier to examine.
+      </p>
+
+      <p>
+        Representation learning is a name for that step. It is the practice of learning a new coordinate system for complex data so that similarity, variation, and structure become easier to reason about.
+      </p>
+
+      <h2>From data to representation</h2>
+
+      <p>
+        Genomic datasets are often described as large matrices. For genotype data, the matrix is individuals by variants. For expression data, it is samples by genes or transcripts. The technical challenge is scale, but the conceptual challenge is structure.
+      </p>
+
+      <p>
+        Biological signals are not organized as independent columns. Nearby genetic variants are correlated through linkage disequilibrium. Genes are co-regulated in pathways. Cell types differ through coordinated expression programs. These dependencies mean that the raw feature space is not a neutral place to measure similarity.
+      </p>
+
+      <p>
+        When the raw space is misaligned with the structure of the system, downstream analyses inherit that mismatch. Clustering becomes unstable. Distances become hard to interpret. Models learn redundancy before capturing biologically relevant variation.
+      </p>
+
+      <h2>What is a representation?</h2>
+
+      <p>
+        A representation is a way of describing the same underlying object using a different set of variables. It can be as simple as selecting a subset of features, or as complex as a learned embedding produced by a neural network.
+      </p>
+
+      <p>
+        Many common techniques already function as representations. PCA produces a low-dimensional representation of variation. Heatmaps present a representation of similarity after choices about scaling and distance. LD pruning produces a representation of genotype data where correlated variants have been removed or grouped.
+      </p>
+
+      <p>
+        These methods differ in mechanism, but they share the same role. They define what counts as signal, how similarity is measured, and which dependencies are treated as meaningful.
+      </p>
+
+      <h2>Why raw genomic features are not enough</h2>
+
+      <p>
+        Genomic data are high-dimensional, but the difficulty is not only dimensionality. The difficulty is that the features carry multiple layers of structure at once. Some of that structure is biological, and some of it is technical or historical.
+      </p>
+
+      <p>
+        In genotype data, correlated variants create redundancy. Without accounting for that redundancy, two individuals can appear different in thousands of coordinates while differing on far fewer independent genetic factors.
+      </p>
+
+      <p>
+        In expression data, the same gene can carry different meaning depending on context. Expression levels are influenced by cell-type composition, environmental exposure, developmental stage, and measurement artifacts. A raw count matrix does not separate these influences on its own.
+      </p>
+
+      <p>
+        For complex traits, the signal is often distributed. Effects are small, spread across many loci, and mediated through regulatory mechanisms. In such settings, working directly in the raw feature space can make the problem appear noisier than it is.
+      </p>
+
+      <h2>Representation learning as a modeling choice</h2>
+
+      <p>
+        Representation learning is sometimes described as a convenience, a way to reduce dimensionality. In genomics, it is better understood as a modeling commitment. A representation defines which patterns the model is encouraged to preserve and which patterns it is encouraged to ignore.
+      </p>
+
+      <p>
+        This matters because there is no representation that is universally correct. A representation optimized for ancestry inference may not be appropriate for disease subtyping. A representation optimized for predicting a phenotype may obscure mechanistic variation. The learned space reflects the objective and constraints used to learn it.
+      </p>
+
+      <p>
+        In this sense, representation learning is not separate from interpretation. The representation is part of the interpretation, because it determines what kinds of structure can be detected downstream.
+      </p>
+
+      <h2>What embeddings make possible</h2>
+
+      <p>
+        The practical goal of learning an embedding is not simply compression. The goal is to create a space where distance and similarity correspond more closely to meaningful variation.
+      </p>
+
+      <p>
+        In a well-constructed embedding space, individuals with similar molecular profiles are nearby, and differences reflect structured axes of variation rather than thousands of redundant coordinates. This makes clustering more stable and downstream comparisons more coherent.
+      </p>
+
+      <p>
+        Embeddings also create a shared interface for different tasks. Once the data are represented in a compact form, the same embeddings can support visualization, clustering, association analysis, or prediction. The representation becomes the reusable object.
+      </p>
+
+      <h2>What this article leaves out</h2>
+
+      <p>
+        This article has focused on the concept of representation learning rather than specific methods. The next step is to distinguish between deterministic representations and probabilistic representations and to understand what different objectives encourage in the learned space.
+      </p>
+
+      <p>
+        In later articles, we will discuss autoencoders and variational autoencoders, how regularization shapes latent spaces, and why domain constraints such as linkage disequilibrium matter when learning genome embeddings.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

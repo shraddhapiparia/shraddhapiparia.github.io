@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>What Regularization Does to a Latent Space | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Select Publications</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>What Regularization Really Does to a Latent Space</h1>
+      </header>
+
+      <p>
+        Regularization is often introduced as a training tool. In representation learning, it is more than that. Regularization strongly influences what kinds of latent spaces are likely to form.
+      </p>
+
+      <p>
+        This matters when the latent space is not just a hidden layer. It becomes the object of analysis. We cluster embeddings, compare samples, and interpret distances as if they reflect meaningful similarity.
+      </p>
+
+      <p>
+        This article describes what regularization changes in a latent space at a conceptual level, focusing on continuity, geometry, and interpretability rather than implementation details.
+      </p>
+
+      <h2>Reconstruction does not define a usable latent space</h2>
+
+      <p>
+        Autoencoders and related models are trained to reconstruct inputs. Reconstruction encourages the model to preserve information, but it does not specify how that information should be arranged globally in the latent space.
+      </p>
+
+      <p>
+        A model can reconstruct well while learning a latent space that is fragmented, unevenly populated, or difficult to navigate. Points may cluster tightly in some regions and leave large empty gaps elsewhere.
+      </p>
+
+      <p>
+        In such a space, distances can become misleading. Two nearby points may decode to very different outputs, while two distant points may decode to similar outputs. The latent coordinates work for the decoder, but they may not work for analysis.
+      </p>
+
+      <h2>Regularization imposes global structure</h2>
+
+      <p>
+        Regularization introduces constraints that operate across samples rather than only within each reconstruction. It defines a shared reference that encourages latent representations to follow a consistent organization.
+      </p>
+
+      <p>
+        In variational autoencoders, this is often done by encouraging latent distributions to match a prior. More broadly, regularization can be viewed as shaping the geometry of the representation space.
+      </p>
+
+      <p>
+        The key idea is that regularization makes certain latent spaces easier to learn than others. It discourages extreme, idiosyncratic encodings that only exist to satisfy reconstruction.
+      </p>
+
+      <h2>Continuity and “holes”</h2>
+
+      <p>
+        A common practical problem in unregularized latent spaces is the presence of empty regions. These gaps matter because they break the assumption that the latent space is a smooth map of variation.
+      </p>
+
+      <p>
+        When a latent space has large holes, interpolation becomes unreliable. Moving gradually between two points may pass through regions that contain no training examples. The decoder has no reason to behave predictably there.
+      </p>
+
+      <p>
+        Regularization can reduce this problem by encouraging latent representations to occupy a more continuous volume. This does not eliminate sparsity, but it makes the space easier to traverse and interpret.
+      </p>
+
+      <h2>Local smoothness versus sharp boundaries</h2>
+
+      <p>
+        Regularization also affects how sensitive reconstructions are to small changes in latent coordinates. In a smooth latent space, nearby points decode to similar outputs.
+      </p>
+
+      <p>
+        In an unregularized space, the model may learn sharp boundaries where small coordinate changes produce large reconstruction changes. These boundaries can make clustering unstable and similarity measures brittle.
+      </p>
+
+      <p>
+        Regularization tends to soften these boundaries. It encourages gradual variation rather than discontinuous jumps, which is often closer to how biological variation behaves at the level of aggregate patterns.
+      </p>
+
+      <h2>How regularization changes what “distance” means</h2>
+
+      <p>
+        Many downstream analyses assume that distance in latent space corresponds to meaningful differences. This assumption is not automatically true.
+      </p>
+
+      <p>
+        Without constraints, distance may reflect the decoder’s internal convenience rather than a semantic notion of similarity. Regularization increases the chance that latent distances correspond to structured variation because it encourages a more consistent global arrangement.
+      </p>
+
+      <p>
+        This is why regularization is not only about generalization. It is about making representations usable for comparison.
+      </p>
+
+      <h2>The trade-off: fidelity versus structure</h2>
+
+      <p>
+        Regularization introduces a trade-off. Stronger constraints typically reduce reconstruction fidelity, because the model is prevented from using arbitrary latent codes that perfectly capture each input.
+      </p>
+
+      <p>
+        In return, the latent space becomes more regular. It becomes easier to sample from, easier to compare across inputs, and more stable for downstream analysis.
+      </p>
+
+      <p>
+        The right balance depends on the goal. If the purpose is compression and exact reconstruction, weaker regularization may be acceptable. If the purpose is clustering and interpretation, latent structure matters more.
+      </p>
+
+      <h2>Why this matters for genomics</h2>
+
+      <p>
+        Genomic data have strong correlation structure and distributed signals. Many applications use learned embeddings as a substrate for clustering, stratification, or association analysis.
+      </p>
+
+      <p>
+        In this setting, a latent space that is difficult to interpret is not merely inconvenient. It can lead to unstable groupings and misleading similarity relationships.
+      </p>
+
+      <p>
+        Regularization provides a mechanism to encourage representations that behave more like a coordinate system for biological variation rather than an arbitrary code for reconstruction.
+      </p>
+
+      <h2>Takeaway</h2>
+
+      <p>
+        Regularization does not only prevent overfitting. It shapes the geometry and continuity of latent spaces. It determines whether latent coordinates can be treated as a meaningful space for comparison.
+      </p>
+
+      <p>
+        This perspective becomes especially important when embeddings are used for clustering or interpretation, rather than treated as an intermediate step.
+      </p>
+
+      <p>
+        In the next article, we discuss how domain structure, such as linkage disequilibrium, can be incorporated as an additional constraint when learning genome embeddings.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+    }
+  </script>
+</body>
+</html>

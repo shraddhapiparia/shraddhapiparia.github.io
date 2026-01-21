@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Autoencoders vs Variational Autoencoders: Deterministic and Probabilistic Representations | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Autoencoders vs Variational Autoencoders: Deterministic and Probabilistic Representations</h1>
+      </header>
+
+      <p>
+        This article is part of the From Measurement to Modeling series.
+      </p>
+
+      <p>
+        Representation learning offers a framework for transforming high-dimensional genomic data into a space where structure can be analyzed. Autoencoders and variational autoencoders are two closely related approaches to learning such representations.
+      </p>
+
+      <p>
+        While they share architectural similarities, they differ in how they treat the latent space and what assumptions they make about the structure of variation.
+      </p>
+
+      <h2>Autoencoders as deterministic representations</h2>
+
+      <p>
+        An autoencoder consists of an encoder that maps input data into a lower-dimensional latent space and a decoder that reconstructs the input from that latent representation.
+      </p>
+
+      <p>
+        The training objective encourages the latent variables to preserve information needed for reconstruction. Each input is mapped to a single point in latent space, and similar inputs are encouraged to map to nearby points only indirectly through reconstruction accuracy.
+      </p>
+
+      <p>
+        In this sense, an autoencoder learns a deterministic representation. Given the same input, it always produces the same latent coordinates.
+      </p>
+
+      <h2>Linear autoencoders and PCA</h2>
+
+      <p>
+        When an autoencoder is linear, uses squared reconstruction loss, and has no hidden nonlinearities, it is mathematically equivalent to principal component analysis.
+      </p>
+
+      <p>
+        Both methods learn a low-dimensional subspace that captures maximal variance in the data. The difference is not conceptual but computational. PCA provides a closed-form solution, while a linear autoencoder learns the same solution through optimization.
+      </p>
+
+      <p>
+        This equivalence is useful because it places autoencoders on a familiar continuum rather than presenting them as a fundamentally new idea.
+      </p>
+
+      <h2>What changes with nonlinear autoencoders</h2>
+
+      <p>
+        Introducing nonlinearities allows autoencoders to learn more flexible representations than PCA. The latent space is no longer restricted to a linear subspace of the input.
+      </p>
+
+      <p>
+        However, this flexibility comes with trade-offs. The latent space learned by a nonlinear autoencoder is shaped only by reconstruction accuracy. There is no explicit constraint on how the latent space is organized beyond what the decoder requires.
+      </p>
+
+      <p>
+        As a result, the latent space can become irregular under some training regimes. Regions may be sparsely populated. Distances between points may not reflect meaningful similarity. Small movements in latent space can correspond to large or unstable changes in reconstruction.
+      </p>
+
+      <h2>Why latent space structure matters</h2>
+
+      <p>
+        In many applications, the latent representation is not only an intermediate step. It is the object of analysis. Researchers cluster latent embeddings, visualize them, or relate them to phenotypes.
+      </p>
+
+      <p>
+        When the latent space is unconstrained, these downstream analyses become fragile. Clusters may reflect quirks of optimization rather than biological structure. Interpolation between samples may pass through regions with no data support.
+      </p>
+
+      <p>
+        These issues are not failures of autoencoders. They reflect the fact that reconstruction alone does not specify how a representation should behave globally.
+      </p>
+
+      <h2>Variational autoencoders and probabilistic representations</h2>
+
+      <p>
+        Variational autoencoders modify the autoencoder framework by introducing a probabilistic view of the latent space. Instead of mapping each input to a single point, the encoder maps inputs to a distribution over latent variables.
+      </p>
+
+      <p>
+        During training, latent samples are drawn from this distribution and passed to the decoder. An additional objective encourages the learned latent distributions to follow a simple prior distribution.
+      </p>
+
+      <p>
+        This constraint does not aim to improve reconstruction alone. It shapes the geometry of the latent space.
+      </p>
+
+      <h2>What the probabilistic constraint changes</h2>
+
+      <p>
+        By enforcing a shared prior, variational autoencoders encourage latent representations to occupy a continuous, well-behaved space. Nearby points are encouraged to decode to similar outputs, and gaps in the latent space are discouraged.
+      </p>
+
+      <p>
+        This can make distances in latent space more interpretable and interpolation more stable. The latent space becomes smoother and more regular, at the cost of allowing some reconstruction error.
+      </p>
+
+      <p>
+        The trade-off between reconstruction fidelity and latent structure is central to how variational autoencoders behave.
+      </p>
+
+      <h2>Reconstruction versus regularization</h2>
+
+      <p>
+        The difference between autoencoders and variational autoencoders is often described in terms of loss functions. At a high level, the distinction is simpler.
+      </p>
+
+      <p>
+        Autoencoders prioritize reconstruction. Variational autoencoders balance reconstruction against a constraint on the latent space. The balance determines whether the representation emphasizes exact recovery of inputs or the discovery of smooth, reusable structure.
+      </p>
+
+      <p>
+        This distinction becomes important when the goal is not only to reproduce the data, but to analyze variation across individuals or conditions.
+      </p>
+
+      <h2>Choosing between deterministic and probabilistic representations</h2>
+
+      <p>
+        Deterministic autoencoders are often sufficient when reconstruction is the primary objective. They are simpler to train and can capture complex nonlinear structure.
+      </p>
+
+      <p>
+        Variational autoencoders are better suited when the latent space itself is of interest. The probabilistic formulation provides a principled way to regularize the representation and encourage global structure.
+      </p>
+
+      <p>
+        Neither approach is universally better. Each reflects a different modeling commitment about what aspects of variation should be preserved.
+      </p>
+
+      <h2>Looking ahead</h2>
+
+      <p>
+        The behavior of autoencoders and variational autoencoders depends strongly on how the latent space is regularized and what assumptions are imposed. In the next article, we examine how regularization shapes latent representations and why these choices matter for interpretation.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

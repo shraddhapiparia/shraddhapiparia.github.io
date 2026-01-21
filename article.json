@@ -24,18 +24,6 @@
     "description": "An examination of how heatmaps encode analytical choices, and why interpretation depends on scaling and similarity definitions."
   },
   {
-    "title": "Designing LD-Aware Genome Embeddings: Modeling choices and Trade-offs",
-    "date": "2025-12-12",
-    "url": "articles/genome_embeddings.html",
-    "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
-  },
-  {
-    "title": "What Regularization Means in Representation Learning",
-    "date": "2025-12-09",
-    "url": "articles/regularization.html",
-    "description": "An overview of how different regularization strategies shape learned representations, with a focus on VAEs."
-  },
-  {
     "title": "What We Mean by Genetic Data: DNA and RNA",
     "date": "2025-12-12",
     "url": "articles/genetic_data.html",
@@ -67,8 +55,38 @@
   },
   {
     "title": "What Are Complex Diseases?",
-    "date": "2026-01-14",
+    "date": "2026-01-04",
     "url": "articles/complex_diseases.html",
     "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems."
-  }
+  },
+  {
+  "title": "What Representation Learning Means in Genomics",
+  "date": "2026-01-05",
+  "url": "articles/representation_learning_genomics.html",
+  "description": "From Measurement to Modeling Part I: why raw genomic feature spaces are misaligned with biological structure and how embeddings provide a usable coordinate system for analysis."
+  },
+  {
+  "title": "Autoencoders vs Variational Autoencoders: Deterministic and Probabilistic Representations",
+  "date": "2026-01-06",
+  "url": "articles/ae_vs_vae.html",
+  "description": "From Measurement to Modeling Part II: how deterministic autoencoders and probabilistic VAEs differ in their treatment of latent space structure and representation."
+  },
+  {
+    "title": "What Regularization Means in Representation Learning",
+    "date": "2026-01-09",
+    "url": "articles/regularization.html",
+    "description": "From Measurement to Modeling Part III A: an overview of how different regularization strategies shape learned representations, with a focus on VAEs."
+  },
+  {
+  "title": "What Regularization Does to a Latent Space",
+  "date": "2026-01-10",
+  "url": "articles/regularization_latent_space.html",
+  "description": "From Measurement to Modeling Part III B: how regularization shapes latent space continuity, distance, and interpretability when embeddings are the object of analysis."
+  },
+  {
+    "title": "Designing LD-Aware Genome Embeddings: Modeling choices and Trade-offs",
+    "date": "2025-01-12",
+    "url": "articles/genome_embeddings.html",
+    "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
+  },
 ]
