@@ -55,7 +55,7 @@
   },
   {
     "title": "What Are Complex Diseases?",
-    "date": "2026-01-04",
+    "date": "2026-01-21",
     "url": "articles/complex_diseases.html",
     "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems."
   },
@@ -85,7 +85,7 @@
   },
   {
     "title": "Designing LD-Aware Genome Embeddings: Modeling choices and Trade-offs",
-    "date": "2025-01-12",
+    "date": "2026-01-12",
     "url": "articles/genome_embeddings.html",
     "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
   }
