@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Regularization Isn’t One Thing | Shraddha Piparia</title>
+  <title>What Regularization Means in Representation Learning | Shraddha Piparia</title>
 
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,80 +27,141 @@
 
   <main class="pagebox">
     <article class="post">
-      <h1>Regularization Isn’t One Thing</h1>
+      <h1>What Regularization Means in Representation Learning</h1>
 
-      <p>Regularization is often described as a general tool to prevent overfitting. While this is true, it hides an important distinction: different regularization methods constrain different parts of a model. In representation learning, especially with variational autoencoders (VAEs), this distinction matters because regularization does not only affect generalization. It shapes the latent space itself.</p>
+      <p>
+        Regularization is often described as a way to prevent overfitting. While this description is broadly accurate, it can obscure an important distinction: different regularization methods act on different aspects of a model.
+      </p>
 
-      <p>This post focuses on regularization methods relevant to VAEs, particularly KL divergence and Maximum Mean Discrepancy (MMD), and briefly situates them among more familiar techniques.</p>
+      <p>
+        In representation learning, particularly in variational autoencoders (VAEs), this distinction becomes more visible. Regularization influences not only generalization performance, but also the properties of the learned latent representation.
+      </p>
 
-      <h2>Two categories of regularization</h2>
-      <p>Regularization methods can be broadly grouped into two categories.</p>
+      <p>
+        This post focuses on regularization methods commonly used in VAEs, with emphasis on KL divergence and Maximum Mean Discrepancy (MMD), and briefly situates them alongside more familiar techniques.
+      </p>
+
+      <h2>Two broad levels of regularization</h2>
+
+      <p>
+        Regularization methods can be loosely grouped according to what they constrain.
+      </p>
 
       <h2>Parameter-level regularization</h2>
-      <p>These methods act directly on model parameters or activations.</p>
 
-      <p>Common examples include:</p>
+      <p>
+        Parameter-level methods act directly on network weights or activations.
+      </p>
+
+      <p>
+        Common examples include:
+      </p>
+
       <ul>
-        <li>L2 regularization (weight decay), which discourages large weights and promotes smoother mappings.</li>
+        <li>L2 regularization (weight decay), which discourages large weights.</li>
         <li>L1 regularization, which encourages sparse parameter usage.</li>
-        <li>Dropout, which introduces stochasticity during training to reduce reliance on specific activations.</li>
+        <li>Dropout, which introduces stochasticity during training.</li>
       </ul>
 
-      <p>These techniques are widely used and effective, but they primarily regularize the function learned by the network, not the structure of a learned representation.</p>
+      <p>
+        These techniques primarily influence the complexity of the learned function. They do not explicitly constrain the structure of a learned latent representation.
+      </p>
 
       <h2>Distribution-level regularization</h2>
-      <p>Distribution-level regularization constrains the distribution of latent variables rather than the network parameters themselves.</p>
 
-      <p>This category becomes important in VAEs, where the model explicitly learns a latent variable distribution. KL divergence and MMD belong to this group.</p>
+      <p>
+        Distribution-level regularization constrains the distribution of latent variables rather than individual parameters.
+      </p>
 
-      <h2>Why VAEs require distribution-level regularization</h2>
-      <p>A VAE optimizes two competing objectives: accurate reconstruction of inputs, and a latent distribution that remains close to a chosen prior.</p>
+      <p>
+        This becomes relevant in VAEs, where the model is trained to match an encoder-defined distribution to a chosen prior. KL divergence and MMD are two commonly used approaches in this setting.
+      </p>
 
-      <p>Without the second constraint, the latent space can become arbitrarily structured in ways that improve reconstruction but reduce interpretability, continuity, or reusability. Distribution-level regularization enforces global structure on the latent space, making it suitable for downstream tasks such as clustering, similarity search, or transformer-based modeling.</p>
+      <h2>Why VAEs introduce distribution-level constraints</h2>
+
+      <p>
+        VAEs balance reconstruction accuracy with a constraint on the latent distribution. Without this constraint, the latent space can become highly structured in ways that improve reconstruction but make comparison or reuse of embeddings more difficult.
+      </p>
+
+      <p>
+        Distribution-level regularization is often used to encourage continuity, comparability, or stability in the latent space, depending on the modeling goal.
+      </p>
 
       <h2>KL divergence in VAEs</h2>
-      <p>KL divergence measures how much the encoder’s approximate posterior deviates from the prior distribution. In the standard VAE formulation, this term explicitly penalizes information gain beyond what is necessary for reconstruction.</p>
 
-      <p>Key properties of KL regularization:</p>
+      <p>
+        KL divergence measures how much the encoder’s approximate posterior deviates from the prior distribution. In the standard VAE formulation, it limits how much information the latent variables carry beyond what is needed for reconstruction.
+      </p>
+
+      <p>
+        In practice, KL regularization:
+      </p>
+
       <ul>
-        <li>It enforces a well-defined relationship between posterior and prior distributions.</li>
-        <li>It encourages smooth, continuous latent spaces.</li>
-        <li>Its strength is controlled by a weighting factor (often referred to as beta in beta-VAEs).</li>
+        <li>Encourages alignment between posterior and prior distributions.</li>
+        <li>Promotes smoother latent representations.</li>
+        <li>Is typically weighted to balance reconstruction and regularization.</li>
       </ul>
 
-      <p>However, KL regularization can dominate training if not carefully balanced, leading to posterior collapse where latent variables carry little information. This behavior depends on architecture, reconstruction scale, and training dynamics.</p>
+      <p>
+        If overly strong, KL regularization can reduce the information carried by the latent variables, a behavior often referred to as posterior collapse. This outcome depends on architecture, loss scaling, and training dynamics.
+      </p>
 
-      <h2>MMD as an alternative to KL</h2>
-      <p>Maximum Mean Discrepancy provides an alternative way to regularize latent distributions. Instead of computing a parametric divergence, MMD compares samples from the encoder distribution and the prior using kernel-based statistics.</p>
+      <h2>MMD as an alternative</h2>
 
-      <p>Important characteristics of MMD:</p>
+      <p>
+        Maximum Mean Discrepancy offers an alternative way to compare distributions by matching samples using kernel-based statistics.
+      </p>
+
+      <p>
+        Compared to KL divergence, MMD:
+      </p>
+
       <ul>
-        <li>It does not require explicit parametric assumptions about the distributions being compared.</li>
-        <li>It matches distributions at the sample level rather than through an analytic expression.</li>
-        <li>Its behavior depends on kernel choice and bandwidth, which introduces additional design considerations.</li>
+        <li>Does not rely on an explicit parametric form for the distributions.</li>
+        <li>Operates at the sample level rather than through an analytic divergence.</li>
+        <li>Introduces sensitivity to kernel choice and batch-level effects.</li>
       </ul>
 
-      <p>In practice, MMD can offer more flexible distribution matching but may be sensitive to scaling and batch-level effects.</p>
+      <p>
+        In some settings, MMD can provide a more flexible form of distribution matching, though it also introduces additional design choices.
+      </p>
 
       <h2>Choosing between KL and MMD</h2>
-      <p>The choice between KL and MMD depends on the modeling goal rather than reconstruction performance alone.</p>
+
+      <p>
+        The choice between KL divergence and MMD is typically guided by modeling priorities rather than reconstruction error alone.
+      </p>
 
       <ul>
-        <li>KL divergence is often preferred for its simplicity, interpretability, and strong theoretical grounding.</li>
-        <li>MMD may be useful when KL leads to unstable training or overly restrictive latent representations.</li>
+        <li>KL divergence is often chosen for its simplicity and theoretical grounding.</li>
+        <li>MMD may be preferred when KL-based training leads to unstable or overly constrained representations.</li>
       </ul>
 
-      <p>These regularizers are not interchangeable. Each defines a different notion of latent space health, and switching between them changes the semantics of the learned embeddings.</p>
+      <p>
+        Switching between these regularizers changes how the latent space is shaped and how embeddings should be interpreted.
+      </p>
 
-      <h2>Implications for representation learning in genomics</h2>
-      <p>In applications such as genotype or LD-aware embeddings, reconstruction metrics alone are insufficient. The utility of embeddings depends on latent space structure: stability across blocks, comparability across runs, and suitability for downstream modeling.</p>
+      <h2>Implications for genomic representation learning</h2>
 
-      <p>Distribution-level regularization directly controls these properties. For this reason, KL or MMD should be viewed as part of the representation design, not merely as optimization details.</p>
+      <p>
+        In applications such as genotype or LD-aware embeddings, reconstruction metrics alone may not reflect whether a representation is useful.
+      </p>
+
+      <p>
+        Properties such as stability across runs, comparability across genomic blocks, and suitability for downstream modeling are influenced by distribution-level regularization choices.
+      </p>
 
       <h2>Takeaway</h2>
-      <p>Regularization is not a single concept. Parameter-level methods control model complexity, while distribution-level methods shape latent representations.</p>
 
-      <p>For VAEs used in representation learning, KL divergence and MMD play a central role by defining the structure and usability of the latent space. Choosing between them is a modeling decision that affects not only training behavior, but also what the embeddings ultimately represent.</p>
+      <p>
+        Regularization encompasses multiple mechanisms operating at different levels of a model.
+      </p>
+
+      <p>
+        In VAEs used for representation learning, KL divergence and MMD provide different ways of shaping latent distributions. Choosing between them is part of defining what kind of representation a model is encouraged to learn.
+      </p>
+
     </article>
   </main>
 

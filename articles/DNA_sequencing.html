@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DNA Sequencing Explained: What Does Reading the Genome Mean? | Shraddha Piparia</title>
 
-  <!-- site-wide stylesheet and fonts -->
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-  <!-- ========= HEADER / NAV ========= -->
   <header class="header">
     <nav class="nav">
       <a class="logo" href="../index.html">SP</a>
@@ -27,26 +25,39 @@
     </nav>
   </header>
 
-  <!-- ========= ARTICLE ========= -->
   <main class="pagebox">
     <article class="post">
       <header class="post__header">
         <h1>DNA Sequencing Explained: What Does Reading the Genome Mean?</h1>
       </header>
 
-      <p>This article is part of the Foundations of Genomic Data series.</p>
+      <p>
+        This article is part of the Foundations of Genomic Data series.
+      </p>
 
       <h2>What does DNA sequencing capture?</h2>
-      <p>DNA sequencing is the process of reading the order of nucleotides along the genome. Conceptually, it provides access to the complete genetic code an individual carries.</p>
 
-      <p>Importantly, sequencing does not selectively read genes. It reads whatever DNA is present in the sampled material. This includes protein-coding regions, noncoding regions, regulatory elements, and repetitive sequences.</p>
+      <p>
+        DNA sequencing refers to determining the order of nucleotides along a DNA molecule. In practical terms, it produces a digital record of the sequence present in a biological sample.
+      </p>
 
-      <p>As a result, DNA sequencing captures potential biological variation rather than biological activity.</p>
+      <p>
+        Sequencing does not target genes specifically. It reads whatever DNA fragments are present, including protein-coding regions, noncoding regions, regulatory elements, and repetitive sequences.
+      </p>
+
+      <p>
+        For this reason, DNA sequencing describes potential sources of biological variation rather than biological activity itself.
+      </p>
 
       <h2>Most of the genome is not protein-coding</h2>
-      <p>A common misconception is that DNA sequencing is primarily about genes. In reality, protein-coding regions account for only a small fraction of the genome.</p>
 
-      <p>The figure below summarizes the approximate composition of the human genome. Only a small portion corresponds to protein-coding exons, while much larger fractions consist of intronic, regulatory, and repetitive sequences.</p>
+      <p>
+        It is often assumed that sequencing is mainly about genes. In reality, protein-coding exons make up only a small portion of the human genome.
+      </p>
+
+      <p>
+        The figure below summarizes the approximate composition of the genome. A large fraction consists of intronic, regulatory, and repetitive sequences, while protein-coding regions represent a comparatively small share.
+      </p>
 
       <figure class="post__figure">
         <img
@@ -55,46 +66,74 @@
           loading="lazy"
         />
         <figcaption>
-          Approximate composition of the human genome. Protein-coding exons are a small fraction of the sequence.
+          Approximate composition of the human genome. Protein-coding exons account for a small fraction of the sequence.
         </figcaption>
       </figure>
 
-      <p>This matters because DNA sequencing inherently measures far more than gene-coding changes. Many variants identified through sequencing lie outside exons and influence biology indirectly, through regulation or genome structure.</p>
+      <p>
+        This matters because most variants identified through sequencing lie outside protein-coding regions. Their effects, when present, are often mediated through gene regulation, chromatin organization, or broader genomic context.
+      </p>
 
       <h2>Types of DNA sequencing</h2>
-      <p>DNA sequencing is applied at different scopes depending on the scientific question.</p>
 
-      <p>Whole Genome Sequencing (WGS) reads nearly the entire genome. It provides the most comprehensive view of genetic variation, including noncoding and structural variants.</p>
+      <p>
+        DNA sequencing can be applied at different scales, depending on the scientific or clinical question.
+      </p>
 
-      <p>Whole Exome Sequencing (WES) targets only protein-coding regions. While more limited, it is efficient for studies focused on coding mutations, particularly in rare disease settings.</p>
+      <p>
+        Whole Genome Sequencing reads most of the genome and provides the broadest view of genetic variation, including noncoding and structural variants.
+      </p>
 
-      <p>Targeted sequencing focuses on predefined genomic regions. This approach is useful when prior biological knowledge narrows the search space.</p>
+      <p>
+        Whole Exome Sequencing focuses on protein-coding regions. While narrower in scope, it is commonly used in settings where coding mutations are of primary interest.
+      </p>
 
-      <p>Each strategy reflects a tradeoff between coverage, cost, and interpretability.</p>
+      <p>
+        Targeted sequencing restricts analysis to predefined genomic regions. This approach is typically chosen when prior knowledge suggests specific loci are relevant.
+      </p>
 
-      <h2>What DNA sequencing is good at</h2>
-      <p>DNA sequencing is particularly well suited for identifying inherited genetic variation. Common applications include:</p>
+      <p>
+        Each approach reflects a balance between coverage, cost, and interpretability rather than a hierarchy of completeness.
+      </p>
 
-      <p>Discovery of single-nucleotide variants and small insertions or deletions.</p>
-      <p>Detection of structural variants.</p>
-      <p>Characterization of rare mutations.</p>
-      <p>Population-level genetic analysis.</p>
+      <h2>What DNA sequencing is well suited for</h2>
 
-      <p>Because DNA is largely stable across cells, sequencing provides a consistent reference layer that supports downstream analyses.</p>
+      <p>
+        DNA sequencing is particularly useful for identifying inherited genetic variation. Common applications include:
+      </p>
+
+      <p>Detection of single-nucleotide variants and small insertions or deletions.</p>
+      <p>Identification of larger structural variants.</p>
+      <p>Analysis of rare genetic mutations.</p>
+      <p>Population-scale studies of genetic diversity.</p>
+
+      <p>
+        Because DNA sequence is largely stable across cells and over time, sequencing provides a consistent reference layer for downstream analyses.
+      </p>
 
       <h2>What DNA sequencing does not measure</h2>
-      <p>DNA sequencing does not indicate whether a gene is active, suppressed, or differentially expressed. Two individuals with identical DNA sequences may show very different biological behavior at the RNA or protein level.</p>
 
-      <p>This limitation is not a flaw; it reflects the biological role of DNA itself. Sequencing reveals the genetic substrate, not its real-time execution.</p>
+      <p>
+        DNA sequencing does not indicate whether a gene is active, repressed, or dynamically regulated. Individuals with similar DNA sequences can exhibit very different cellular behavior.
+      </p>
 
-      <h2>Why sequencing is only one part of the picture</h2>
-      <p>DNA sequencing explains what genetic variation exists, but not how that variation manifests in cells or tissues. For this reason, sequencing is often complemented by RNA-based measurements and other molecular assays.</p>
+      <p>
+        This limitation reflects the biological role of DNA. Sequencing captures the genetic substrate, not how it is used in a particular cell or condition.
+      </p>
 
-      <p>Later articles in this series discuss how RNA sequencing and genotyping approaches build on DNA sequencing to answer different biological questions, and how these layers can be integrated.</p>
+      <h2>Why sequencing is only one layer of genomic data</h2>
+
+      <p>
+        DNA sequencing characterizes genetic variation, but it does not describe downstream molecular processes. For this reason, it is often combined with RNA sequencing, epigenomic assays, and other measurements.
+      </p>
+
+      <p>
+        Later articles in this series explore how these complementary data types address different biological questions and how they are integrated in practice.
+      </p>
+
     </article>
   </main>
 
-  <!-- ========= JS: mobile-nav toggle ========= -->
   <script>
     const navToggle = document.querySelector('.nav__toggle');
     const navMenu  = document.querySelector('.nav__menu');

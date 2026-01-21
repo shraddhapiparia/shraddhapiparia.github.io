@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Heatmaps Are Tricking You | Shraddha Piparia</title>
+  <title>What Heatmaps Show and What They Don’t | Shraddha Piparia</title>
 
-  <!-- site-wide stylesheet and fonts -->
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-  <!-- ========= HEADER / NAV ========= -->
   <header class="header">
     <nav class="nav">
       <a class="logo" href="../index.html">SP</a>
@@ -27,36 +25,66 @@
     </nav>
   </header>
 
-  <!-- ========= ARTICLE ========= -->
   <main class="pagebox">
     <article class="post">
       <header class="post__header">
-        <h1>Heatmaps Are Tricking You</h1>
+        <h1>What Heatmaps Show—and What They Don’t</h1>
         <p class="post__meta">
           Published&nbsp;<time datetime="2025-09-18">18&nbsp;September&nbsp;2025</time>
         </p>
       </header>
-        <p>Heatmaps look harmless. A grid of colors, maybe some clustering on the side. We use them in biology all the time. But there’s a catch: the picture you see is not always the math you think you’re seeing.</p>
 
-        <p>I learned this the hard way. A heatmap my analysis grouped in a way that made no sense. Later I realized: the software had quietly decided how to measure similarity. I was reading the colors as truth, but the clustering was speaking a different language.</p>
+      <p>
+        Heatmaps are widely used in biology and data analysis. A matrix of values is mapped to color, often accompanied by hierarchical clustering. The result is visually compact and easy to scan.
+      </p>
 
-        <h2>The hidden step</h2>
-        <p>Most R functions do a secret step: they cluster first, then scale, then paint the colors. That means the display can show “similar shapes” in one color range, while the clustering actually happened on raw magnitudes. You think two patterns are grouped because they look alike — but they were grouped because both were simply large numbers.</p>
+      <p>
+        What is less obvious is that a heatmap combines several analytical choices: how values are scaled, how similarity is defined, and when clustering is applied. The visualization reflects these choices as much as it reflects the data itself.
+      </p>
 
-        <h2>Why it matters</h2>
-        <p>If you’re studying gene expression, this is the difference between “these two genes behave the same way” and “these two genes just happen to be high overall.” That’s not a small mistake. It changes the story you tell in your paper or your presentation.</p>
+      <h2>An often-overlooked step</h2>
 
-        <h2>A better habit</h2>
-        <p>The fix isn’t complicated. Decide what similarity means for <em>your question</em>. Do you care about absolute levels? Use Euclidean distance. Do you care about shared patterns over time? Scale first, or use correlation. The point is: don’t let the defaults decide for you.</p>
+      <p>
+        In many plotting libraries, clustering and scaling are handled automatically using default settings. These defaults may differ across tools and are not always applied in the order users expect.
+      </p>
 
-        <h2>Takeaway</h2>
-        <p>Heatmaps are not just presentation. They are math plus defaults plus color. If you don’t know which part came first, the colors will trick you. Slow down, peek under the hood, and choose your definition of “similar.”</p>
-      
-      
+      <p>
+        For example, clustering may be performed on raw values while colors are displayed after scaling. This can produce clusters that reflect absolute magnitude, even though the color patterns emphasize relative trends.
+      </p>
+
+      <h2>Why interpretation depends on context</h2>
+
+      <p>
+        In gene expression analysis, this distinction matters. Clustering on raw expression levels groups genes by overall abundance, while clustering on scaled values groups genes by shared expression patterns.
+      </p>
+
+      <p>
+        Both approaches can be appropriate, but they answer different questions. Confusion arises when the visual appearance suggests one interpretation while the underlying clustering reflects another.
+      </p>
+
+      <h2>Being explicit about similarity</h2>
+
+      <p>
+        Heatmaps work best when the definition of similarity is chosen deliberately. Euclidean distance emphasizes absolute differences, while correlation-based measures emphasize shared structure across samples or conditions.
+      </p>
+
+      <p>
+        Making these choices explicit helps align the visualization with the biological or analytical question being asked.
+      </p>
+
+      <h2>A practical takeaway</h2>
+
+      <p>
+        Heatmaps are not just visual summaries. They encode assumptions about scaling, distance, and ordering.
+      </p>
+
+      <p>
+        Interpreting them requires understanding how those assumptions were applied. The colors do not stand alone; they sit on top of a sequence of analytical decisions.
+      </p>
+
     </article>
   </main>
 
-  <!-- ========= JS: mobile-nav toggle ========= -->
   <script>
     const navToggle = document.querySelector('.nav__toggle');
     const navMenu  = document.querySelector('.nav__menu');

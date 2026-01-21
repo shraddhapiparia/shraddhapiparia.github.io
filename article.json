@@ -1,58 +1,56 @@
 [
   {
-  "title": "Surviving Future Shock in Research",
-  "date": "2025-07-14",
-  "url": "articles/futureshock.html",
-  "description": "My personal takeaways from Toffler’s Future Shock - lessons on how researchers can stay adaptable, maintain focus, and thrive in times of rapid change."
+    "title": "Sequence Alignment and Classic String Matching",
+    "date": "2025-06-12",
+    "url": "articles/dynamic_programming.html",
+    "description": "An exploration of how sequence alignment methods draw on classic string-matching algorithms and dynamic programming principles."
   },
   {
-  "title": "Algorithms in Biotech",
-  "date": "2025-06-12",
-  "url": "articles/dynamic_programming.html",
-  "description": "My personal rediscovery of dynamic programming - seeing its practical applications in a fresh, intuitive way."
+    "title": "Living With “Future Shock” in Research",
+    "date": "2025-07-14",
+    "url": "articles/futureshock.html",
+    "description": "A reflection on how rapid technological change shapes research practice and long-term adaptability."
   },
   {
-    "title": "Why PCA Isn’t Enough for Genetics",
-    "date": "2025-09-20",
+    "title": "What PCA Captures in Genetic Data and What It Doesn’t",
+    "date": "2025-07-20",
     "url": "articles/pca-genetics.html",
-    "description": "PCA is great for population structure, but it misses the non-linear twists of real genetic variation. Here’s why we need autoencoders and beyond."
+    "description": "A discussion of what linear dimensionality reduction reveals in genetic data, and where its limitations become apparent."
   },
   {
-    "title": "Heatmaps Are Tricking You",
+    "title": "What Heatmaps Show and What They Don’t",
     "date": "2025-09-18",
     "url": "articles/heatmaps.html",
-    "description": "Heatmaps look simple. Pretty, even. However, the implications of these displays are often misunderstood."
+    "description": "An examination of how heatmaps encode analytical choices, and why interpretation depends on scaling and similarity definitions."
   },
   {
-    "title": "Designing LD-Aware Genome Embeddings: Choices, Constraints, and Trade-offs",
+    "title": "Designing LD-Aware Genome Embeddings: Modeling choices and Trade-offs",
     "date": "2025-12-12",
     "url": "articles/genome_embeddings.html",
-    "description": "How LD and cis structure guide genome representation learning."
+    "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
   },
   {
-    "title": "Regularization Isn’t One Thing",
+    "title": "What Regularization Means in Representation Learning",
     "date": "2025-12-09",
     "url": "articles/regularization.html",
-    "description": "Regularization demystified: KL vs MMD for meaningful latent spaces."
+    "description": "An overview of how different regularization strategies shape learned representations, with a focus on VAEs."
   },
   {
-    "title": "What Is Genetic Data? DNA, RNA, and Why We Measure Them",
+    "title": "What We Mean by Genetic Data: DNA and RNA",
     "date": "2025-12-13",
     "url": "articles/genetic_data.html",
-    "description": "Foundations of Genomic Data Part I: What DNA and RNA data represent."
+    "description": "An introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support."
   },
   {
     "title": "DNA Sequencing Explained: What Does Reading the Genome Mean?",
     "date": "2025-12-13",
     "url": "articles/DNA_sequencing.html",
-    "description": "Foundations of Genomic Data Part II: What is DNA Sequencing."
+    "description": "A practical overview of what DNA sequencing measures and how it differs from other genomic data types."
   },
   {
-  "title": "What Are Complex Diseases?",
-  "date": "2025-12-14",
-  "url": "articles/complex_diseases.html",
-  "description": "Why common diseases emerge from interacting biological systems."
-}
-
-
+    "title": "What Are Complex Diseases?",
+    "date": "2025-12-14",
+    "url": "articles/complex_diseases.html",
+    "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems."
+  }
 ]

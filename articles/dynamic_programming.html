@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>How Sequence Alignment Mirrors Classic String Matching | Shraddha Piparia</title>
+  <title>Sequence Alignment as a Form of String Matching | Shraddha Piparia</title>
 
-  <!-- site-wide stylesheet and fonts -->
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-  <!-- ========= HEADER / NAV ========= -->
   <header class="header">
     <nav class="nav">
       <a class="logo" href="../index.html">SP</a>
@@ -27,74 +25,76 @@
     </nav>
   </header>
 
-  <!-- ========= ARTICLE ========= -->
   <main class="pagebox">
     <article class="post">
       <header class="post__header">
-        <h1>How Sequence Alignment Mirrors Classic String Matching</h1>
+        <h1>Sequence Alignment as a Form of String Matching</h1>
         <p class="post__meta">
           Published&nbsp;<time datetime="2025-09-14">12&nbsp;June&nbsp;2025</time>
         </p>
       </header>
 
       <p>
-        I used to think of sequence alignment as a specialist bioinformatics trick. But when I came across it first time, I realized the core ideas
-        come straight from the classic string-matching problems we see in introductory algorithms. Dynamic programming,
-        hashing, and suffix arrays all reappear — only slightly adapted for biological strings. For me, it felt like
-        rediscovering something familiar in a new context.
+        I initially thought of sequence alignment as a specialized technique within bioinformatics. When I encountered it more closely, many of its core ideas felt familiar from introductory algorithms courses.
       </p>
-
-      <h2>From Exact Match to Similarity Score</h2>
-      <p>
-        In algorithms class, the question was simple: “Does pattern <em>P</em> occur in text <em>T</em>?” Methods like
-        Knuth–Morris–Pratt or Boyer–Moore gave a yes/no answer plus the location. Biology rarely works that cleanly.
-        Here, the question becomes, “How similar are these two strings if we allow edits?” A scoring scheme turns matches into
-        points, mismatches into penalties, and gaps into bigger penalties. The output is not just an index, but an alignment and
-        an overall similarity score.
-      </p>
-
-      <h2>Dynamic Programming as the Go-Getter</h2>
-      <p>
-        Needleman–Wunsch (global) and Smith–Waterman (local) extend the same Levenshtein-distance DP I first saw in CS courses.
-        You build an (m + 1) × (n + 1) matrix, filling each cell by matching/mismatching (diagonal), deleting (up), or
-        inserting (left). Smith–Waterman even adds a zero option for local resets. Time complexity is still <em>O</em>(mn), and
-        a traceback from the top cell gives the aligned substrings. It’s the same DP pattern I learned years ago — now applied
-        to DNA.
-      </p>
-
-      <h2>Scaling Up with Seed-and-Extend</h2>
-      <p>
-        Whole genomes make a full <em>O</em>(mn) DP far too heavy. That’s where BLAST feels clever: hash all fixed-length
-        <em>k</em>-mers of the database, use exact hits as seeds, then run a narrow, banded Smith–Waterman around each seed.
-        Most of the DP table is skipped, but strong alignments still appear quickly. It reminded me that smart shortcuts can
-        keep old algorithms useful at scale.
-      </p>
-
-      <h2>Suffix Arrays and the FM-Index</h2>
-      <p>
-        Modern aligners go further, indexing the reference genome with a suffix array or FM-index. Candidate positions come in
-        sub-linear time, and a limited DP extends each candidate. These index structures, which I first saw in Gusfield’s
-        <em>Algorithms on Strings, Trees and Sequences</em>, now power billion-read pipelines. The continuity between theory
-        and practice is striking.
-      </p>
-
-      <h2>Personal Takeaway</h2>
-      <p>
-        Sequence alignment is just approximate string matching at scale. Dynamic programming guarantees optimal alignments,
-        while hashing and index structures make them practical on massive datasets. What struck me is how the Algorithms 101
-        toolkit still underpins modern genomics — same principles, new alphabets, and much longer strings.
-      </p>
-
 
       <p>
-        For me, the rediscovery is this: dynamic programming isn’t just a classroom exercise, it’s a workhorse that keeps
-        showing up in new domains. Seeing it power genome alignment reminded me that the basics we learn early on can become
-        surprisingly practical — even decades later — when the problems get bigger and the context changes.
+        Concepts such as dynamic programming, hashing, and indexed search appear again in alignment algorithms, adapted to longer strings and biological constraints. The similarity is not exact, but the connection is hard to miss.
       </p>
+
+      <h2>From exact matching to scored similarity</h2>
+
+      <p>
+        In classic string matching, the task is often framed as a decision problem: does a pattern occur in a larger text, and if so, where. Algorithms such as Knuth–Morris–Pratt or Boyer–Moore are designed to answer this efficiently.
+      </p>
+
+      <p>
+        Biological sequences introduce a different requirement. Rather than asking for exact matches, alignment methods ask how similar two sequences are when substitutions, insertions, and deletions are allowed. This shift replaces binary outcomes with scoring schemes that balance matches against penalties.
+      </p>
+
+      <h2>Dynamic programming in alignment algorithms</h2>
+
+      <p>
+        Global and local alignment methods, such as Needleman–Wunsch and Smith–Waterman, rely on dynamic programming formulations closely related to edit distance. A matrix is filled by considering matches, mismatches, and gaps, with each cell representing the best score up to that point.
+      </p>
+
+      <p>
+        Smith–Waterman introduces a local reset that allows alignments to start and end anywhere within the sequences. While the biological interpretation differs, the underlying dynamic programming structure remains similar to formulations taught in computer science courses.
+      </p>
+
+      <h2>Scaling beyond quadratic time</h2>
+
+      <p>
+        For long sequences or large databases, full dynamic programming becomes computationally expensive. Practical aligners therefore rely on heuristics that narrow the search space.
+      </p>
+
+      <p>
+        Tools such as BLAST use short exact matches as seeds and extend them with localized alignment. This approach avoids filling the entire dynamic programming matrix while still recovering high-scoring alignments.
+      </p>
+
+      <h2>Indexing and modern aligners</h2>
+
+      <p>
+        More recent methods index reference genomes using data structures such as suffix arrays or FM-indexes. These structures enable rapid identification of candidate alignment locations, which are then refined using limited dynamic programming.
+      </p>
+
+      <p>
+        Many of these indexing techniques originate from string algorithms developed well before large-scale sequencing became practical.
+      </p>
+
+      <h2>A practical connection</h2>
+
+      <p>
+        Sequence alignment can be viewed as an instance of approximate string matching adapted to biological data. Dynamic programming provides optimality guarantees within a defined scoring system, while heuristics and indexing make the computation tractable at scale.
+      </p>
+
+      <p>
+        What stands out is not that bioinformatics reinvented these ideas, but that foundational algorithmic techniques continue to support new domains as problem sizes and constraints evolve.
+      </p>
+
     </article>
   </main>
 
-  <!-- ========= JS: mobile-nav toggle ========= -->
   <script>
     const navToggle = document.querySelector('.nav__toggle');
     const navMenu  = document.querySelector('.nav__menu');
