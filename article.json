@@ -39,13 +39,13 @@
     "title": "What We Mean by Genetic Data: DNA and RNA",
     "date": "2025-12-13",
     "url": "articles/genetic_data.html",
-    "description": "An introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support."
+    "description": "Foundations of Genomic Data Part I: an introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support."
   },
   {
     "title": "DNA Sequencing Explained: What Does Reading the Genome Mean?",
     "date": "2025-12-13",
     "url": "articles/DNA_sequencing.html",
-    "description": "A practical overview of what DNA sequencing measures and how it differs from other genomic data types."
+    "description": "Foundations of Genomic Data Part II: a practical overview of what DNA sequencing measures and how it differs from other genomic data types."
   },
   {
     "title": "What Are Complex Diseases?",
