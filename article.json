@@ -88,5 +88,5 @@
     "date": "2025-01-12",
     "url": "articles/genome_embeddings.html",
     "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
-  },
+  }
 ]
