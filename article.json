@@ -94,6 +94,13 @@
     "date": "2026-01-18",
     "url": "articles/functional_interpretation.html",
     "description": "Regulatory Variation & Functional Prediction Part I: An overview of what functional interpretation means in genomics, and why understanding regulatory effects has become central to connecting genetic variation to biological mechanisms."
+  },
+  {
+    "title": "Coding vs Regulatory Variants: Why Most GWAS Hits Don’t Break Proteins",
+    "date": "2026-01-22",
+    "url": "articles/coding_vs_regulatory_variants.html",
+    "description": "Regulatory Variation & Functional Prediction Part II: An explanation of why most GWAS associations lie outside protein-coding regions, and how study design, evolutionary constraint, and regulatory biology shape this pattern."
   }
+
 
 ]
