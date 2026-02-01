@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coding vs Regulatory Variants: Why Most GWAS Hits Don’t Break Proteins | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Coding vs Regulatory Variants: Why Most GWAS Hits Don’t Break Proteins</h1>
+      </header>
+
+      <p>
+        This article is part II of the Regulatory Variation & Functional Prediction series.
+      </p>
+
+      <h2>What GWAS is designed to detect</h2>
+
+      <p>
+        Genome-wide association studies test whether genetic variants are statistically associated with a trait across a population. The output of a GWAS is a set of loci where variation correlates with phenotypic differences.
+      </p>
+
+      <p>
+        Importantly, GWAS does not measure molecular function directly. It identifies associations, not mechanisms.
+      </p>
+
+      <p>
+        Interpreting GWAS results therefore requires additional biological and statistical context.
+      </p>
+
+      <h2>The early focus on protein-coding variation</h2>
+
+      <p>
+        Early human genetics was shaped by the study of protein-coding mutations. Variants that altered amino acid sequences or disrupted protein structure often produced clear and reproducible phenotypic effects.
+      </p>
+
+      <p>
+        This made coding variants a natural starting point for interpretation. Proteins offered a direct link between genotype and function.
+      </p>
+
+      <p>
+        Many foundational tools for variant annotation were built around this perspective.
+      </p>
+
+      <h2>An empirical observation from GWAS</h2>
+
+      <p>
+        As GWAS datasets grew in size and scope, a consistent pattern emerged. Most variants associated with complex traits were not located in protein-coding regions.
+      </p>
+
+      <p>
+        Instead, association signals were enriched in introns, intergenic regions, and known regulatory elements.
+      </p>
+
+      <p>
+        This observation has been replicated across traits, populations, and study designs.
+      </p>
+
+      <h2>Why coding variants are uncommon among GWAS hits</h2>
+
+      <p>
+        Variants with large effects on protein function are often subject to strong purifying selection. As a result, they tend to be rare in the population.
+      </p>
+
+      <p>
+        GWAS is optimized to detect common variants with modest effects rather than rare variants with large impacts.
+      </p>
+
+      <p>
+        The relative scarcity of coding variants in GWAS signals is therefore consistent with both evolutionary constraints and study design.
+      </p>
+
+      <h2>Regulatory variants and effect size</h2>
+
+      <p>
+        Regulatory variants typically influence gene expression levels, timing, or cellular specificity rather than protein sequence.
+      </p>
+
+      <p>
+        These effects are often subtle. A single variant may shift expression slightly rather than producing a binary change.
+      </p>
+
+      <p>
+        When many such variants act together, their combined influence can shape complex traits.
+      </p>
+
+      <h2>Proximity does not imply mechanism</h2>
+
+      <p>
+        GWAS hits are frequently assigned to the nearest gene as a practical heuristic. However, regulatory elements can act over long genomic distances.
+      </p>
+
+      <p>
+        Enhancers may influence genes hundreds of kilobases away or interact with multiple targets depending on cellular context.
+      </p>
+
+      <p>
+        As a result, physical proximity alone is not sufficient to infer causal mechanisms.
+      </p>
+
+      <h2>The role of functional annotation</h2>
+
+      <p>
+        Functional annotations provide valuable context by identifying overlaps with known regulatory features such as enhancers, promoters, and chromatin marks.
+      </p>
+
+      <p>
+        These annotations help prioritize variants but do not directly predict how a sequence change alters regulatory activity.
+      </p>
+
+      <p>
+        Many variants overlap multiple annotated features, complicating interpretation.
+      </p>
+
+      <h2>Coding and regulatory variation are complementary</h2>
+
+      <p>
+        The prominence of regulatory variants in GWAS does not diminish the importance of coding variation.
+      </p>
+
+      <p>
+        Coding variants remain central to the study of rare disease, Mendelian traits, and pharmacogenomics.
+      </p>
+
+      <p>
+        Different classes of variation address different biological and clinical questions.
+      </p>
+
+      <h2>GWAS as a starting point</h2>
+
+      <p>
+        GWAS identifies regions of interest rather than complete mechanistic explanations.
+      </p>
+
+      <p>
+        For noncoding associations, understanding how variants influence regulation becomes a necessary downstream step.
+      </p>
+
+      <p>
+        Functional interpretation builds on GWAS rather than replacing it.
+      </p>
+
+      <h2>Looking ahead</h2>
+
+      <p>
+        The dominance of noncoding GWAS signals motivates approaches that aim to predict regulatory consequences directly from sequence.
+      </p>
+
+      <p>
+        The next article in this series introduces regulatory variant effect prediction and the conceptual questions it is designed to address.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

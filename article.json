@@ -88,5 +88,12 @@
     "date": "2026-01-12",
     "url": "articles/genome_embeddings.html",
     "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
+  },
+  {
+    "title": "From Variants to Effects: What Does Functional Interpretation Mean in Genomics?",
+    "date": "2026-01-18",
+    "url": "articles/functional_interpretation.html",
+    "description": "Regulatory Variation & Functional Prediction Part I: An overview of what functional interpretation means in genomics, and why understanding regulatory effects has become central to connecting genetic variation to biological mechanisms."
   }
+
 ]
