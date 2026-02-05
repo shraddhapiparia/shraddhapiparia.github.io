@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KL vs MMD in VAEs: Two Ways to Regularize a Latent Space | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- MathJax for equations -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Select Publications</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book Shelf</a></li>
+        <li><a href="../articles.html">Articles</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container article">
+    <article>
+      <header class="article__header">
+        <h1>KL vs MMD in VAEs: Two Ways to Regularize a Latent Space</h1>
+      </header>
+
+      <p>
+        Variational autoencoders (VAEs) are often introduced as “autoencoders with a probabilistic latent space.”
+        In practice, the defining feature is simpler: VAEs learn an encoder distribution and then
+        <em>force that distribution to behave</em> so the model remains generative.
+      </p>
+
+      <p>
+        That “force” typically appears as a divergence term. Most VAEs use KL divergence because it drops out of the ELBO.
+        But KL is not the only principled way to align distributions—especially if we want flexibility in the shape of the latent space.
+        This post lays out the ELBO connection cleanly, then contrasts KL divergence with MMD as two different
+        distribution-matching strategies.
+      </p>
+
+      <h2>From marginal likelihood to the ELBO</h2>
+
+      <p>
+        Start with a latent variable model with joint distribution \(p_\theta(x,z)\). The marginal likelihood is
+      </p>
+
+      <p>
+        \[
+          \log p_\theta(x) = \log \int p_\theta(x,z)\,dz.
+        \]
+      </p>
+
+      <p>
+        The posterior \(p_\theta(z\mid x)\) is generally intractable, so we introduce a variational approximation \(q_\phi(z\mid x)\)
+        and rewrite:
+      </p>
+
+      <p>
+        \[
+          \log p_\theta(x)
+          = \log \int q_\phi(z\mid x)\,\frac{p_\theta(x,z)}{q_\phi(z\mid x)}\,dz.
+        \]
+      </p>
+
+      <p>
+        Applying Jensen’s inequality yields a lower bound:
+      </p>
+
+      <p>
+        \[
+          \log p_\theta(x)
+          \ge
+          \mathbb{E}_{q_\phi(z\mid x)}\left[\log p_\theta(x,z) - \log q_\phi(z\mid x)\right],
+        \]
+      </p>
+
+      <p>
+        which is the <strong>Evidence Lower Bound (ELBO)</strong>. Expanding the joint as \(p_\theta(x,z)=p_\theta(x\mid z)p(z)\):
+      </p>
+
+      <p>
+        \[
+          \mathcal{L}(\theta,\phi;x)
+          =
+          \mathbb{E}_{q_\phi(z\mid x)}[\log p_\theta(x\mid z)]
+          -
+          \mathrm{KL}\big(q_\phi(z\mid x)\,\|\,p(z)\big).
+        \]
+      </p>
+
+      <p>
+        The ELBO separates learning into:
+        (1) a reconstruction term that preserves information about \(x\) in \(z\), and
+        (2) a regularization term that aligns the encoder distribution to a chosen prior.
+        Importantly, the KL term isn’t an arbitrary penalty—it emerges from the variational formulation.
+      </p>
+
+      <h2>What KL divergence enforces</h2>
+
+      <p>
+        The KL divergence is
+      </p>
+
+      <p>
+        \[
+          \mathrm{KL}(q_\phi(z\mid x)\|p(z))=
+          \mathbb{E}_{q_\phi(z\mid x)}[\log q_\phi(z\mid x)-\log p(z)].
+        \]
+      </p>
+
+      <p>
+        KL compares <em>explicit densities</em>. In practice this usually means strong distributional assumptions
+        (e.g., \(q_\phi(z\mid x)\) is diagonal Gaussian and \(p(z)=\mathcal{N}(0,I)\)) so the KL term is tractable
+        and stable to optimize.
+      </p>
+
+      <p>
+        Those assumptions also shape the geometry of the learned latent space: each per-sample posterior \(q(z\mid x)\)
+        is pressured to resemble the same unimodal isotropic prior. With expressive decoders, this can lead to
+        under-utilized latent dimensions or posterior collapse.
+      </p>
+
+      <p>
+        This motivates a broader question: is matching densities via KL the only principled way to regularize the latent space?
+      </p>
+
+      <h2>MMD: distribution matching through samples</h2>
+
+      <p>
+        <strong>Maximum Mean Discrepancy (MMD)</strong> provides an alternative: instead of comparing densities,
+        it compares distributions through their samples using a kernel-defined notion of similarity.
+      </p>
+
+      <p>
+        A key shift is that MMD is often used to match the <strong>aggregated posterior</strong>
+        \[
+          q(z) = \mathbb{E}_{x}[q_\phi(z\mid x)]
+        \]
+        to the prior \(p(z)\), rather than enforcing a strict per-sample match for every \(x\).
+      </p>
+
+      <p>
+        The squared MMD between distributions \(q\) and \(p\) is:
+      </p>
+
+      <p>
+        \[
+          \mathrm{MMD}^2(q,p) =
+          \mathbb{E}_{z,z'\sim q}[k(z,z')]
+          + \mathbb{E}_{z,z'\sim p}[k(z,z')]
+          - 2\,\mathbb{E}_{z\sim q,\,z'\sim p}[k(z,z')],
+        \]
+      </p>
+
+      <p>
+        where \(k(\cdot,\cdot)\) is a positive-definite kernel. A common choice is the radial basis function (RBF) kernel:
+      </p>
+
+      <p>
+        \[
+          k(x,y)=\exp\left(-\frac{\|x-y\|^2}{2\sigma^2}\right).
+        \]
+      </p>
+
+      <p>
+        Intuitively: nearby points are “similar” (kernel near 1), far points are “dissimilar” (kernel near 0).
+        MMD becomes small when (i) posterior samples look mutually similar in the same way prior samples do, and
+        (ii) posterior–prior similarity matches both within-posterior and within-prior similarity.
+      </p>
+
+      <h2>How MMD is computed (without code)</h2>
+
+      <p>
+        In a minibatch, you can estimate MMD using three ingredients:
+      </p>
+      <ol>
+        <li>
+          <strong>Sample latents</strong> from the encoder and the prior:
+          draw \(z_i \sim q_\phi(z\mid x_i)\) for batch datapoints \(x_i\),
+          and draw \(z'_j \sim p(z)\).
+        </li>
+        <li>
+          <strong>Compute pairwise squared distances</strong>:
+          \(\|z_i-z_{i'}\|^2\) (within posterior),
+          \(\|z'_j-z'_{j'}\|^2\) (within prior),
+          and \(\|z_i-z'_j\|^2\) (between posterior and prior).
+        </li>
+        <li>
+          <strong>Apply an RBF kernel</strong> to each distance and average the results to estimate:
+          \(\mathbb{E}_{q,q}[k]\), \(\mathbb{E}_{p,p}[k]\), and \(\mathbb{E}_{q,p}[k]\),
+          then combine them as \(\mathrm{MMD}^2 = \mathbb{E}_{q,q}[k]+\mathbb{E}_{p,p}[k]-2\mathbb{E}_{q,p}[k]\).
+        </li>
+      </ol>
+
+      <p>
+        Two practical details make MMD stable in neural training:
+      </p>
+      <ul>
+        <li>
+          <strong>Exclude diagonal terms</strong> when averaging \(k(z_i,z_{i'})\) (self-similarities are always 1 and bias the estimate).
+        </li>
+        <li>
+          <strong>Multi-scale kernels</strong>: instead of a single \(\sigma^2\), average MMD across multiple bandwidths.
+          A common heuristic sets \(\sigma^2\) proportional to the median pairwise squared distance in the batch, then
+          evaluates several multiples of that median. This reduces sensitivity to a poorly chosen kernel scale.
+        </li>
+      </ul>
+
+      <h2>ELBO with MMD regularization</h2>
+
+      <p>
+        With MMD regularization, the reconstruction term stays the same, but the KL term is replaced by a kernel-based discrepancy.
+        One common objective is:
+      </p>
+
+      <p>
+        \[
+          \mathcal{L}_{\text{MMD}}
+          =
+          \mathbb{E}_{q_\phi(z\mid x)}[\log p_\theta(x\mid z)]
+          -
+          \lambda\,\mathrm{MMD}(q(z),p(z)).
+        \]
+      </p>
+
+      <p>
+        This reframes “latent regularization” as a geometry-matching problem: the model is encouraged to arrange latent samples
+        so their global structure resembles samples from the prior, under a chosen similarity metric (the kernel).
+      </p>
+
+      <h2>KL vs MMD: what changes in practice?</h2>
+
+      <p>
+        Both terms push the latent space toward a chosen prior, but they emphasize different constraints:
+      </p>
+
+      <ul>
+        <li>
+          <strong>KL</strong> compares densities and acts per-sample via \(q(z\mid x)\), strongly shaping each posterior to align with \(p(z)\).
+        </li>
+        <li>
+          <strong>MMD</strong> compares samples and is often applied to the aggregated posterior \(q(z)\), encouraging global alignment
+          without requiring parametric density matching.
+        </li>
+      </ul>
+
+      <p>
+        The most useful mental model for me is:
+        <em>KL enforces where probability mass should be</em>,
+        while <em>MMD enforces how samples are arranged</em>.
+      </p>
+
+      <hr class="article__divider" />
+
+      <p class="article__note">
+        If you're following along in code: the MMD term is computed from pairwise similarities in latent samples.
+        The implementation details matter for stability (kernel bandwidth and multi-scale averaging), but the core object
+        is the same three-expectation formula above.
+      </p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Shraddha Piparia</p>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // simple mobile nav toggle (matches many minimalist templates)
+    const btn = document.querySelector(".nav__toggle");
+    const menu = document.querySelector(".nav__menu");
+    if (btn && menu) {
+      btn.addEventListener("click", () => menu.classList.toggle("nav__menu--open"));
+    }
+  </script>
+</body>
+</html>

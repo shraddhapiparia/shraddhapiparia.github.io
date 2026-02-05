@@ -100,7 +100,13 @@
     "date": "2026-01-22",
     "url": "articles/coding_vs_regulatory_variants.html",
     "description": "Regulatory Variation & Functional Prediction Part II: An explanation of why most GWAS associations lie outside protein-coding regions, and how study design, evolutionary constraint, and regulatory biology shape this pattern."
-  }
+  },
+  {
+  "title": "KL vs MMD in VAEs: Two Ways to Regularize a Latent Space",
+  "date": "2026-01-27",
+  "url": "articles/kl_vs_mmd_vae.html",
+  "description": "A technical walkthrough of how the ELBO yields a KL regularizer in VAEs, and how MMD provides a sample-based alternative for matching the aggregated posterior to a chosen prior using RBF kernels."
+}
 
 
 ]
