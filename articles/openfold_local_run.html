@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>From Sequence to Structure: Running OpenFold Locally | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>From Sequence to Structure: Running OpenFold Locally</h1>
+        <p class="post__meta">
+          Published&nbsp;<time datetime="2026-02-07">7&nbsp;February&nbsp;2026</time>
+        </p>
+      </header>
+
+      <p>
+        Protein structures appear everywhere in modern biology: folded cartoons in papers, ribbon diagrams in talks, coordinates embedded in databases. For a long time, I treated them as static objects—results that existed somewhere upstream of my work.
+      </p>
+
+      <p>
+        What I had not done until recently was to actually generate one myself.
+      </p>
+
+      <p>
+        Running OpenFold locally was less about obtaining a particular structure and more about understanding what it means, in practice, to predict three-dimensional form from a one-dimensional sequence.
+      </p>
+
+      <h2>What OpenFold does</h2>
+
+      <p>
+        At a high level, OpenFold takes an amino acid sequence and predicts a three-dimensional arrangement of residues. The output is not an image, but a set of coordinates: a concrete geometric proposal for how the chain folds in space.
+      </p>
+
+      <p>
+        Importantly, this is not a physical simulation. OpenFold does not model forces or time evolution. Instead, it learns a mapping from sequence patterns to structural regularities observed across known proteins.
+      </p>
+
+      <p>
+        Thinking of structure prediction as a learned mapping—rather than a mechanistic simulation—was a helpful mental shift for me.
+      </p>
+
+      <h2>What comes out of a run</h2>
+
+      <p>
+        The outputs of OpenFold are files describing atoms, residues, and bonds, typically in CIF or PDB format. At first glance, these files can feel opaque: long tables of coordinates and identifiers with little immediate intuition.
+      </p>
+
+      <p>
+        Over time, I realized that these files are best read as the model’s belief about structure. Each predicted coordinate encodes a local geometric decision, and confidence scores reflect where the model is more or less certain about that decision.
+      </p>
+
+      <p>
+        The structure is not presented as a single unquestionable answer. It is an argument—one plausible configuration among many, shaped by what the model has learned.
+      </p>
+
+      <h2>Why running it locally mattered</h2>
+
+      <p>
+        Using OpenFold via an API or hosted service abstracts away most of the system it depends on. Running it locally makes those dependencies visible.
+      </p>
+
+      <p>
+        Memory limits, runtime, and hardware support quickly become part of the experience. Choices that are invisible at the interface level—batch sizes, precision, device backends—suddenly affect what is feasible.
+      </p>
+
+      <p>
+        The model stops feeling like an oracle and starts feeling like a pipeline.
+      </p>
+
+      <h2>A note on CUDA and MPS</h2>
+
+      <p>
+        I ran OpenFold on an Apple Silicon machine using the MPS backend. This worked, but it also made clear that “GPU support” is not a single, uniform concept.
+      </p>
+
+      <p>
+        OpenFold is primarily developed and optimized for CUDA-enabled GPUs. MPS makes local experimentation possible on Apple hardware, but with different tradeoffs: tighter memory constraints, longer runtimes, and less mature kernel support.
+      </p>
+
+      <p>
+        This difference is not just about speed. It shapes the scale of the questions one can reasonably ask. Hardware becomes part of the modeling context rather than an implementation detail.
+      </p>
+
+      <h2>From sequence to function</h2>
+
+      <p>
+        Generating a structure does not directly answer functional questions. But it changes how those questions are framed. Structure provides a representation—one that can be inspected, compared, and integrated with other sources of information.
+      </p>
+
+      <p>
+        In that sense, structure prediction sits naturally between sequence and function: not as an endpoint, but as an intermediate layer of abstraction.
+      </p>
+
+      <h2>Code and reproducibility</h2>
+
+      <p>
+        I have linked the configuration and scripts used for this run in a public repository, mainly for reproducibility and future reference. The goal is not to provide a polished tutorial, but to document what was required to make the system run locally.
+      </p>
+
+      <p>
+        <a href="https://github.com/shraddhapiparia/mac_protein_folder_starter" target="_blank" rel="noopener noreferrer">
+          mac_protein_folder_starter (GitHub)
+        </a>
+      </p>
+
+      <h2>A closing thought</h2>
+
+      <p>
+        Predicting structure from sequence can feel magical when viewed only through finished figures. Running OpenFold locally made it feel more grounded.
+      </p>
+
+      <p>
+        The prediction is powerful precisely because it is constrained—by data, by architecture, and by hardware. Understanding those constraints is part of understanding the model itself.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

@@ -106,7 +106,14 @@
   "date": "2026-01-27",
   "url": "articles/kl_vs_mmd_vae.html",
   "description": "A technical walkthrough of how the ELBO yields a KL regularizer in VAEs, and how MMD provides a sample-based alternative for matching the aggregated posterior to a chosen prior using RBF kernels."
-}
+  },
+  {
+  "title": "From Sequence to Structure: Running OpenFold Locally",
+  "date": "2026-02-07",
+  "url": "articles/openfold_local_run.html",
+  "description": "An examination of OpenFold’s sequence-to-structure prediction pipeline, focusing on model outputs, confidence estimates, and practical constraints encountered when running the system locally."
+  }
+
 
 
 ]
