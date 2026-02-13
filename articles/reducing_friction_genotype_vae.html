@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reducing Friction in Genotype VAEs at 1M SNP Scale | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    .callout {
+      border-left: 3px solid rgba(0,0,0,0.15);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      background: rgba(0,0,0,0.02);
+      border-radius: 10px;
+    }
+    .callout p { margin: 0.25rem 0; }
+    code { font-size: 0.95em; }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>Reducing Friction in Genotype VAEs at 1M SNP Scale</h1>
+      </header>
+
+      <p>
+        Training a variational autoencoder on ~1.1 million SNPs across ~1,000 individuals
+        is not primarily a modeling challenge. The architecture matters—but the surrounding
+        workflow determines whether the latent space reflects biological structure or technical artifact.
+      </p>
+
+      <p>
+        At this scale, most problems are not dramatic failures. They are quiet ones:
+        slow preprocessing, dtype drift, device mismatches, shape inconsistencies,
+        fragile evaluation logic, and pipelines that make it hard to reproduce or interrogate results.
+      </p>
+
+      <div class="callout">
+        <p><strong>Theme:</strong> Infrastructure decisions shape scientific interpretation.</p>
+        <p>Below are the design principles that structure my genotype VAE pipeline.</p>
+      </div>
+
+      <h2>1) Fast, deterministic data encoding</h2>
+
+      <p>
+        With millions of features, preprocessing is not a prelude—it is part of the model.
+        Chunked reads, memmap-backed storage, and vectorized transforms
+        ensure that data loading is stable, repeatable, and memory-safe.
+      </p>
+
+      <p>
+        Converting PLINK-derived genotype text to a float32 memmap once,
+        and treating that memmap as canonical input, prevents repeated parsing,
+        dtype drift, and subtle inconsistencies across experiments.
+      </p>
+
+      <h2>2) Device and dtype safety</h2>
+
+      <p>
+        A silent float64 tensor in a float32 pipeline doubles memory usage and
+        subtly changes optimization behavior. Similarly, implicit CPU/GPU transfers
+        introduce instability and performance variability.
+      </p>
+
+      <p>
+        Enforcing dtype at data boundaries and making device placement explicit
+        reduces these risks. At million-feature scale, small implementation details
+        amplify quickly.
+      </p>
+
+      <h2>3) Streaming-friendly batching</h2>
+
+      <p>
+        A 1.1M-feature matrix cannot be treated casually in memory.
+        Dataset and DataLoader design must assume streaming from the start.
+      </p>
+
+      <p>
+        Consistent batching, explicit shapes, and predictable data paths
+        ensure that gradient updates reflect genotype structure rather than
+        reshaping artifacts or broadcast errors.
+      </p>
+
+      <h2>4) Composable experiment structure</h2>
+
+      <p>
+        The training script acts as an orchestrator rather than a monolith.
+        Model definition, loss functions, and regularization strategies
+        are modular components selected via configuration.
+      </p>
+
+      <pre><code>Data → Model → Regularizer → Diagnostics → Export</code></pre>
+
+      <p>
+        This makes it straightforward to compare, for example, KL and MMD
+        regularization without rewriting training logic.
+        The goal is experimental control—not code elegance.
+      </p>
+
+      <h2>5) Reduced boilerplate around inference</h2>
+
+      <p>
+        Representation learning projects often fail after training.
+        If embedding extraction is ad hoc, results become difficult to trace
+        back to specific checkpoints or configurations.
+      </p>
+
+      <p>
+        Standardized evaluation loops and embedding export utilities
+        ensure that every run produces comparable artifacts,
+        making downstream phenotype modeling reproducible.
+      </p>
+
+      <h2>6) Attribution readiness</h2>
+
+      <p>
+        If a latent dimension correlates with a phenotype,
+        the natural question is: which genomic regions contribute?
+      </p>
+
+      <p>
+        Designing the pipeline to support gradient-based saliency,
+        perturbation analysis, or block-level aggregation
+        makes interpretation an extension of training—not a separate workflow.
+      </p>
+
+      <h2>7) Profiling as part of iteration</h2>
+
+      <p>
+        Profiling batch time, forward pass cost, and export overhead
+        defines the feasible experiment space.
+        Lightweight timing utilities prevent accidental slowdowns
+        and clarify computational trade-offs.
+      </p>
+
+      <h2>8) Diagnostics-first plotting</h2>
+
+      <p>
+        Training curves, β schedules, latent norms, and variance summaries
+        are not presentation tools—they are stability monitors.
+      </p>
+
+      <p>
+        Automatic plot generation for each run makes deviations
+        visible early, reducing time spent debugging downstream artifacts.
+      </p>
+
+      <h2>9) Guardrails against silent mistakes</h2>
+
+      <p>
+        High-dimensional models fail quietly.
+        Shape assertions, schema validation, and missingness checks
+        ensure that incorrect inputs cause explicit failures
+        rather than plausible-looking results.
+      </p>
+
+      <h2>Downstream confounding strategy</h2>
+
+      <p>
+        The embeddings are learned without phenotype labels.
+        Population structure is treated as a measurable property
+        of the latent space and controlled downstream in phenotype models
+        (e.g., conditioning on principal components).
+      </p>
+
+      <p>
+        The objective is not to assume away confounding,
+        but to structure the workflow so that confounding can be
+        quantified, monitored, and addressed systematically.
+      </p>
+
+      <p>
+        At 1.1M SNP scale, friction is not just a developer inconvenience.
+        It is a source of experimental distortion.
+        Reducing it makes biological interpretation more reliable.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
