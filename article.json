@@ -73,7 +73,7 @@
   },
   {
     "title": "What Regularization Means in Representation Learning",
-    "date": "2026-11-29",
+    "date": "2025-11-29",
     "url": "articles/regularization.html",
     "description": "From Measurement to Modeling Part III A: an overview of how different regularization strategies shape learned representations, with a focus on VAEs."
   },
