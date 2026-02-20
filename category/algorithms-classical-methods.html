@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Algorithms & Classical Methods | Shraddha Piparia</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <p><a href="../articles.html">← Back to all articles</a></p>
+    <h1>Algorithms & Classical Methods</h1>
+    <p class="muted">Foundational computational ideas applied to biology: sequence alignment, dynamic programming, indexing, and algorithmic reasoning.</p>
+    <ul id="category-list"></ul>
+  </main>
+
+  <script>
+    const CATEGORY = "Algorithms & Classical Methods";
+
+    fetch('../article.json')
+      .then(r => r.json())
+      .then(posts => {
+        const filtered = posts
+          .filter(p => (p.categories || []).includes(CATEGORY))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const list = document.getElementById('category-list');
+
+        filtered.forEach(p => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <a href="../${p.url}"><strong>${p.title}</strong></a>
+            <small>(${new Date(p.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})</small>
+            <p class="article-desc">${p.description}</p>
+          `;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => console.error('Could not load article.json', err));
+  </script>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

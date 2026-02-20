@@ -237,3 +237,35 @@ body:not(.home) .pagebox {
   font-size: 0.95rem;
   line-height: 1.4;
 }
+
+.muted { opacity: 0.75; }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.cat-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.cat-card span {
+  display: block;
+  margin-top: 0.35rem;
+  opacity: 0.75;
+}
+
+.article-cats-line {
+  margin-top: 0.25rem;
+  font-size: 0.95em;
+  opacity: 0.8;
+}
+
+.cat-link { text-decoration: none; }
+.cat-link:hover { text-decoration: underline; }

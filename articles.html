@@ -29,19 +29,58 @@
 
   <!-- ===== ARTICLE INDEX ===== -->
   <main class="pagebox">
-    <h1>All Articles</h1>
+    <h1>Articles</h1>
+    <p class="muted">Browse by category above, or scroll the full list below.</p>
     <div class="start-here-box">
       <p><strong>New here?</strong></p>
       <p>
         Start with:
-        <a href="articles/start-here.html"><strong>How to Read This Site →</strong></a>
+        <a href="articles/start-here.html"><strong>How to Read This Site</strong></a>
       </p>
       <hr>
     </div>
+    <section class="article-cats">
+      <h2>Browse by category</h2>
+      <p class="muted">These are reading paths, not tags.</p>
+
+      <div class="cat-grid">
+        <a class="cat-card" href="category/biological-foundations.html">
+          <strong>Biological Foundations</strong>
+          <span>Measurement -> layers -> disease framing</span>
+        </a>
+
+        <a class="cat-card" href="category/algorithms-classical-methods.html">
+          <strong>Algorithms &amp; Classical Methods</strong>
+          <span>Alignment, DP, and core computational ideas</span>
+        </a>
+
+        <a class="cat-card" href="category/representation-learning-genomics.html">
+          <strong>Representation Learning in Genomics</strong>
+          <span>Embeddings, regularization, latent geometry</span>
+        </a>
+
+        <a class="cat-card" href="category/research-practice-reflection.html">
+          <strong>Research Practice &amp; Reflection</strong>
+          <span>How research evolves, choices, trade-offs</span>
+        </a>
+      </div>
+
+      <hr>
+    </section>
     <ul id="articles-list"></ul>
   </main>
 
   <script>
+    function slugifyCategory(name) {
+      return name.toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+    }
+
+    function categoryHref(name) {
+      return `category/${slugifyCategory(name)}.html`;
+    }
   fetch('article.json')
     .then(r => r.json())
     .then(posts => {
@@ -51,10 +90,14 @@
 
       posts.forEach(p => {
         const li = document.createElement('li');
+        const cats = (p.categories && p.categories.length)
+          ? `in ${p.categories.map(c => `<a class="cat-link" href="${categoryHref(c)}">${c}</a>`).join(', ')}`
+          : '';
+
         li.innerHTML = `
-          <a href="${p.url}"><strong>${p.title}</strong></a> 
-          <small>(${new Date(p.date)
-              .toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})</small>
+          <a href="${p.url}"><strong>${p.title}</strong></a>
+          <small>(${new Date(p.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })})</small>
+          ${cats ? `<div class="article-cats-line">${cats}</div>` : ''}
           <p class="article-desc">${p.description}</p>
         `;
         list.appendChild(li);
