@@ -3,121 +3,141 @@
     "title": "Sequence Alignment and Classic String Matching",
     "date": "2025-06-12",
     "url": "articles/dynamic_programming.html",
-    "description": "An exploration of how sequence alignment methods draw on classic string-matching algorithms and dynamic programming principles."
+    "description": "An exploration of how sequence alignment methods draw on classic string-matching algorithms and dynamic programming principles.",
+  "categories": ["Algorithms & Classical Methods"]
   },
   {
     "title": "Living With “Future Shock” in Research",
     "date": "2025-07-14",
     "url": "articles/futureshock.html",
-    "description": "A reflection on how rapid technological change shapes research practice and long-term adaptability."
+    "description": "A reflection on how rapid technological change shapes research practice and long-term adaptability.",
+  "categories": ["Research Practice & Reflection"]
   },
   {
     "title": "What PCA Captures in Genetic Data and What It Doesn’t",
     "date": "2025-07-20",
     "url": "articles/pca-genetics.html",
-    "description": "A discussion of what linear dimensionality reduction reveals in genetic data, and where its limitations become apparent."
+    "description": "A discussion of what linear dimensionality reduction reveals in genetic data, and where its limitations become apparent.",
+  "categories": ["Algorithms & Classical Methods", "Biological Foundations"]
   },
   {
     "title": "What Heatmaps Show and What They Don’t",
     "date": "2025-09-18",
     "url": "articles/heatmaps.html",
-    "description": "An examination of how heatmaps encode analytical choices, and why interpretation depends on scaling and similarity definitions."
+    "description": "An examination of how heatmaps encode analytical choices, and why interpretation depends on scaling and similarity definitions.",
+  "categories": ["Algorithms & Classical Methods", "Biological Foundations"]
   },
   {
     "title": "What We Mean by Genetic Data: DNA and RNA",
     "date": "2025-10-12",
     "url": "articles/genetic_data.html",
-    "description": "Foundations of Genomic Data Part I: an introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support."
+    "description": "Foundations of Genomic Data Part I: an introduction to DNA and RNA as distinct layers of genetic data and the types of questions they support.",
+  "categories": ["Biological Foundations"]
   },
   {
     "title": "DNA Sequencing Explained: What Does Reading the Genome Mean?",
     "date": "2025-10-13",
     "url": "articles/DNA_sequencing.html",
-    "description": "Foundations of Genomic Data Part II: a practical overview of what DNA sequencing measures and how it differs from other genomic data types."
+    "description": "Foundations of Genomic Data Part II: a practical overview of what DNA sequencing measures and how it differs from other genomic data types.",
+  "categories": ["Biological Foundations"]
   },
   {
   "title": "RNA Sequencing Explained: Measuring Gene Expression",
   "date": "2025-10-14",
   "url": "articles/RNA_sequencing.html",
-  "description": "Foundations of Genomic Data Part III: an overview of what RNA sequencing measures and how gene expression differs from genetic variation."
+  "description": "Foundations of Genomic Data Part III: an overview of what RNA sequencing measures and how gene expression differs from genetic variation.",
+  "categories": ["Biological Foundations"]
   },
   {
   "title": "Genotyping Arrays Explained: Measuring Selected Genetic Variation",
   "date": "2025-10-15",
   "url": "articles/genotyping_arrays.html",
-  "description": "Foundations of Genomic Data Part IV: what genotyping arrays measure, how imputation expands coverage, and why arrays remain central to large-scale GWAS."
+  "description": "Foundations of Genomic Data Part IV: what genotyping arrays measure, how imputation expands coverage, and why arrays remain central to large-scale GWAS.",
+  "categories": ["Biological Foundations"]
   },
   {
   "title": "Comparative Analysis: What Each Measures and Why",
   "date": "2025-10-16",
   "url": "articles/comparative_genomic_data.html",
-  "description": "Foundations of Genomic Data Part V: a conceptual comparison of DNA sequencing, RNA sequencing, and genotyping arrays, and how their measurement trade-offs shape study design."
+  "description": "Foundations of Genomic Data Part V: a conceptual comparison of DNA sequencing, RNA sequencing, and genotyping arrays, and how their measurement trade-offs shape study design.",
+  "categories": ["Biological Foundations"]
   },
   {
     "title": "What Are Complex Diseases?",
     "date": "2025-11-21",
     "url": "articles/complex_diseases.html",
-    "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems."
+    "description": "An explanation of why many common diseases arise from interacting genetic, environmental, and regulatory systems.",
+  "categories": ["Biological Foundations"]
   },
   {
   "title": "What Representation Learning Means in Genomics",
   "date": "2025-11-25",
   "url": "articles/representation_learning_genomics.html",
-  "description": "From Measurement to Modeling Part I: why raw genomic feature spaces are misaligned with biological structure and how embeddings provide a usable coordinate system for analysis."
+  "description": "From Measurement to Modeling Part I: why raw genomic feature spaces are misaligned with biological structure and how embeddings provide a usable coordinate system for analysis.",
+  "categories": ["Representation Learning in Genomics"]
   },
   {
   "title": "Autoencoders vs Variational Autoencoders: Deterministic and Probabilistic Representations",
   "date": "2025-11-26",
   "url": "articles/ae_vs_vae.html",
-  "description": "From Measurement to Modeling Part II: how deterministic autoencoders and probabilistic VAEs differ in their treatment of latent space structure and representation."
+  "description": "From Measurement to Modeling Part II: how deterministic autoencoders and probabilistic VAEs differ in their treatment of latent space structure and representation.",
+  "categories": ["Representation Learning in Genomics"]
   },
   {
     "title": "What Regularization Means in Representation Learning",
     "date": "2025-11-29",
     "url": "articles/regularization.html",
-    "description": "From Measurement to Modeling Part III A: an overview of how different regularization strategies shape learned representations, with a focus on VAEs."
+    "description": "From Measurement to Modeling Part III A: an overview of how different regularization strategies shape learned representations, with a focus on VAEs.",
+  "categories": ["Representation Learning in Genomics"]
   },
   {
   "title": "What Regularization Does to a Latent Space",
   "date": "2025-12-10",
   "url": "articles/regularization_latent_space.html",
-  "description": "From Measurement to Modeling Part III B: how regularization shapes latent space continuity, distance, and interpretability when embeddings are the object of analysis."
+  "description": "From Measurement to Modeling Part III B: how regularization shapes latent space continuity, distance, and interpretability when embeddings are the object of analysis.",
+  "categories": ["Representation Learning in Genomics"]
   },
   {
     "title": "Designing LD-Aware Genome Embeddings: Modeling choices and Trade-offs",
     "date": "2025-12-12",
     "url": "articles/genome_embeddings.html",
-    "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure."
+    "description": "A survey of the design constraints and trade-offs involved in learning genome embeddings that respect linkage disequilibrium structure.",
+  "categories": ["Representation Learning in Genomics", "Biological Foundations"]
   },
   {
     "title": "From Variants to Effects: What Does Functional Interpretation Mean in Genomics?",
     "date": "2025-12-18",
     "url": "articles/functional_interpretation.html",
-    "description": "Regulatory Variation & Functional Prediction Part I: An overview of what functional interpretation means in genomics, and why understanding regulatory effects has become central to connecting genetic variation to biological mechanisms."
+    "description": "Regulatory Variation & Functional Prediction Part I: An overview of what functional interpretation means in genomics, and why understanding regulatory effects has become central to connecting genetic variation to biological mechanisms.",
+  "categories": ["Biological Foundations"]
   },
   {
     "title": "Coding vs Regulatory Variants: Why Most GWAS Hits Don’t Break Proteins",
     "date": "2025-12-22",
     "url": "articles/coding_vs_regulatory_variants.html",
-    "description": "Regulatory Variation & Functional Prediction Part II: An explanation of why most GWAS associations lie outside protein-coding regions, and how study design, evolutionary constraint, and regulatory biology shape this pattern."
+    "description": "Regulatory Variation & Functional Prediction Part II: An explanation of why most GWAS associations lie outside protein-coding regions, and how study design, evolutionary constraint, and regulatory biology shape this pattern.",
+  "categories": ["Biological Foundations"]
   },
   {
   "title": "KL vs MMD in VAEs: Two Ways to Regularize a Latent Space",
   "date": "2025-12-27",
   "url": "articles/kl_vs_mmd_vae.html",
-  "description": "A technical walkthrough of how the ELBO yields a KL regularizer in VAEs, and how MMD provides a sample-based alternative for matching the aggregated posterior to a chosen prior using RBF kernels."
+  "description": "A technical walkthrough of how the ELBO yields a KL regularizer in VAEs, and how MMD provides a sample-based alternative for matching the aggregated posterior to a chosen prior using RBF kernels.",
+  "categories": ["Representation Learning in Genomics"]
   },
   {
   "title": "From Sequence to Structure: Running OpenFold Locally",
   "date": "2026-01-07",
   "url": "articles/openfold_local_run.html",
-  "description": "An examination of OpenFold’s sequence-to-structure prediction pipeline, focusing on model outputs, confidence estimates, and practical constraints encountered when running the system locally."
+  "description": "An examination of OpenFold’s sequence-to-structure prediction pipeline, focusing on model outputs, confidence estimates, and practical constraints encountered when running the system locally.",
+  "categories": ["Algorithms & Classical Methods", "Biological Foundations"]
   },
   {
   "title": "Reducing Friction in Genotype VAEs at 1M SNP Scale",
   "date": "2026-02-03",
   "url": "articles/reducing_friction_genotype_vae.html",
-  "description": "A systems-level view of building scalable genotype VAEs at 1M SNP resolution, covering memmap-based preprocessing, dtype/device safety, streaming-friendly batching, composable experiment design, inference standardization, attribution readiness, profiling, diagnostics-first plotting, and fail-fast guardrails."
+  "description": "A systems-level view of building scalable genotype VAEs at 1M SNP resolution, covering memmap-based preprocessing, dtype/device safety, streaming-friendly batching, composable experiment design, inference standardization, attribution readiness, profiling, diagnostics-first plotting, and fail-fast guardrails.",
+  "categories": ["Representation Learning in Genomics"]
   }
 
 
