@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>From Genotype Blocks to Systems Thinking | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+
+      <header class="post__header">
+        <h1>From Genotype Blocks to Systems Thinking</h1>
+        <h2>Reflections on Building a VAE + Transformer for Biological Structure</h2>
+      </header>
+
+      <p>
+        In 2026, people say AI engineers must understand data drift, loss functions,
+        evaluation, monitoring, distributed systems, and deployment.
+      </p>
+
+      <p>
+        I learned most of those lessons not from building chatbots —
+        but from building a block-based VAE and transformer to model genotype structure
+        in a complex disease cohort.
+      </p>
+
+      <p>
+        What surprised me most is this:
+      </p>
+
+      <blockquote>
+        Machine learning in genomics is not primarily a modeling problem.<br/>
+        It is a systems problem where biological assumptions leak into every layer.
+      </blockquote>
+
+      <p>
+        Here’s what building that system taught me.
+      </p>
+
+      <hr/>
+
+      <h2>1. Data & QC: Most Failures Are Upstream</h2>
+
+      <p>
+        Before a single neural network was trained, the real work started with genotype preprocessing.
+      </p>
+
+      <h3>What this stage involved:</h3>
+      <ul>
+        <li>LD pruning and LD-aware block construction</li>
+        <li>Gene-centric block definitions</li>
+        <li>Ancestry control via principal components</li>
+        <li>Filtering unrelated individuals</li>
+        <li>Minor allele frequency filtering (&lt;5% removed)</li>
+        <li>Batch effect checks</li>
+      </ul>
+
+      <p>
+        At first glance, this looks like “just preprocessing.” It is not.
+      </p>
+
+      <h3>Data drift in biology is subtle</h3>
+
+      <p>
+        If ancestry structure is not controlled properly, your VAE will cluster ancestry —
+        not disease biology.
+      </p>
+
+      <p>
+        If LD pruning is too aggressive, you destroy haplotype structure.
+        If it is too loose, redundancy dominates.
+      </p>
+
+      <p>
+        Although variants below 5% MAF were removed at the outset,
+        I still tracked the fraction of SNPs per block with MAF &lt;10% or &lt;20%.
+        Not to perform rare variant analysis,
+        but to understand how block composition influences reconstruction stability.
+      </p>
+
+      <blockquote>
+        80% of model failures are upstream.
+      </blockquote>
+
+      <p>
+        When embeddings look clean and separable, it is tempting to celebrate.
+        But without careful QC, the model may simply be learning confounding structure.
+      </p>
+
+      <p>
+        In genomics, <em>data drift is not a dashboard alert</em>.
+        It is embedded in population structure and technical artifacts.
+      </p>
+
+      <hr/>
+
+      <h2>2. Block-Level VAE: Embeddings Are Assumptions</h2>
+
+      <p>
+        The core of my system is a block-level VAE trained per LD block,
+        producing embeddings that represent local genotype structure.
+      </p>
+
+      <h3>Loss functions are biological decisions</h3>
+
+      <p>I evaluated multiple reconstruction objectives:</p>
+
+      <ul>
+        <li>Standard MSE</li>
+        <li>Standardized MSE (MSE_STD)</li>
+        <li>Ordinal loss (cumulative threshold modeling)</li>
+        <li>Categorical/BCE-style losses</li>
+      </ul>
+
+      <p>
+        Two approaches performed particularly well: <strong>Ordinal</strong> and <strong>MSE_STD</strong>.
+      </p>
+
+      <p>
+        Ordinal modeling respects genotype dosage ordering (0, 1, 2) by explicitly modeling cumulative thresholds.
+        It preserves dosage semantics while allowing flexibility in reconstruction.
+      </p>
+
+      <p>
+        Standardized MSE improved reconstruction stability across blocks with heterogeneous variance.
+        But standardization changes the unit of representation.
+      </p>
+
+      <blockquote>
+        A good metric is not enough.  
+        The embedding must preserve biological meaning.
+      </blockquote>
+
+      <p>
+        Because standardized scaling distorts direct dosage interpretation,
+        it was not used in the current system.
+      </p>
+
+      <h3>Latent collapse is silent</h3>
+
+      <p>
+        VAEs introduce tension between KL regularization and reconstruction fidelity.
+      </p>
+
+      <ul>
+        <li>Too much KL → latent collapse</li>
+        <li>Too little KL → overfitting</li>
+      </ul>
+
+      <p>
+        Without per-block diagnostics — concordance, R², LD correlation,
+        balanced accuracy — collapse would go unnoticed.
+      </p>
+
+      <p>
+        Bias vs variance is not theoretical here.
+        You can see it when validation metrics diverge across blocks
+        with different sizes and allele-frequency compositions.
+      </p>
+
+      <hr/>
+
+      <h2>3. Transformer Aggregation: Context Is Not Explanation</h2>
+
+      <p>
+        After learning block embeddings, I introduced an attention layer
+        to aggregate them into subject-level representations.
+      </p>
+
+      <p>
+        This creates hierarchy:
+      </p>
+
+      <ul>
+        <li>SNP → block embedding</li>
+        <li>Block → subject embedding</li>
+      </ul>
+
+      <p>
+        Attention learns how local LD structures interact globally.
+      </p>
+
+      <blockquote>
+        Attention weight ≠ biological causality.
+      </blockquote>
+
+      <p>
+        Interpretability requires attribution analysis and structured validation,
+        not just inspection of attention maps.
+      </p>
+
+      <hr/>
+
+      <h2>4. Evaluation: When 95% Accuracy Lies</h2>
+
+      <p>
+        Global concordance can look excellent while hiding structured weaknesses.
+      </p>
+
+      <p>
+        Breaking performance down by genotype class,
+        block size, and MAF composition reveals heterogeneity that aggregate accuracy obscures.
+      </p>
+
+      <p>I tracked:</p>
+
+      <ul>
+        <li>Per-class accuracy</li>
+        <li>Balanced accuracy</li>
+        <li>Block-level concordance</li>
+        <li>LD correlation</li>
+        <li>Train vs validation gaps</li>
+      </ul>
+
+      <blockquote>
+        Real-world metrics are contextual.
+      </blockquote>
+
+      <p>
+        Evaluation in genomics must reflect biological structure,
+        not just overall accuracy.
+      </p>
+
+      <hr/>
+
+      <h2>5. Pipelines & Reproducibility</h2>
+
+      <p>
+        Around the model sits a reproducible system:
+      </p>
+
+      <ul>
+        <li>Structured YAML configurations</li>
+        <li>Block manifests</li>
+        <li>Modular training code</li>
+        <li>Explicit experiment logging</li>
+        <li>Guardrails for subject alignment</li>
+      </ul>
+
+      <p>
+        Small schema changes can cascade into embedding inconsistencies.
+        Scientific ML requires pipeline reliability, not just model correctness.
+      </p>
+
+      <hr/>
+
+      <h2>Closing Reflection</h2>
+
+      <p>
+        Academic research accounts for only 2.8% of AI agent tool calls.
+      </p>
+
+      <p>
+        Yet scientific machine learning is one of the hardest environments
+        in which to deploy models correctly.
+      </p>
+
+      <blockquote>
+        The opportunity is not in building bigger models —  
+        but in building better scientific systems.
+      </blockquote>
+
+      <p>
+        When biology, statistics, and engineering align,
+        embeddings become more than vectors.
+        They become structured representations of biological reality.
+      </p>
+
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>

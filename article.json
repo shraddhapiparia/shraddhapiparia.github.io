@@ -138,7 +138,20 @@
   "url": "articles/reducing_friction_genotype_vae.html",
   "description": "A systems-level view of building scalable genotype VAEs at 1M SNP resolution, covering memmap-based preprocessing, dtype/device safety, streaming-friendly batching, composable experiment design, inference standardization, attribution readiness, profiling, diagnostics-first plotting, and fail-fast guardrails.",
   "categories": ["Representation Learning in Genomics"]
+  },
+  {
+    "title": "From Landscape to Loop: A Biological View of Epigenetics",
+    "date": "2026-02-14",
+    "url": "articles/epigenetics-landscape.html",
+    "description": "A structured biological overview of epigenetics, from Waddington’s landscape to chromatin architecture, immune memory, and disease risk.",
+    "categories": ["Biological Foundations"]
+  },
+  {
+  "title": "From Genotype Blocks to Systems Thinking",
+  "url": "articles/vae-transformer-systems-reflection.html",
+  "description": "A reflection on building a block-based VAE and transformer for genotype data, exploring loss functions, LD-aware preprocessing, evaluation in biological context, and why scientific machine learning is ultimately a systems problem.",
+  "categories": ["Research Practice & Reflection"],
+  "date": "2026-02-20"
   }
-
 
 ]
