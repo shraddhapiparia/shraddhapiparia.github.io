@@ -35,15 +35,16 @@
       </header>
 
       <p>
-        Protein structures appear everywhere in modern biology: folded cartoons in papers, ribbon diagrams in talks, coordinates embedded in databases. For a long time, I treated them as static objects—results that existed somewhere upstream of my work.
+      Protein structure prediction models convert an amino acid sequence
+      into a three-dimensional geometric proposal. In practice, however,
+      most of us encounter the results rather than the process that
+      produces them.
       </p>
 
       <p>
-        What I had not done until recently was to actually generate one myself.
-      </p>
-
-      <p>
-        Running OpenFold locally was less about obtaining a particular structure and more about understanding what it means, in practice, to predict three-dimensional form from a one-dimensional sequence.
+      Running OpenFold locally made that process visible: starting from
+      a sequence and generating a predicted structure directly on
+      local hardware.
       </p>
 
       <h2>What OpenFold does</h2>
@@ -74,6 +75,40 @@
         The structure is not presented as a single unquestionable answer. It is an argument—one plausible configuration among many, shaped by what the model has learned.
       </p>
 
+      <h2>Visualizing the predicted structure</h2>
+
+      <p>
+      To inspect the output, the predicted structure can be loaded into
+      molecular visualization tools such as ChimeraX or PyMOL.
+      The model output is simply a set of coordinates, which these tools
+      render as ribbons, atoms, or surface representations.
+      </p>
+
+      <p>
+      Below is a short rotation of one predicted structure generated during the run.
+      </p>
+
+      <video controls width="600">
+        <source src="images/protein_rotation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <h2>Confidence estimates</h2>
+
+      <p>
+      Structure prediction models typically provide a confidence score
+      for each residue. These scores do not measure physical correctness,
+      but instead reflect how strongly the model believes in a particular
+      local arrangement.
+      </p>
+
+      <p>
+      In visualization tools, residues can be colored by these scores,
+      which often highlights stable cores and more uncertain loop regions.
+      This makes it easier to identify which parts of a structure should
+      be interpreted cautiously.
+      </p>
+
       <h2>Why running it locally mattered</h2>
 
       <p>
@@ -102,6 +137,90 @@
         This difference is not just about speed. It shapes the scale of the questions one can reasonably ask. Hardware becomes part of the modeling context rather than an implementation detail.
       </p>
 
+      <h2>Experimental setup</h2>
+
+      <p>
+      The run described here was executed on an Apple Silicon laptop using the MLX-based
+      OpenFold implementation. The goal was not to benchmark performance rigorously,
+      but to understand what local inference looks like in practice.
+      </p>
+
+      <ul>
+        <li>Hardware: Apple Silicon (MPS backend)</li>
+        <li>Model: OpenFold (MLX implementation)</li>
+        <li>Input: single-chain protein sequence</li>
+        <li>Sequence length: 36 residues</li>
+        <li>Number of seeds: 1</li>
+      </ul>
+
+      <p>
+      Even for small sequences, the pipeline performs several internal steps: generating
+      MSA features, assembling input tensors, and running the structure prediction model.
+      Most of the runtime is spent inside the neural network inference stage.
+      </p>
+      <h2>Performance observations</h2>
+
+      <p>
+      Running OpenFold locally makes the computational side of structure
+      prediction more visible. Even for short sequences, inference involves
+      several stages including feature construction, neural network inference,
+      and generation of structural coordinates.
+      </p>
+
+      <p>
+      The figure below shows a simple runtime profile from exploratory runs on
+      Apple Silicon using the MPS backend. The goal here is not rigorous
+      benchmarking but to provide a rough sense of how runtime changes as
+      sequence length increases.
+      </p>
+
+      <figure>
+        <img src="/images/runtime_vs_length.png"
+             alt="Runtime versus sequence length for OpenFold inference"
+             style="max-width:100%;">
+        <figcaption>
+          Approximate runtime as a function of sequence length during
+          OpenFold inference on Apple Silicon (MPS backend).
+        </figcaption>
+      </figure>
+
+      <p>
+      Even modest increases in sequence length can noticeably affect runtime
+      and memory usage. For this reason, local runs are most practical for
+      short or medium-sized proteins when experimenting on consumer hardware.
+      </p>
+
+      <h2>Confidence estimates</h2>
+
+      <p>
+      In addition to structural coordinates, structure prediction models
+      typically report confidence estimates for each residue. These values
+      indicate how strongly the model supports a particular local arrangement
+      within the predicted structure.
+      </p>
+
+      <p>
+      Visualizing these scores can help identify regions where the prediction
+      is more certain and regions where the structure should be interpreted
+      more cautiously.
+      </p>
+
+      <figure>
+        <img src="/images/confidence_by_sequence.png"
+             alt="Residue-level confidence scores for predicted structure"
+             style="max-width:100%;">
+        <figcaption>
+          Example distribution of residue-level confidence scores for a
+          predicted structure. Lower confidence regions often correspond to
+          flexible loops or poorly constrained segments.
+        </figcaption>
+      </figure>
+
+      <p>
+      Confidence values do not guarantee correctness, but they provide a
+      useful signal for interpreting predicted structures and deciding which
+      regions are more reliable for downstream analysis.
+      </p>
       <h2>From sequence to function</h2>
 
       <p>
@@ -115,7 +234,7 @@
       <h2>Code and reproducibility</h2>
 
       <p>
-        I have linked the configuration and scripts used for this run in a public repository, mainly for reproducibility and future reference. The goal is not to provide a polished tutorial, but to document what was required to make the system run locally.
+        I have linked the configuration and scripts used for this run in a public repository, mainly for reproducibility and future reference.
       </p>
 
       <p>
@@ -126,12 +245,7 @@
 
       <h2>A closing thought</h2>
 
-      <p>
-        Predicting structure from sequence can feel magical when viewed only through finished figures. Running OpenFold locally made it feel more grounded.
-      </p>
-
-      <p>
-        The prediction is powerful precisely because it is constrained—by data, by architecture, and by hardware. Understanding those constraints is part of understanding the model itself.
+        The prediction is powerful precisely because it is constrained by data, by architecture, and by hardware. Understanding those constraints is part of understanding the model itself.
       </p>
 
     </article>
