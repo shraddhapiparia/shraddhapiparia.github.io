@@ -35,44 +35,27 @@
       </header>
 
       <p>
-      Protein structure prediction models convert an amino acid sequence
-      into a three-dimensional geometric proposal. In practice, however,
-      most of us encounter the results rather than the process that
-      produces them.
+      Protein structure prediction models map amino acid sequences to three-dimensional structures. In practice, the outputs are often consumed without visibility into the computational process that produces them.
       </p>
 
       <p>
-      Running OpenFold locally made that process visible: starting from
-      a sequence and generating a predicted structure directly on
-      local hardware.
+      Running OpenFold locally exposes that process directly.
       </p>
 
       <h2>What OpenFold does</h2>
 
       <p>
-        At a high level, OpenFold takes an amino acid sequence and predicts a three-dimensional arrangement of residues. The output is not an image, but a set of coordinates: a concrete geometric proposal for how the chain folds in space.
+        At a high level, OpenFold takes an amino acid sequence and predicts a three-dimensional arrangement of residues. The output is a static coordinate realization i.e. one point in a highly constrained structural space rather than a dynamic folding trajectory.
       </p>
 
       <p>
-        Importantly, this is not a physical simulation. OpenFold does not model forces or time evolution. Instead, it learns a mapping from sequence patterns to structural regularities observed across known proteins.
-      </p>
-
-      <p>
-        Thinking of structure prediction as a learned mapping—rather than a mechanistic simulation—was a helpful mental shift for me.
+        Rather than simulating folding dynamics, the model learns statistical regularities from known structures. As a result, predictions are biased toward observed structural space and may be less reliable for novel or poorly represented folds.
       </p>
 
       <h2>What comes out of a run</h2>
 
       <p>
-        The outputs of OpenFold are files describing atoms, residues, and bonds, typically in CIF or PDB format. At first glance, these files can feel opaque: long tables of coordinates and identifiers with little immediate intuition.
-      </p>
-
-      <p>
-        Over time, I realized that these files are best read as the model’s belief about structure. Each predicted coordinate encodes a local geometric decision, and confidence scores reflect where the model is more or less certain about that decision.
-      </p>
-
-      <p>
-        The structure is not presented as a single unquestionable answer. It is an argument—one plausible configuration among many, shaped by what the model has learned.
+        OpenFold outputs structural files (CIF/PDB) containing atomic coordinates and residue annotations. These are precise but not immediately intuitive representations: each coordinate reflects a local geometric decision, with associated confidence scores indicating model certainty.
       </p>
 
       <h2>Visualizing the predicted structure</h2>
@@ -80,8 +63,7 @@
       <p>
       To inspect the output, the predicted structure can be loaded into
       molecular visualization tools such as ChimeraX or PyMOL.
-      The model output is simply a set of coordinates, which these tools
-      render as ribbons, atoms, or surface representations.
+      Visualization tools convert coordinate representations into structural abstractions (ribbons, surfaces), which emphasize different aspects of the fold such as secondary structure or solvent exposure.
       </p>
 
       <p>
@@ -93,40 +75,21 @@
         Your browser does not support the video tag.
       </video>
 
-      <h2>Confidence estimates</h2>
+
+      <h2>Why running locally revealed</h2>
 
       <p>
-      Structure prediction models typically provide a confidence score
-      for each residue. These scores do not measure physical correctness,
-      but instead reflect how strongly the model believes in a particular
-      local arrangement.
+        Even for short sequences, inference involves multiple stages including feature construction, neural network inference, and coordinate generation. The computational cost is shaped as much by memory movement and hardware constraints as by the model itself.
       </p>
 
       <p>
-      In visualization tools, residues can be colored by these scores,
-      which often highlights stable cores and more uncertain loop regions.
-      This makes it easier to identify which parts of a structure should
-      be interpreted cautiously.
-      </p>
-
-      <h2>Why running it locally mattered</h2>
-
-      <p>
-        Using OpenFold via an API or hosted service abstracts away most of the system it depends on. Running it locally makes those dependencies visible.
-      </p>
-
-      <p>
-        Memory limits, runtime, and hardware support quickly become part of the experience. Choices that are invisible at the interface level—batch sizes, precision, device backends—suddenly affect what is feasible.
-      </p>
-
-      <p>
-        The model stops feeling like an oracle and starts feeling like a pipeline.
+      Sequence length, attention scaling, and intermediate representations quickly dominate runtime and memory. Local execution exposes these bottlenecks directly, offering insight into why large-scale deployment of folding models remains resource-intensive despite advances in model design.
       </p>
 
       <h2>A note on CUDA and MPS</h2>
 
       <p>
-        I ran OpenFold on an Apple Silicon machine using the MPS backend. This worked, but it also made clear that “GPU support” is not a single, uniform concept.
+        I ran OpenFold on an Apple Silicon machine using the MPS backend. This highlights that “GPU support” is not a uniform concept.
       </p>
 
       <p>
@@ -140,9 +103,7 @@
       <h2>Experimental setup</h2>
 
       <p>
-      The run described here was executed on an Apple Silicon laptop using the MLX-based
-      OpenFold implementation. The goal was not to benchmark performance rigorously,
-      but to understand what local inference looks like in practice.
+      The run described here was executed on an Apple Silicon laptop using the MLX-based OpenFold implementation. The goal was not to benchmark performance rigorously, but to understand what local inference looks like in practice.
       </p>
 
       <ul>
@@ -193,14 +154,8 @@
       <h2>Confidence estimates</h2>
 
       <p>
-      In addition to structural coordinates, structure prediction models
-      typically report confidence estimates for each residue. These values
-      indicate how strongly the model supports a particular local arrangement
-      within the predicted structure.
-      </p>
-
-      <p>
-      Visualizing these scores can help identify regions where the prediction
+        Structure prediction models also report residue-level confidence estimates, reflecting the model’s support for local geometric arrangements.
+        Visualizing these scores can help identify regions where the prediction
       is more certain and regions where the structure should be interpreted
       more cautiously.
       </p>
@@ -245,7 +200,7 @@
 
       <h2>A closing thought</h2>
 
-        The prediction is powerful precisely because it is constrained by data, by architecture, and by hardware. Understanding those constraints is part of understanding the model itself.
+        Predictions are shaped by data, architecture, and hardware. Understanding these constraints is essential to understanding the model itself.
       </p>
 
     </article>
