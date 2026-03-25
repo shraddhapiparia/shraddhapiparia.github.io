@@ -58,28 +58,61 @@
       A follow-up analysis was conducted in UK Biobank adult cohort.
     </p>
 
+
     <hr>
 
-    <h3>Endophenotype-driven GWAS Framework</h3>
-    <p>
-      To address heterogeneity in asthma, I developed machine learning based
-      endophenotypes that capture clinically meaningful variation in lung function
-      and treatment response. These endophenotypes were incorporated into
-      subtype-specific genetic association analyses.
-    </p>
-    <p>
-      This framework improves interpretability and statistical power in
-      pharmacogenomic studies by aligning genetic signals with biologically
-      coherent patient subgroups.
-    </p>
-    <p>
-      <em>Representative publications:</em> <a href="https://link.springer.com/article/10.1186/s12931-025-03426-z" target="_blank"> PCA based endophenotype definiton </a>, <a href="https://www.mdpi.com/2075-4426/16/1/32" target="_blank"> ANOVA for endophenotype specific GWAS </a>, <a href="https://pubmed.ncbi.nlm.nih.gov/39357540/" target="_blank"> Asthma pharmacogenetics through subtype specific associations </a>
-    </p>
-    <p>
-      <a href="https://github.com/shraddhapiparia/ANOVA-like-GWAS-NextFlow/" target="_blank">
-        GitHub
-      </a>
-    </p>
+      <section class="project">
+        <div class="project-header">
+          <h3>Endophenotype-driven GWAS Framework for Asthma Heterogeneity</h3>
+
+          <div class="project-summary">
+            <p>
+              Developed a machine learning–driven GWAS framework to model asthma heterogeneity using PCA-derived clinical endophenotypes. Patients were stratified into five ordinal subgroups (Q1–Q5) spanning mild to severe, atopy-rich disease. These subtypes were integrated into a categorical ANCOVA model, enabling simultaneous association testing across biologically coherent patient groups and improving detection of subtype-specific genetic signals.
+            </p>
+          </div>
+
+          <div class="tags">
+            <span>PCA</span>
+            <span>GWAS</span>
+            <span>ANCOVA</span>
+            <span>Statistical Genetics</span>
+            <span>Endophenotypes</span>
+            <span>Asthma</span>
+            <span>ICS Response</span>
+            <span>R</span>
+          </div>
+        </div>
+
+        <div class="project-feature">
+          <div class="project-image">
+            <img src="project_images/endophenotype_framework.png" alt="Endophenotype-driven GWAS framework illustrating PCA-based stratification and subtype-specific association modeling">
+            <p class="img-caption">
+              PCA-based clinical stratification into endophenotypes (Q1–Q5) integrated with categorical GWAS to identify subtype-specific genetic associations.
+            </p>
+          </div>
+
+          <div class="project-insights">
+            <h4>Key insights</h4>
+            <ul>
+              <li><strong>Subtype-aware GWAS:</strong> ANCOVA-based modeling across all endophenotypes increased power, identifying 244 significant SNPs versus limited findings from standard approaches.</li>
+              <li><strong>Robust replication:</strong> Six loci (e.g., DGKI, MIR99AHG) replicated across independent cohorts, enriched in severe subgroups (Q4–Q5).</li>
+              <li><strong>Treatment stratification:</strong> Endophenotypes predicted ICS response, with the most severe group showing greatest lung function improvement.</li>
+              <li><strong>Biological alignment:</strong> Genetic signals mapped to clinical gradients (IgE, lung function), improving interpretability for precision medicine.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <p class="project-links">
+            <em>Representative publications:</em> <a href="https://link.springer.com/article/10.1186/s12931-025-03426-z" target="_blank"> PCA based endophenotype definiton </a>, <a href="https://www.mdpi.com/2075-4426/16/1/32" target="_blank"> ANOVA for endophenotype specific GWAS </a>, <a href="https://pubmed.ncbi.nlm.nih.gov/39357540/" target="_blank"> Asthma pharmacogenetics through subtype specific associations </a>
+          </p>
+          <p>
+            <a href="https://github.com/shraddhapiparia/ANOVA-like-GWAS-NextFlow/" target="_blank">
+              GitHub
+            </a>
+          </p>
+        </div>
+      </section>
 
 
     <hr>
@@ -102,22 +135,6 @@
     <p>
       <em>Representative publications:</em> <a href="https://www.atsjournals.org/doi/abs/10.1164/ajrccm.2025.211.Abstracts.A5441" target="_blank"> Micro-RNA-584-5p as a key modulator of ICS resistance (Full paper in progress) </a>
     </p>
-
-    
-
-    <hr>
-
-    <!-- <h3>Machine Learning Analysis of Pediatric COVID-19 clinical data</h3>
-    <p>
-      I applied random forest models to clinical data from pediatric COVID-19 cohorts to perform case–control prediction and examine factors associated with infection status in children. The analysis focused on how demographic and clinical variables contributed to predictive performance.
-    </p>
-    <p>
-      <em>Representative publications:</em> <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank"> Case control prediction using clinical data </a>
-      .
-      <a href="https://github.com/shraddhapiparia/COVID-Radiology-Study"target="_blank">
-        GitHub
-      </a>
-    </p> -->
 
     <hr>
 
@@ -154,27 +171,22 @@
         <div class="project-insights">
           <h4>Key insights</h4>
           <ul>
-            <li>
-              <strong>Feature engineering &amp; selection:</strong> Processed raw clinical notes using natural language processing and the NegEx algorithm to identify 16 radiographic findings, including pneumonia, atelectasis, and small airways disease.
-            </li>
-            <li>
-              <strong>Model interpretability:</strong> Used SHAP and Gini impurity to improve transparency, showing that radiological features and constitutional symptoms were more predictive than prior medical history.
-            </li>
-            <li>
-              <strong>Demographic insights:</strong> Found that age, sex, and ethnicity, particularly Hispanic males under age 8, contributed meaningfully to model performance and highlighted disparities in pediatric infection patterns.
-            </li>
+            <li><strong>Feature engineering &amp; selection:</strong> NLP and NegEx were used to identify 16 radiographic findings, including pneumonia, atelectasis, and small airways disease.</li>
+            <li><strong>Model interpretability:</strong> SHAP showed that radiological and constitutional features were more predictive than prior medical history.</li>
+            <li><strong>Demographic insights:</strong> Age, sex, and ethnicity, particularly Hispanic males under age 8, contributed meaningfully to model performance.</li>
+            <li><strong>Incremental modeling:</strong> Compared five Random Forest models to assess feature contributions, showing radiological features as primary predictors, with symptoms and demographics improving performance.</li>
           </ul>
         </div>
       </div>
 
       <div class="project-body">
-        <p>
-          <strong>Incremental modeling:</strong> Evaluated five Random Forest models to isolate the contribution of different data types, demonstrating that radiological features were primary predictors while symptoms and demographics further improved accuracy.
-        </p>
 
         <p class="project-links">
           <em>Representative publication:</em>
           <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank" rel="noopener noreferrer">Case control prediction using clinical data</a>
+          <a href="https://github.com/shraddhapiparia/COVID-Radiology-Study"target="_blank">
+        GitHub
+      </a>
         </p>
       </div>
     </section>

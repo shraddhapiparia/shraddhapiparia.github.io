@@ -254,10 +254,9 @@ body.home #education {
 
 .project-feature {
   display: grid;
-  grid-template-columns: 1.35fr 0.95fr;
-  gap: 1.75rem;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 1.5rem;
   align-items: start;
-  margin: 1.5rem 0;
 }
 
 .project-image {
