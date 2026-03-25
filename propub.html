@@ -26,41 +26,91 @@
 
   <main class="pagebox">
 
-    <h2>Selected Projects</h2>
-
     <p>
-      My work applies machine learning and statistical modeling to study biological and clinical heterogeneity and treatment response, with applications in pharmacogenomics, molecular stratification, and large-scale biomedical data.
+      My work focuses on applying machine learning and statistical modeling to understand biological and clinical heterogeneity, with an emphasis on treatment response, molecular stratification, and large-scale biomedical data integration.
     </p>
 
     <hr>
 
-    <h3>Genotype Embeddings for Pharmacogenomics (on going)</h3>
-    <p>
-      I am currently developing representation learning approaches to model
-      genotype data directly. Using variational autoencoder, the goal is to
-      learn genotype embeddings that support downstream tasks such as
-      patient stratification and drug response analysis.
-    </p>
-    <p>
-      This work aims to move beyond traditional single variant or PRS based
-      approaches toward molecular representations.
-    </p>
+    <section class="project">
+      <div class="project-header">
+        <h3>Genotype Embeddings for Pharmacogenomics (Ongoing)</h3>
+        <div class="project-summary">
+          <p>
+            Developing a representation learning framework for high-dimensional genotype data using LD block–based variational autoencoders. Designed to overcome n << d limitations (~1K samples, 339K variants), the approach learns biologically meaningful embeddings for downstream tasks such as patient stratification and drug response modeling.
+          </p>
+
+          <p>
+            This framework improves structure discovery compared to traditional LD-pruned PCA (PC1 variance: 13% vs &lt;1%) and is being extended to large-scale cohorts (UK Biobank) to enable scalable genotype representation learning beyond single-variant and PRS-based methods.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span>Genomics</span>
+          <span>VAE</span>
+          <span>Representation Learning</span>
+          <span>Pharmacogenomics</span>
+          <span>LD Blocks</span>
+          <span>UK Biobank</span>
+          <span>PyTorch</span>
+        </div>
+      </div>
+
+      <div class="project-feature">
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li><strong>LD-aware modeling:</strong> Block-based embeddings capture local genetic structure beyond LD-pruned SNP approaches.</li>
+            <li><strong>High-dimensional learning:</strong> Overcomes n &lt;&lt; d constraints, enabling modeling of 300K+ variants with limited samples.</li>
+            <li><strong>Improved structure discovery:</strong> Embeddings reveal meaningful variation (PC1 ~13%) compared to traditional PCA (&lt;1%).</li>
+            <li><strong>Scalable framework:</strong> Designed for extension to UK Biobank-scale data for pharmacogenomic applications.</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
     <hr>
 
-    <h3>Ongoing Proteomics Analysis of Pediatric Long COVID </h3>
-    <p>
-      I conducted proteomic analysis using OLINK NPX data to study children with
-      Long COVID presenting neurological symptoms. The project involved extensive
-      data harmonization and careful handling of cases and controls originating
-      from different clinical centers for 87 proteins.
-    </p>
-    <p>
-      A follow-up analysis was conducted in UK Biobank adult cohort.
-    </p>
+    <section class="project">
+      <div class="project-header">
+        <h3>Proteomics Analysis of Pediatric Long COVID (Ongoing)</h3>
 
+        <div class="project-summary">
+          <p>
+            Analyzed Olink NPX proteomics data to identify neurocognitive subtype–specific protein signatures in pediatric Long COVID. Applied covariate-adjusted logistic regression across 87 plasma proteins, accounting for cohort heterogeneity and clinical confounding.
+          </p>
 
-    <hr>
+          <p>
+            Extended the analysis to the UK Biobank adult cohort using PySpark and SQL-based pipelines, enabling scalable integration of large proteomics and phenotype datasets for subtype discovery.
+          </p>
+        </div>
 
+        <div class="tags">
+          <span>Proteomics</span>
+          <span>Olink NPX</span>
+          <span>Long COVID</span>
+          <span>Logistic Regression</span>
+          <span>UK Biobank</span>
+          <span>PySpark</span>
+          <span>SQL</span>
+        </div>
+      </div>
+
+      <div class="project-feature">
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li><strong>Subtype discovery:</strong> Identified protein signatures associated with neurocognitive Long COVID presentations.</li>
+            <li><strong>Robust modeling:</strong> Covariate-adjusted logistic regression accounted for cohort and clinical heterogeneity.</li>
+            <li><strong>Scalable analysis:</strong> Leveraged PySpark and SQL pipelines for large-scale UK Biobank data processing.</li>
+            <li><strong>Translational relevance:</strong> Highlights proteomic markers linked to post-viral neurological outcomes.</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+    
       <section class="project">
         <div class="project-header">
           <h3>Endophenotype-driven GWAS Framework for Asthma Heterogeneity</h3>
@@ -85,7 +135,7 @@
 
         <div class="project-feature">
           <div class="project-image">
-            <img src="project_images/endophenotype_framework.png" alt="Endophenotype-driven GWAS framework illustrating PCA-based stratification and subtype-specific association modeling">
+            <img src="project_images/Endophenotype_framework.png" alt="Endophenotype-driven GWAS framework illustrating PCA-based stratification and subtype-specific association modeling">
             <p class="img-caption">
               PCA-based clinical stratification into endophenotypes (Q1–Q5) integrated with categorical GWAS to identify subtype-specific genetic associations.
             </p>
@@ -117,24 +167,65 @@
 
     <hr>
 
-    <h3>miRNA-based Biomarkers of Drug Response</h3>
-    <p>
-      I analyzed the role of microRNAs as modulators of inhaled corticosteroid
-      response in asthma, focusing on miR-584-5p across two independent cohorts
-      (CAMP and GACRS).
-    </p>
-    <p>
-      The analysis involved normalization and filtering of miRNA read counts,
-      cohort-specific outcome definitions, and interaction modeling to assess how
-      treatment modifies regulatory effects on asthma exacerbations.
-    </p>
-    <p>
-      This work provides mechanistic insight into regulatory pathways underlying
-      corticosteroid resistance.
-    </p>
-    <p>
-      <em>Representative publications:</em> <a href="https://www.atsjournals.org/doi/abs/10.1164/ajrccm.2025.211.Abstracts.A5441" target="_blank"> Micro-RNA-584-5p as a key modulator of ICS resistance (Full paper in progress) </a>
-    </p>
+    <section class="project">
+      <div class="project-header">
+        <h3>miRNA Modifiers of Inhaled Corticosteroid Response in Asthma</h3>
+
+        <div class="project-summary">
+          <p>
+            Investigated molecular drivers of variable response to inhaled corticosteroids (ICS) in asthma using circulating microRNA (miRNA) profiles. Applied interaction modeling (Exacerbation ~ ICS × miRNA) across two pediatric cohorts (CAMP discovery and GACRS replication) to identify biomarkers associated with treatment resistance.
+          </p>
+
+          <p>
+            Identified miR-584-5p as a novel modifier of ICS response, where higher expression was associated with increased exacerbation risk specifically in treated patients, highlighting its potential as a biomarker for steroid resistance.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span>miRNA</span>
+          <span>Interaction Modeling</span>
+          <span>Pharmacogenomics</span>
+          <span>Asthma</span>
+          <span>RNA-seq</span>
+          <span>FDR</span>
+          <span>Pathway Analysis</span>
+          <span>R</span>
+        </div>
+      </div>
+
+      <div class="project-feature">
+
+        <!-- IMAGE -->
+        <div class="project-image">
+          <img src="project_images/Pathway_enrichment.png" alt="Pathway enrichment analysis showing signaling pathways associated with miR-584-5p and corticosteroid response">
+          <p class="img-caption">
+            Pathway enrichment highlighting TGF-β, NF-κB, and immune signaling pathways linked to miR-584-5p–mediated corticosteroid response.
+          </p>
+        </div>
+
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li><strong>Interaction-based discovery:</strong> ICS × miRNA modeling identified modifiers missed by standard differential expression approaches.</li>
+            <li><strong>Novel biomarker:</strong> miR-584-5p was associated with increased exacerbation risk specifically in ICS-treated patients.</li>
+            <li><strong>Cross-cohort validation:</strong> Findings were consistent across independent pediatric cohorts (CAMP, GACRS).</li>
+            <li><strong>Biological relevance:</strong> Enriched pathways (TGF-β, NF-κB, T cell signaling) link miRNA regulation to airway inflammation and remodeling.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="project-body">
+
+        <p class="project-links">
+          <em>Representative publication:</em> <a href="https://www.atsjournals.org/doi/abs/10.1164/ajrccm.2025.211.Abstracts.A5441" target="_blank"> Micro-RNA-584-5p as a key modulator of ICS resistance (Full paper in progress) </a>
+          <a href="https://github.com/shraddhapiparia/miRNA_ics_interaction" target="_blank">GitHub</a>
+        </p>
+
+      </div>
+
+    </section>
 
     <hr>
 
@@ -190,69 +281,69 @@
         </p>
       </div>
     </section>
-
     <hr>
-    <h3>Context-aware testing of mobile applications</h3>
-    <p>
-  During my PhD, I developed methods to model event-driven data using probabilistic
-  and neural approaches. This included sequence modeling with conditional random
-  fields, neural network–based component discovery, and combinatorial methods
-  for large search spaces.
-</p>
+    
+    <section class="project">
+      <div class="project-header">
+        <h3>Context-aware testing of mobile applications</h3>
 
-<p>
-  This work shaped how I approach modeling problems involving dependent
-  observations, structured outputs, and constrained search spaces—ideas that
-  continue to influence my applied machine learning work in biomedical domains.
-</p>
+        <div class="project-summary">
+          <p>
+            Developed a framework for testing context-aware mobile applications by modeling event-driven behavior using probabilistic and neural approaches. Combined conditional random fields (CRFs), neural network–based component discovery, and combinatorial optimization to capture dependencies between user actions, system states, and environmental context, enabling systematic exploration of large, constrained event spaces in Android applications.
+          </p>
 
-<p>
-  <em>Representative publications and tools:</em>
-</p>
+          <p>
+            This work established a foundation for modeling structured, dependent data and scalable search strategies—principles that extend to my current work in genomics and clinical machine learning.
+          </p>
+        </div>
+      </div>
 
-<ul>
-  <li>
-    <strong>CRF-based event pattern discovery</strong> —
-    <a href="https://link.springer.com/chapter/10.1007/978-3-030-70416-2_29" target="_blank">
-      Paper
-    </a>
-    ·
-    <a href="https://github.com/shraddhapiparia/sequence-discovery" target="_blank">
-      GitHub
-    </a>
-    ·
-    <a href="https://github.com/shraddhapiparia/Sequence-Prediction-using-CRF" target="_blank">
-      GitHub
-    </a>
-  </li>
+      <div class="project-feature">
 
-  <li>
-    <strong>Neural network–driven model element identification</strong> —
-    <a href="https://link.springer.com/article/10.1007/s00766-020-00332-2" target="_blank">
-      Paper
-    </a>
-    ·
-    <a href="https://github.com/shraddhapiparia/sequence-discovery" target="_blank">
-      GitHub
-    </a>
-  </li>
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li><strong>Structured sequence modeling:</strong> CRFs captured temporal dependencies in event-driven data.</li>
+            <li><strong>Neural component discovery:</strong> Learned representations identified latent system components.</li>
+            <li><strong>Scalable test generation:</strong> Combinatorial methods efficiently explored large event spaces.</li>
+            <li><strong>System-level impact:</strong> Built CATDroid for automated testing of sensor-driven Android apps.</li>
+          </ul>
+        </div>
 
-  <li>
-    <strong>Combinatorial testing of context-aware systems</strong> —
-    <a href="https://ieeexplore.ieee.org/abstract/document/9555722" target="_blank">
-      Paper
-    </a>
+      </div>
 
-  <li>
-    <strong>Catdroid: Automated testing for Android context-aware systems</strong> —
-    Research tool developed during my PhD for systematic exploration of
-    sensor-driven and event-based mobile applications.
-    ·
-    <a href="https://github.com/shraddhapiparia/CATDroid" target="_blank">
-      GitHub
-    </a>
-  </li>
-</ul>
+      <div class="project-body">
+
+        <p class="project-links"><em>Representative work:</em></p>
+
+        <ul class="project-list">
+          <li>
+            <strong>CRF-based event pattern discovery</strong> —
+            <a href="https://link.springer.com/chapter/10.1007/978-3-030-70416-2_29" target="_blank">Paper</a> ·
+            <a href="https://github.com/shraddhapiparia/sequence-discovery" target="_blank">GitHub</a> ·
+            <a href="https://github.com/shraddhapiparia/Sequence-Prediction-using-CRF" target="_blank">GitHub</a>
+          </li>
+
+          <li>
+            <strong>Neural network–driven model element identification</strong> —
+            <a href="https://link.springer.com/article/10.1007/s00766-020-00332-2" target="_blank">Paper</a> ·
+            <a href="https://github.com/shraddhapiparia/sequence-discovery" target="_blank">GitHub</a>
+          </li>
+
+          <li>
+            <strong>Combinatorial testing of context-aware systems</strong> —
+            <a href="https://ieeexplore.ieee.org/abstract/document/9555722" target="_blank">Paper</a>
+          </li>
+
+          <li>
+            <strong>CATDroid</strong> — Automated testing framework for sensor-driven Android applications.
+            <a href="https://github.com/shraddhapiparia/CATDroid" target="_blank">GitHub</a>
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
 
 
   </main>
