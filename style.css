@@ -444,6 +444,48 @@ body:not(.home) .pagebox {
   display: grid;
   gap: 0.5rem;
 }
+/* ===== Book Shelf ===== */
+.bookshelf {
+  max-width: 760px;
+}
+
+.page-intro {
+  margin-bottom: 2.5rem;
+}
+
+.page-intro h1 {
+  margin: 0 0 0.5rem;
+}
+
+.page-intro p {
+  margin: 0;
+  max-width: 62ch;
+  color: #555;
+  line-height: 1.7;
+}
+
+.books-year {
+  margin-bottom: 2rem;
+}
+
+.books-year h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+}
+
+.books-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.books-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.books-list cite {
+  font-style: italic;
+}
 /* ===== Awards Page ===== */
 
 .page-title {
@@ -569,6 +611,11 @@ body:not(.home) .pagebox {
   font-size: 0.9rem;
   background: var(--clr-muted);
   color: var(--clr-text);
+}
+.section-note {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #6b7280;
 }
 
 /* ===== Responsive ===== */
