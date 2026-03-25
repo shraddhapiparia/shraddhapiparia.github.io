@@ -122,7 +122,28 @@
     <hr>
 
     <section class="project">
-      <div class="project-grid">
+      <div class="project-header">
+        <h3>Machine Learning Analysis of Pediatric COVID-19 Clinical Data</h3>
+
+        <div class="project-summary">
+          <p>
+            Developed a Random Forest Classifier to predict COVID-19 infection status in children using a dataset of 2,572 chest X-ray impressions and electronic medical records. By integrating radiological findings, clinical symptoms, and demographic variables, the model achieved an F1-score of 0.79 and an AUC of 0.85.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span>Random Forest</span>
+          <span>Clinical NLP</span>
+          <span>NegEx</span>
+          <span>SHAP</span>
+          <span>Feature Engineering</span>
+          <span>Pediatric COVID-19</span>
+          <span>Chest X-ray</span>
+          <span>EHR</span>
+        </div>
+      </div>
+
+      <div class="project-feature">
         <div class="project-image">
           <img src="project_images/COVID_prediction_SAHP.png" alt="SHAP summary plot showing key predictors in pediatric COVID-19 clinical classification">
           <p class="img-caption">
@@ -130,45 +151,31 @@
           </p>
         </div>
 
-        <div class="project-content">
-          <h3>Machine Learning Analysis of Pediatric COVID-19 Clinical Data</h3>
-
-          <div class="tags">
-            <span>Random Forest</span>
-            <span>Clinical NLP</span>
-            <span>NegEx</span>
-            <span>SHAP</span>
-            <span>Feature Engineering</span>
-            <span>Pediatric COVID-19</span>
-            <span>Chest X-ray</span>
-            <span>EHR</span>
-          </div>
-
-          <p>
-            Developed a Random Forest Classifier to predict COVID-19 infection status in children using a dataset of 2,572 chest X-ray impressions and electronic medical records. By integrating radiological findings, clinical symptoms, and demographic variables, the model achieved an F1-score of 0.79 and an AUC of 0.85.
-          </p>
-
-          <p>
-            <strong>Feature engineering &amp; selection:</strong> Processed raw clinical notes using natural language processing and the NegEx algorithm to identify 16 radiographic findings, including pneumonia, atelectasis, and small airways disease.
-          </p>
-
-          <p>
-            <strong>Model interpretability:</strong> Used SHAP and Gini impurity to improve transparency, showing that radiological features and constitutional symptoms were more predictive than prior medical history.
-          </p>
-
-          <p>
-            <strong>Demographic insights:</strong> Found that age, sex, and ethnicity, particularly Hispanic males under age 8, contributed meaningfully to model performance and highlighted disparities in pediatric infection patterns.
-          </p>
-
-          <p>
-            <strong>Incremental modeling:</strong> Evaluated five Random Forest models to isolate the contribution of different data types, demonstrating that radiological features were primary predictors while symptoms and demographics further improved accuracy.
-          </p>
-
-          <p class="project-links">
-            <em>Representative publications:</em>
-            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank" rel="noopener noreferrer">Case control prediction using clinical data</a>
-          </p>
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li>
+              <strong>Feature engineering &amp; selection:</strong> Processed raw clinical notes using natural language processing and the NegEx algorithm to identify 16 radiographic findings, including pneumonia, atelectasis, and small airways disease.
+            </li>
+            <li>
+              <strong>Model interpretability:</strong> Used SHAP and Gini impurity to improve transparency, showing that radiological features and constitutional symptoms were more predictive than prior medical history.
+            </li>
+            <li>
+              <strong>Demographic insights:</strong> Found that age, sex, and ethnicity, particularly Hispanic males under age 8, contributed meaningfully to model performance and highlighted disparities in pediatric infection patterns.
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <div class="project-body">
+        <p>
+          <strong>Incremental modeling:</strong> Evaluated five Random Forest models to isolate the contribution of different data types, demonstrating that radiological features were primary predictors while symptoms and demographics further improved accuracy.
+        </p>
+
+        <p class="project-links">
+          <em>Representative publication:</em>
+          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank" rel="noopener noreferrer">Case control prediction using clinical data</a>
+        </p>
       </div>
     </section>
 
