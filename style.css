@@ -214,7 +214,6 @@ body.home #education {
   color: #fff;
 }
 
-/* ===== Project Cards ===== */
 /* ===== Project cards ===== */
 .project {
   padding: 2rem;
@@ -232,13 +231,13 @@ body.home #education {
 }
 
 .project-header {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.25rem;
 }
 
 .project-header h3 {
   font-size: clamp(1.5rem, 2vw, 2.1rem);
   line-height: 1.2;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
@@ -246,27 +245,29 @@ body.home #education {
   max-width: 78ch;
 }
 
-.project-summary p {
-  font-size: 1.02rem;
+.project-summary p,
+.project-body p {
+  font-size: 1rem;
   line-height: 1.75;
   margin-bottom: 0.95rem;
 }
 
 .project-feature {
   display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1.35fr 0.95fr;
+  gap: 1.75rem;
   align-items: start;
-  margin: 1.5rem 0 1.75rem;
+  margin: 1.5rem 0;
 }
 
 .project-image {
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
 }
 
 .project-image img {
+  display: block;
   width: 100%;
+  height: auto;
   border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
@@ -281,7 +282,8 @@ body.home #education {
 }
 
 .project-insights {
-  padding: 1.2rem 1.25rem;
+  min-width: 0;
+  padding: 1.15rem 1.25rem;
   border-radius: 14px;
   background: var(--clr-muted);
 }
@@ -304,12 +306,6 @@ body.home #education {
 
 .project-body {
   max-width: 80ch;
-}
-
-.project-body p {
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 0.95rem;
 }
 
 .project p strong,
@@ -350,7 +346,7 @@ body.home #education {
 .project-links a:hover {
   text-decoration: underline;
 }
-
+/* Mobile nav */
 @media (max-width: 900px) {
   .project {
     padding: 1.4rem;
@@ -364,6 +360,23 @@ body.home #education {
   .project-summary,
   .project-body {
     max-width: 100%;
+  }
+  .nav__toggle {
+    display: block;
+  }
+  .nav__menu {
+    position: absolute;
+    inset: 100% 0 auto 0;
+    background: var(--clr-bg);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-out;
+  }
+  .nav__menu--open {
+    transform: translateY(0);
   }
 }
 
@@ -454,18 +467,22 @@ body.home #education {
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .project-grid {
+  .project {
+    padding: 1.4rem;
+  }
+
+  .project-feature {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 
-  .project-content {
+  .project-summary,
+  .project-body {
     max-width: 100%;
   }
 
   .project-image img {
     max-width: 100%;
-    aspect-ratio: auto;
     height: auto;
   }
 
