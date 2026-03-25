@@ -39,6 +39,11 @@ h2 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
 }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
 .section-title {
   font-family: 'Merriweather', serif;
@@ -71,6 +76,13 @@ h2 {
 .placeholder {
   opacity: 0.7;
   font-style: italic;
+}
+
+.page-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin: 20px 0 10px 0;   /* reduce bottom gap */
 }
 
 .pagebox {
@@ -218,6 +230,7 @@ body.home #education {
 .project {
   padding: 2rem;
   margin: 2rem 0;
+  margin-top: 20px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 18px;
   background: var(--clr-bg);
