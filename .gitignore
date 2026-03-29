@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python cache 
+__pycache__/
+*.py[cod]
+
+# Node / frontend tooling 
+node_modules/
+dist/
+build/
+
+# OS / misc
+Thumbs.db
