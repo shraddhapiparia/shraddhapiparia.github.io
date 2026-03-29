@@ -29,69 +29,539 @@
 <article class="post">
 
 <header class="post__header">
-  <h1>From DNA to Disease</h1>
+  <h1>From DNA to Disease: A Layered View of Biology</h1>
 </header>
 
 <p>
-This site presents biology as a layered system, where measurement, regulation, and phenotype are connected rather than isolated.
+  Biology is often taught in separate pieces: genetics, RNA, proteins, pathways, disease. In practice, these are not separate systems. They are layers of the same system.
 </p>
 
 <p>
-Modern biology can feel fragmented, but the underlying system is deeply structured. DNA encodes potential. Regulatory systems determine accessibility. RNA reflects active programs. Proteins execute function. Disease emerges when these layers interact over time.
+  A biologist rarely asks only, “Which gene matters?” The more useful question is:
 </p>
-
-<p>
-The sequence below reflects how I think about uncovering those layers.
-</p>
-
-<h2>Step 1 — Understand What Is Being Measured</h2>
 
 <ul>
-<li><a href="genetic_data.html">What We Mean by Genetic Data: DNA and RNA</a></li>
-<li><a href="DNA_sequencing.html">DNA Sequencing Explained</a></li>
-<li><a href="genotyping_arrays.html">Genotyping Arrays Explained</a></li>
-<li><a href="RNA_sequencing.html">RNA Sequencing Explained</a></li>
-<li><a href="comparative_genomic_data.html">Comparative Analysis: What Each Measures and Why</a></li>
+  <li>What changed?</li>
+  <li>At which layer did it change?</li>
+  <li>How does that change propagate through the system?</li>
+  <li>Why does it lead to disease in one person but not another?</li>
 </ul>
 
 <p>
-These articles clarify a foundational idea: biology is layered because measurement is layered.
+  Biology behaves less like a linear chain and more like a large control system with sensors, feedback loops, amplifiers, and fail-safes. Genes, RNAs, proteins, and signals continuously influence one another, and disease emerges when enough of those interacting controls shift out of balance.
 </p>
 
-<h2>Step 2 — Observed Structure Is Not Mechanism</h2>
+<p>
+  The framework I find most useful is:
+</p>
+
+<p>
+  <strong>Genome → Regulation → Expression → Function → Disease</strong>
+</p>
+
+<p>
+  The genome provides potential. Regulatory systems determine which parts of that potential are accessible. RNA reflects what is active right now. Proteins carry out the work. Disease appears when enough small changes accumulate across these layers.
+</p>
+
+<hr>
+
+<h2>The Big Picture</h2>
+
+<p>
+  Most discussions stop at the classic central dogma:
+</p>
+
+<p>
+  <strong>DNA → RNA → Protein</strong>
+</p>
+
+<p>
+  That is useful, but incomplete.
+</p>
+
+<p>
+  Biology is not just a one-way chain. DNA can be regulated before it is read. RNA can be controlled after it is made. Proteins can be modified after they are produced. Those changes interact through signaling and metabolic networks, and disease emerges from the combined effect.
+</p>
+
+<p><em>Insert overview figure here.</em></p>
+
+<p>
+  A simple way to think about the layers:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Main question</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Genome</td>
+      <td>What could happen?</td>
+    </tr>
+    <tr>
+      <td>Regulation</td>
+      <td>What is allowed to happen?</td>
+    </tr>
+    <tr>
+      <td>Expression</td>
+      <td>What is happening right now?</td>
+    </tr>
+    <tr>
+      <td>Function</td>
+      <td>What is the cell doing?</td>
+    </tr>
+    <tr>
+      <td>Disease</td>
+      <td>What happens when the system shifts over time?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  No single dataset captures the whole story. DNA, RNA, and proteins each measure different parts of the same system.
+</p>
+
+<hr>
+
+<h2>1. The Genome: The Blueprint of Potential</h2>
+
+<p>
+  The genome is the long-term information layer. DNA contains the instructions a cell could use, but not every instruction is active at the same time.
+</p>
+
+<p>
+  Some regions of DNA are coding regions, called exons. These are the parts that can eventually become proteins. Other regions are non-coding, including introns and regulatory DNA. Most of the genome is non-coding, but that does not mean it is unimportant. Many disease-associated variants sit in regulatory regions rather than in genes themselves.
+</p>
+
+<p>
+  DNA also has to be copied. During replication, the genome is duplicated so that cells can divide and pass the same information forward.
+</p>
+
+<p>
+  The key idea is that the genome represents potential, not certainty. Two people may carry the same variant, but only one develops disease because the downstream layers differ.
+</p>
+
+<h3>What is commonly analyzed at this layer?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Common analyses</th>
+      <th>What they identify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Variant calling</td>
+      <td>Which DNA variants are present</td>
+    </tr>
+    <tr>
+      <td>GWAS</td>
+      <td>Which variants are associated with disease</td>
+    </tr>
+    <tr>
+      <td>Fine-mapping</td>
+      <td>Which variants are most likely causal</td>
+    </tr>
+    <tr>
+      <td>Polygenic risk scores</td>
+      <td>Overall inherited risk from many variants</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  For example, a genome-wide association study may identify variants near asthma-related genes, but it usually does not explain how those variants actually change biology.
+</p>
+
+<hr>
+
+<h2>2. Beyond the Classic Central Dogma</h2>
+
+<p>
+  The standard central dogma describes a one-way flow:
+</p>
+
+<p>
+  <strong>DNA → RNA → Protein</strong>
+</p>
+
+<p>
+  That is still broadly true, but the full system is more complex.
+</p>
+
+<p>
+  DNA can copy itself through replication. RNA can sometimes flow back into DNA through reverse transcription, which occurs in retroviruses and some mobile genetic elements.
+</p>
+
+<p>
+  More importantly, the layers influence one another. DNA affects RNA, but RNA and proteins also feed back into regulation. Biology behaves more like an interacting system than a straight line.
+</p>
+
+<p><em>Insert expanded central dogma figure here.</em></p>
+
+<p>
+  The second figure is useful because it shows that regulation exists at every level:
+</p>
 
 <ul>
-<li><a href="pca-genetics.html">What PCA Captures in Genetic Data and What It Doesn’t</a></li>
+  <li>DNA can be chemically modified</li>
+  <li>RNA can be repressed or degraded</li>
+  <li>Proteins can be activated, tagged, or destroyed</li>
 </ul>
 
 <p>
-Statistical structure does not automatically reveal biological causality.
+  This is why two cells with the same genome can behave very differently.
 </p>
 
-<h2>Step 3 — From Variants to Disease</h2>
+<hr>
+
+<h2>3. Regulation: The Gatekeepers</h2>
+
+<p>
+  Genes are not simply “on” or “off.” Cells constantly decide which parts of the genome are accessible and when.
+</p>
+
+<p>
+  Regulation is the layer that controls that decision.
+</p>
+
+<h3>DNA-Level Regulation: Epigenetics</h3>
+
+<p>
+  Before a gene can be used, the cell must be able to access it.
+</p>
+
+<p>
+  Two major mechanisms control this:
+</p>
 
 <ul>
-<li><a href="complex_diseases.html">What Are Complex Diseases?</a></li>
-<li><a href="coding_vs_regulatory_variants.html">Coding vs Regulatory Variants</a></li>
-<li><a href="functional_interpretation.html">From Variants to Effects</a></li>
+  <li>DNA methylation</li>
+  <li>Histone modification</li>
 </ul>
 
 <p>
-Here the question shifts from measurement to mechanism. Most common diseases rarely arise from a single broken protein. They emerge from distributed regulatory shifts across the genome.
-</p>
-
-<h2>Stepping back, the full system looks like this:</h2>
-
-<p>
-Genome → Regulation → Expression → Function → Disease
+  DNA methylation adds chemical tags to DNA. Histone modification changes how tightly DNA is packaged around proteins called histones.
 </p>
 
 <p>
-No single dataset can capture disease biology on its own. Understanding requires placing each measurement layer in context.
+  When DNA is tightly packed, genes are harder to read. When it is open, genes are easier to activate.
 </p>
 
 <p>
-Future additions may expand into epigenomics, 3D genome organization, and multi-omic integration.
+  This is the basis of epigenetics: changes in gene activity without changing the DNA sequence itself.
+</p>
+
+<h3>RNA-Level Regulation</h3>
+
+<p>
+  Even after RNA is produced, the cell can still control it.
+</p>
+
+<p>
+  Small non-coding RNAs such as miRNA, siRNA, and piRNA can bind to messenger RNA and either block it or trigger its degradation.
+</p>
+
+<p>
+  As a result, a gene may be transcribed, but its message never becomes protein.
+</p>
+
+<p>
+  This is one reason why measuring RNA alone does not always tell the full story.
+</p>
+
+<h3>Protein-Level Regulation</h3>
+
+<p>
+  Proteins are also regulated after they are made.
+</p>
+
+<p>
+  Common protein modifications include:
+</p>
+
+<ul>
+  <li>Phosphorylation</li>
+  <li>Ubiquitination</li>
+  <li>Sumoylation</li>
+</ul>
+
+<p>
+  These modifications can activate a protein, change where it moves, or mark it for destruction.
+</p>
+
+<p>
+  A protein may be present, but inactive. Another may be short-lived because it is rapidly degraded. The amount of protein is only part of the story.
+</p>
+
+<h3>What is commonly analyzed at this layer?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Common analyses</th>
+      <th>What they identify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DNA methylation analysis</td>
+      <td>Which regions of DNA are more or less accessible</td>
+    </tr>
+    <tr>
+      <td>ChIP-seq / histone profiling</td>
+      <td>Which genes are likely to be active or repressed</td>
+    </tr>
+    <tr>
+      <td>ATAC-seq</td>
+      <td>Which regions of the genome are open</td>
+    </tr>
+    <tr>
+      <td>miRNA analysis</td>
+      <td>Which RNAs are suppressing gene activity</td>
+    </tr>
+    <tr>
+      <td>eQTL analysis</td>
+      <td>Which genetic variants affect gene expression</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  These analyses help answer a different question from genetics alone: not just which variant exists, but how it changes the behavior of the cell.
+</p>
+
+<hr>
+
+<h2>4. Expression: The Active Program</h2>
+
+<p>
+  DNA contains all possible instructions. RNA reflects the instructions currently being used.
+</p>
+
+<p>
+  When a gene is active, the cell transcribes DNA into messenger RNA (mRNA). That RNA acts as the working copy of the gene.
+</p>
+
+<p>
+  Because of this, RNA gives a snapshot of what the cell is doing at a particular moment.
+</p>
+
+<p>
+  The same genome can produce very different expression patterns in different tissues, conditions, or diseases. A lung cell and a neuron have the same DNA, but they express very different genes.
+</p>
+
+<p>
+  In disease, expression patterns often shift. Some genes become more active. Others become less active. Looking at those shifts can help identify the pathways involved.
+</p>
+
+<h3>What is commonly analyzed at this layer?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Common analyses</th>
+      <th>What they identify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RNA-seq differential expression</td>
+      <td>Which genes change between groups</td>
+    </tr>
+    <tr>
+      <td>PCA or clustering</td>
+      <td>Whether samples form distinct subgroups</td>
+    </tr>
+    <tr>
+      <td>Pathway enrichment</td>
+      <td>Which biological processes are more active</td>
+    </tr>
+    <tr>
+      <td>Single-cell RNA-seq</td>
+      <td>Which cell types are driving the signal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  For example, two patients may both have asthma, but their expression profiles may show that different pathways are active. One may have a stronger inflammatory program, while another may have a stronger epithelial response.
+</p>
+
+<hr>
+
+<h2>5. Function: Proteins and Networks</h2>
+
+<p>
+  RNA reflects the program, but proteins carry out the work.
+</p>
+
+<p>
+  Proteins build structures, transmit signals, and perform metabolic reactions. However, they rarely act alone. Most proteins work as part of signaling pathways, metabolic pathways, and larger interaction networks.
+</p>
+
+<p>
+  Because of this, a small change in one gene can spread through the system.
+</p>
+
+<p>
+  A variant may slightly change the expression of one protein. That protein may affect a signaling pathway. The pathway may alter many downstream genes. Eventually, the combined effect may appear as disease.
+</p>
+
+<p>
+  This is why common diseases rarely result from one broken molecule. More often, they arise from a network that has shifted out of balance.
+</p>
+
+<h3>What is commonly analyzed at this layer?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Common analyses</th>
+      <th>What they identify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Proteomics</td>
+      <td>Which proteins are increased or decreased</td>
+    </tr>
+    <tr>
+      <td>Phosphoproteomics</td>
+      <td>Which proteins are active or modified</td>
+    </tr>
+    <tr>
+      <td>Protein-protein interaction networks</td>
+      <td>Which proteins work together</td>
+    </tr>
+    <tr>
+      <td>Pathway analysis</td>
+      <td>Which signaling or metabolic systems are altered</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  This layer is often where separate molecular changes begin to connect into a single biological explanation.
+</p>
+
+<hr>
+
+<h2>6. Disease as an Emergent Property</h2>
+
+<p>
+  Disease is not usually the direct result of one event.
+</p>
+
+<p>
+  Instead, it emerges when many small changes accumulate across layers:
+</p>
+
+<ul>
+  <li>Genetic variants</li>
+  <li>Epigenetic changes</li>
+  <li>RNA regulation</li>
+  <li>Protein activity</li>
+  <li>Network rewiring</li>
+</ul>
+
+<p>
+  The final phenotype is the visible result of those combined shifts.
+</p>
+
+<p>
+  This is especially true for common diseases such as asthma, diabetes, cancer, and many neurological disorders. In these diseases, there is rarely one “bad gene.” Instead, there are many small changes that together move the system toward disease.
+</p>
+
+<p>
+  A useful way to think about it is:
+</p>
+
+<ul>
+  <li>The genome sets the possibilities</li>
+  <li>Regulation determines which possibilities are used</li>
+  <li>Expression shows what is active</li>
+  <li>Proteins carry out the response</li>
+  <li>Disease appears when the balance breaks down</li>
+</ul>
+
+<p>
+  Disease also develops over time. The system may compensate for small changes for years before symptoms appear. By the time disease becomes visible, the underlying biology may have been shifting for a long time.
+</p>
+
+<hr>
+
+<h2>Why Measuring One Layer Is Not Enough</h2>
+
+<p>
+  Different technologies measure different parts of the system.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Typical measurements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Genome</td>
+      <td>DNA sequencing, genotyping arrays</td>
+    </tr>
+    <tr>
+      <td>Regulation</td>
+      <td>Methylation assays, ATAC-seq, ChIP-seq, miRNA profiling</td>
+    </tr>
+    <tr>
+      <td>Expression</td>
+      <td>RNA-seq</td>
+    </tr>
+    <tr>
+      <td>Function</td>
+      <td>Proteomics, phosphoproteomics</td>
+    </tr>
+    <tr>
+      <td>Disease</td>
+      <td>Clinical traits, imaging, symptoms</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  Each measurement is useful, but incomplete on its own.
+</p>
+
+<p>
+  A genetic study may identify a disease-associated variant. An RNA study may identify a changed pathway. A proteomics study may show which proteins are active. The strongest explanation usually comes from placing those layers together.
+</p>
+
+<p>
+  This is the idea behind multi-omic integration: connecting DNA, RNA, proteins, and phenotype into a single model of disease.
+</p>
+
+<hr>
+
+<h2>Where the Story Gets More Complex</h2>
+
+<p>
+  The simple Genome → Regulation → Expression → Function → Disease framework is useful, but real biology contains additional layers.
+</p>
+
+<p>
+  Epigenomics asks how chemical changes alter gene accessibility. Three-dimensional genome organization asks how DNA folding changes which genes can interact. Multi-omic integration asks how all of the layers fit together.
+</p>
+
+<p>
+  Most importantly, disease is not static. These layers interact over time.
+</p>
+
+<p>
+  Understanding disease requires more than measuring one layer. It requires understanding how the layers influence one another.
 </p>
 
 </article>
