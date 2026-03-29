@@ -679,6 +679,28 @@ body:not(.home) .pagebox {
   font-style: italic;
   opacity: 0.85;
 }
+.post__figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.post__figure img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #d9d9d9;
+}
+
+.figure-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #666;
+  font-style: italic;
+}
 
 .post__table-wrap {
   overflow-x: auto;
