@@ -15,7 +15,7 @@
 </header>
 
 <p>
-The first instinct is always the same.
+The first instinct when using AI for scientific code is always the same: ask for everything at once.
 </p>
 
 <p>
@@ -23,235 +23,161 @@ The first instinct is always the same.
 </p>
 
 <p>
-It feels efficient.
+It feels efficient. One prompt. Ten scripts. Everything done.
 </p>
 
 <p>
-One prompt. Ten scripts. Everything done.
+In practice, that is usually where the trouble starts.
 </p>
 
 <p>
-Then you spend the next three hours fixing filenames, column names, paths, object names, assumptions, thresholds, and one flag that silently broke everything downstream.
+The code may look complete, but small inconsistencies quickly appear: a file written to the wrong directory, a metadata column renamed in one script but not the next, a reduction called <code>umap</code> in one place and <code>wnn_umap</code> in another. None of these problems are difficult on their own. Together, they make the pipeline fragile.
 </p>
 
 <p>
-AI is fast.
+AI is fast. Debugging is slow.
 </p>
 
 <p>
-Debugging is slow.
+The goal is not to make AI generate more code. The goal is to give it less room to be wrong.
+</p>
+
+<h2>Start With a Contract, Not Code</h2>
+
+<p>
+Before implementation, define exactly what each script is responsible for.
+</p>
+
+<ul>
+  <li>inputs and outputs</li>
+  <li>file names and locations</li>
+  <li>required metadata columns</li>
+  <li>thresholds and assumptions</li>
+  <li>what downstream scripts are allowed to depend on</li>
+</ul>
+
+<p>
+Once these pieces are fixed, implementation becomes much easier. Before that, every later script is built on moving ground.
 </p>
 
 <p>
-The trick is not getting AI to write more code.
+For example, if one script always writes a column called <code>pass_qc</code>, every later script can rely on exactly that name. If dimensionality reductions are always saved as <code>pca</code> and <code>lsi</code>, later steps no longer need to guess.
+</p>
+
+<h2>Keep Prompts Narrow</h2>
+
+<p>
+The biggest mistake is asking for the entire pipeline in a single step.
 </p>
 
 <p>
-The trick is giving it less room to be wrong.
+A better pattern is:
+</p>
+
+<ul>
+  <li>define the contract for one script</li>
+  <li>implement only that script</li>
+  <li>patch only the specific problem</li>
+  <li>then move to the next stage</li>
+</ul>
+
+<p>
+Small prompts are not a limitation. They are how you keep the system stable.
 </p>
 
 <p>
-That starts before the code.
+Instead of:
+</p>
+
+<blockquote>
+  <p>Write the entire multi-step pipeline.</p>
+</blockquote>
+
+<p>
+Use:
+</p>
+
+<blockquote>
+  <p>Implement only <code>03_preprocess_multiome.R</code> from the agreed contract.</p>
+</blockquote>
+
+<p>
+Then later:
+</p>
+
+<blockquote>
+  <p>Patch only these two things. Show the diff only.</p>
+</blockquote>
+
+<h2>Freeze Interfaces Early</h2>
+
+<p>
+Scientific pipelines become much easier when the small details stop changing.
 </p>
 
 <p>
-Most people prompt for implementation first.
+Choose the exact file names, column names, object names, and command-line flags early. Then stop changing them.
 </p>
 
 <p>
-The better move is to start with a contract.
+Most failures are not complicated. They are small inconsistencies repeated across multiple files.
 </p>
 
-<p>
-What goes in.
-</p>
+<ul>
+  <li><code>pass_qc</code> vs <code>passed_qc</code></li>
+  <li><code>pca</code> vs <code>rna_pca</code></li>
+  <li>a file written to <code>results/</code> instead of <code>data/processed/</code></li>
+</ul>
 
 <p>
-What comes out.
+Each difference seems minor. Together, they create hours of debugging.
 </p>
 
-<p>
-What the files are called.
-</p>
+<h2>Prefer Small Diffs Over Full Rewrites</h2>
 
 <p>
-What columns exist.
-</p>
-
-<p>
-What later scripts are allowed to assume.
-</p>
-
-<p>
-Once those things are fixed, implementation becomes much easier.
-</p>
-
-<p>
-Before that, you are building on moving ground.
-</p>
-
-<p>
-The biggest mistake is asking for everything at once.
-</p>
-
-<p>
-“Build the full multi-step pipeline.”
-</p>
-
-<p>
-That sounds efficient in the same way writing a 40-page plan before starting feels efficient.
-</p>
-
-<p>
-It creates the feeling of progress without the reliability of progress.
-</p>
-
-<p>
-Better:
-</p>
-
-<p>
-Define only the contract for one script.
-</p>
-
-<p>
-Then implement only that script.
-</p>
-
-<p>
-Then patch only two things.
-</p>
-
-<p>
-Then move on.
-</p>
-
-<p>
-Small prompts are how you keep the system stable.
-</p>
-
-<p>
-The other thing that matters is freezing interfaces early.
-</p>
-
-<p>
-Pick the filenames.
-</p>
-
-<p>
-Pick the column names.
-</p>
-
-<p>
-Pick the object names.
-</p>
-
-<p>
-Then stop changing them.
-</p>
-
-<p>
-If one script writes <code>pass_qc</code>, every later script should rely on exactly that.
-</p>
-
-<p>
-Not <code>passed_qc</code>. Not <code>qc_pass</code>. Not “whatever Claude happened to generate this time.”
-</p>
-
-<p>
-Most pipeline failures are not complicated.
-</p>
-
-<p>
-They are tiny inconsistencies repeated across multiple files.
-</p>
-
-<p>
-One wrong reduction name.
-</p>
-
-<p>
-One missing metadata column.
-</p>
-
-<p>
-One output written to the wrong directory.
-</p>
-
-<p>
-That is why the best prompt after the first implementation is usually not:
-</p>
-
-<p>
-“Rewrite the whole thing.”
+Once a script exists, the best prompt is usually not “rewrite the whole thing.”
 </p>
 
 <p>
 It is:
 </p>
 
+<blockquote>
+  <p>Patch only this. Show the diff only.</p>
+</blockquote>
+
 <p>
-“Patch only this. Show the diff only.”
+Small diffs are easier to inspect, less expensive, and much less likely to break something that was already working.
 </p>
 
 <p>
-Small diffs are cheaper.
+This is especially useful for small robustness changes such as path handling, command-line flags, or one missing metadata column.
+</p>
+
+<h2>Test Immediately</h2>
+
+<p>
+Do not wait until the entire pipeline is finished to find out whether script 03 was wrong.
 </p>
 
 <p>
-They are easier to inspect.
+After every script, run the smallest possible test.
+</p>
+
+<ul>
+  <li>Does the script run?</li>
+  <li>Does it write the expected file?</li>
+  <li>Do the expected columns exist?</li>
+  <li>Do the object names match what the next step expects?</li>
+</ul>
+
+<p>
+A bad filename discovered immediately is easy to fix.
 </p>
 
 <p>
-And they are much less likely to break something that was already working.
-</p>
-
-<p>
-The other habit that changed everything for me was testing immediately.
-</p>
-
-<p>
-Not after the entire pipeline.
-</p>
-
-<p>
-After every script.
-</p>
-
-<p>
-Does it run?
-</p>
-
-<p>
-Does it write the file?
-</p>
-
-<p>
-Does the file contain the columns you expected?
-</p>
-
-<p>
-Because the earlier you find an error, the cheaper it is.
-</p>
-
-<p>
-A bad filename in script 03 is easy.
-</p>
-
-<p>
-A bad filename discovered after scripts 04, 05, and 06 already depend on it is not.
-</p>
-
-<p>
-There is a broader lesson here.
-</p>
-
-<p>
-AI does not remove the need for engineering discipline.
-</p>
-
-<p>
-It increases the cost of not having it.
+The same filename discovered after three later scripts already depend on it is not.
 </p>
 
 <p>
@@ -259,15 +185,7 @@ The fastest way to build scientific code with AI is usually the opposite of what
 </p>
 
 <p>
-Think longer.
-</p>
-
-<p>
-Specify more.
-</p>
-
-<p>
-Build smaller.
+Think longer. Specify more. Build smaller.
 </p>
 
 <p>
