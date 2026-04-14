@@ -61,13 +61,27 @@
         <div class="project-insights">
           <h4>Key insights</h4>
           <ul>
-              <li><strong>Recovered known structure:</strong> HLA class II emerged as the dominant unsupervised axis.</li>
-              <li><strong>Found secondary biology:</strong> PDE4D appeared after masking HLA effects.</li>
-              <li><strong>Scaling next:</strong> The framework is being extended to UK Biobank-scale cohorts.</li>
-          
+            <li>
+              <strong>Recovered known structure:</strong>
+              HLA class II emerged as the dominant unsupervised axis, showing that the model recovers meaningful asthma biology without using phenotype labels.
+            </li>
+
+            <li>
+              <strong>Found secondary biology:</strong>
+              After masking HLA effects, PDE4D appeared as an independent signal, suggesting the framework can reveal additional disease-relevant pathways beyond the strongest locus.
+            </li>
+
+            <li>
+              <strong>Transformer adds value:</strong>
+              Cross-block contextualization preserved local LD structure while reorganizing subjects into clearer biological patterns than block-level embeddings alone.
+            </li>
+
+            <li>
+              <strong>Scaling next:</strong>
+              The same framework is now being extended to UK Biobank-scale cohorts to test whether these latent genomic patterns generalize across much larger populations.
+            </li>
           </ul>
         </div>
-      </div>
 
       <div class="project-body">
         <p class="project-links">
