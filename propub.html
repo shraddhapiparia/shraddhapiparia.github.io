@@ -27,77 +27,81 @@
   <main class="pagebox">
 
     <section class="project">
-  <div class="project-header">
-    <h3>LD Block-Based Genotype Embeddings for Asthma Biology and UK Biobank Extension (Ongoing)</h3>
-
-    <div class="project-summary">
-      <p>
-        Developing a two-stage representation learning framework for high-dimensional genotype data using biologically defined LD blocks. In Phase 1, each asthma-relevant genomic block is encoded independently with a variational autoencoder (VAE) to capture local haplotype structure. In Phase 2, a self-attention transformer contextualizes relationships across blocks to learn subject-level embeddings that reflect higher-order genomic organization.
-      </p>
-
-      <p>
-        In 997 asthma subjects across 174 asthma-relevant LD blocks, this framework recovered meaningful latent genomic structure without using phenotype labels. The dominant embedding axis aligned strongly with HLA class II variation, while masking HLA revealed PDE4D as a secondary orthogonal organizing signal. Phenotype associations were subtle but detectable, with the strongest signal observed for IgE. The framework is now being extended to UK Biobank-scale data for scalable genotype representation learning and downstream phenotype modeling.
-      </p>
-    </div>
-
-    <div class="tags">
-      <span>Genomics</span>
-      <span>Representation Learning</span>
-      <span>VAE</span>
-      <span>Transformer</span>
-      <span>LD Blocks</span>
-      <span>Asthma</span>
-      <span>UK Biobank</span>
-      <span>PyTorch</span>
-    </div>
-  </div>
-
-  <div class="project-feature">
-    <div class="project-image">
-      <img src="project_images/block_embedding_summary.png" alt="LD block-based genotype embedding framework showing block VAE encoding, transformer contextualization, emergent genomic structure, and biological interpretation in asthma">
-      <p class="img-caption">
-        Two-stage LD block embedding framework showing independent block encoding, transformer contextualization, emergent genomic structure, and biological interpretation including HLA class II dominance and PDE4D emergence.
-      </p>
-    </div>
-
-    <div class="project-insights">
-      <h4>Key insights</h4>
-      <ul>
-        <li><strong>LD-aware representation learning:</strong> Encodes genomic variation at the LD-block level rather than relying on single-variant or LD-pruned PCA representations.</li>
-        <li><strong>Biological structure without labels:</strong> Learned embeddings recovered known asthma-relevant genomic organization, with HLA class II as the dominant axis.</li>
-        <li><strong>Hidden secondary signal:</strong> When HLA was masked, PDE4D emerged as a distinct orthogonal organizing axis in the latent space.</li>
-        <li><strong>Subtle phenotype relevance:</strong> Embedding axes captured small but real phenotype signal, strongest for IgE, despite no phenotype supervision during training.</li>
-        <li><strong>Scalable extension:</strong> The framework is being extended to UK Biobank for large-scale genotype embedding and phenotype modeling across much larger cohorts.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="project-body">
-    <p class="project-links">
-      <!-- <em>Representative project:</em>
-      <a href="https://github.com/shraddhapiparia/blockbased-genotype-embedding-analysis" target="_blank" rel="noopener noreferrer">
-        Block-based genotype embedding analysis
-      </a> -->
-    </p>
-    <p>
-      <a href="https://github.com/shraddhapiparia/blockbased-genotype-embedding-analysis" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </a>
-    </p>
-  </div>
-</section>
-
-    <section class="project">
       <div class="project-header">
-        <h3>Proteomics Analysis of Pediatric Long COVID (Ongoing)</h3>
+        <h3>LD Block-Based Genotype Embeddings for Asthma Biology and UK Biobank Extension (Ongoing)</h3>
 
         <div class="project-summary">
           <p>
-            Analyzed Olink NPX proteomics data to identify neurocognitive subtype–specific protein signatures in pediatric Long COVID. Applied covariate-adjusted logistic regression across 87 plasma proteins, accounting for cohort heterogeneity and clinical confounding.
+            Developing a two-stage representation learning framework for high-dimensional genotype data using biologically defined LD blocks. In Phase 1, each asthma-relevant genomic block is encoded independently with a variational autoencoder (VAE) to capture local haplotype structure. In Phase 2, a self-attention transformer contextualizes relationships across blocks to learn subject-level embeddings that reflect higher-order genomic organization.
           </p>
 
           <p>
-            Extended the analysis to the UK Biobank adult cohort using PySpark and SQL-based pipelines, enabling scalable integration of large proteomics and phenotype datasets for subtype discovery.
+            In 997 asthma subjects across 174 asthma-relevant LD blocks, this framework recovered meaningful latent genomic structure without using phenotype labels. The dominant embedding axis aligned strongly with HLA class II variation, while masking HLA revealed PDE4D as a secondary orthogonal organizing signal. Phenotype associations were subtle but detectable, with the strongest signal observed for IgE. The framework is now being extended to UK Biobank-scale data for scalable genotype representation learning and downstream phenotype modeling.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span>Genomics</span>
+          <span>Representation Learning</span>
+          <span>VAE</span>
+          <span>Transformer</span>
+          <span>LD Blocks</span>
+          <span>Asthma</span>
+          <span>UK Biobank</span>
+          <span>PyTorch</span>
+        </div>
+      </div>
+
+      <div class="project-feature">
+        <div class="project-image">
+          <img src="project_images/block_embedding_summary.png" alt="LD block-based genotype embedding framework showing block VAE encoding, transformer contextualization, emergent genomic structure, and biological interpretation in asthma">
+          <p class="img-caption">
+            Two-stage LD block embedding framework showing independent block encoding, transformer contextualization, emergent genomic structure, and biological interpretation including HLA class II dominance and PDE4D emergence.
+          </p>
+        </div>
+
+        <div class="project-insights">
+          <h4>Key insights</h4>
+          <ul>
+            <li><strong>LD-aware representation learning:</strong> Encodes genomic variation at the LD-block level rather than relying on single-variant or LD-pruned PCA representations.</li>
+            <li><strong>Biological structure without labels:</strong> Learned embeddings recovered known asthma-relevant genomic organization, with HLA class II as the dominant axis.</li>
+            <li><strong>Hidden secondary signal:</strong> When HLA was masked, PDE4D emerged as a distinct orthogonal organizing axis in the latent space.</li>
+            <li><strong>Subtle phenotype relevance:</strong> Embedding axes captured small but real phenotype signal, strongest for IgE, despite no phenotype supervision during training.</li>
+            <li><strong>Scalable extension:</strong> The framework is being extended to UK Biobank for large-scale genotype embedding and phenotype modeling across much larger cohorts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-body">
+        <p class="project-links">
+          <!-- <em>Representative project:</em>
+          <a href="https://github.com/shraddhapiparia/blockbased-genotype-embedding-analysis" target="_blank" rel="noopener noreferrer">
+            Block-based genotype embedding analysis
+          </a> -->
+        </p>
+        <p>
+          <a href="https://github.com/shraddhapiparia/blockbased-genotype-embedding-analysis" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="project">
+      <div class="project-header">
+        <h3>Proteomics Analysis of Long COVID Heterogeneity</h3>
+
+        <div class="project-summary">
+          <p>
+            Developed an end-to-end proteomics workflow to characterize neurocognitive Long COVID using Olink NPX plasma proteins. Performed covariate-adjusted logistic regression across pediatric samples to identify subtype-specific protein signatures associated with neurocognitive symptoms.
+          </p>
+
+          <p>
+            Extended the analysis to ~50,000 UK Biobank participants by building scalable PySpark and SQL pipelines for large-scale phenotype and proteomics integration. Stratified participants into neurocognitive and non-neurocognitive Long COVID subgroups and identified replicated protein-level signatures linked to immune and neuroinflammatory pathways.
+          </p>
+
+          <p>
+            Ongoing work includes protein–protein interaction network analysis and pathway enrichment to identify higher-order regulators of Long COVID heterogeneity.
           </p>
         </div>
 
@@ -105,10 +109,11 @@
           <span>Proteomics</span>
           <span>Olink NPX</span>
           <span>Long COVID</span>
-          <span>Logistic Regression</span>
           <span>UK Biobank</span>
           <span>PySpark</span>
-          <span>SQL</span>
+          <span>Spark SQL</span>
+          <span>Logistic Regression</span>
+          <span>PPI Networks</span>
         </div>
       </div>
 
@@ -116,22 +121,26 @@
         <div class="project-insights">
           <h4>Key insights</h4>
           <ul>
-            <li><strong>Subtype discovery:</strong> Identified protein signatures associated with neurocognitive Long COVID presentations.</li>
-            <li><strong>Robust modeling:</strong> Covariate-adjusted logistic regression accounted for cohort and clinical heterogeneity.</li>
-            <li><strong>Scalable analysis:</strong> Leveraged PySpark and SQL pipelines for large-scale UK Biobank data processing.</li>
-            <li><strong>Translational relevance:</strong> Highlights proteomic markers linked to post-viral neurological outcomes.</li>
+            <li><strong>Subtype discovery:</strong> Identified distinct proteomic signatures associated with neurocognitive versus non-neurocognitive Long COVID.</li>
+
+            <li><strong>Replication at scale:</strong> Replicated pediatric findings in ~50K UK Biobank participants using distributed Spark-based pipelines.</li>
+
+            <li><strong>Key protein markers:</strong> FGF23, CXCL11, IL2RB, IL17C, and FGF21 emerged as candidate regulators of Long COVID heterogeneity.</li>
+
+            <li><strong>Scalable workflow:</strong> Built reusable PySpark and SQL pipelines for integrating large phenotype and Olink NPX datasets.</li>
+
+            <li><strong>Systems-level interpretation:</strong> Ongoing PPI and pathway analyses connect significant proteins to shared inflammatory and neuroimmune pathways.</li>
           </ul>
         </div>
       </div>
 
       <div class="project-body">
-          <p>
-            <a href="https://github.com/shraddhapiparia/proteomics_npx_analysis/" target="_blank">
-              GitHub
-            </a>
-          </p>
+        <p>
+          <a href="https://github.com/shraddhapiparia/proteomics_npx_analysis/" target="_blank">
+            GitHub
+          </a>
+        </p>
       </div>
-
     </section>
 
       <section class="project">
