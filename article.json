@@ -159,13 +159,13 @@
   "description": "A reflection on how biology changed the way I think about genetics, lifestyle, and personal change. Genes create predisposition, but exercise, food, stress, sleep, and repeated habits shape how that predisposition appears over time.",
   "categories": ["Research Practice & Reflection"],
   "date": "2026-03-20"
-  },
-  {
-  "title": "AI Is Fast. Debugging Is Slow.",
-  "date": "2026-04-14",
-  "url": "articles/ai_fast_debugging_slow.html",
-  "description": "A reflection on why AI-assisted scientific coding works best when treated as an engineering process: define contracts first, keep prompts narrow, freeze interfaces early, test immediately, and patch in small diffs instead of rewriting entire pipelines.",
-  "categories": ["Research Practice & Reflection"]
+  // },
+//   {
+//   "title": "AI Is Fast. Debugging Is Slow.",
+//   "date": "2026-04-14",
+//   "url": "articles/ai_fast_debugging_slow.html",
+//   "description": "A reflection on why AI-assisted scientific coding works best when treated as an engineering process: define contracts first, keep prompts narrow, freeze interfaces early, test immediately, and patch in small diffs instead of rewriting entire pipelines.",
+//   "categories": ["Research Practice & Reflection"]
 }
 
 ]
