@@ -90,15 +90,7 @@
 
         <div class="project-summary">
           <p>
-            Developed an end-to-end proteomics workflow to characterize neurocognitive Long COVID using Olink NPX plasma proteins. Performed covariate-adjusted logistic regression across pediatric samples to identify subtype-specific protein signatures associated with neurocognitive symptoms.
-          </p>
-
-          <p>
-            Extended the analysis to ~50,000 UK Biobank participants by building scalable PySpark and SQL pipelines for large-scale phenotype and proteomics integration. Stratified participants into neurocognitive and non-neurocognitive Long COVID subgroups based on WHO symptoms and identified replicated protein-level signatures linked to immune and neuroinflammatory pathways.
-          </p>
-
-          <p>
-            Ongoing work includes protein–protein interaction network analysis and pathway enrichment to identify higher-order regulators of Long COVID heterogeneity.
+            Built a proteomics analysis workflow to study neurocognitive Long COVID using Olink NPX data, combining covariate-adjusted modeling in a pediatric cohort with scalable phenotype–proteomics integration in ~50,000 UK Biobank participants.
           </p>
         </div>
 
@@ -110,23 +102,16 @@
           <span>PySpark</span>
           <span>Spark SQL</span>
           <span>Logistic Regression</span>
-          <span>PPI Networks</span>
         </div>
       </div>
 
       <div class="project-feature">
         <div class="project-insights">
-          <h4>Key insights</h4>
+          <h4>Highlights</h4>
           <ul>
-            <li><strong>Subtype specific discovery:</strong> Identified distinct proteomic signatures associated with neurocognitive versus non-neurocognitive Long COVID.</li>
-
-            <li><strong>Replication at scale:</strong> Replicated pediatric findings in ~50K UK Biobank participants using distributed Spark-based pipelines.</li>
-
-            <li><strong>Key protein markers:</strong> FGF23, CXCL11, IL2RB, IL17C, and FGF21 emerged as candidate regulators of Long COVID heterogeneity.</li>
-
-            <li><strong>Scalable workflow:</strong> Built reusable PySpark and SQL pipelines for integrating large phenotype and Olink NPX datasets.</li>
-
-            <li><strong>Systems-level interpretation:</strong> Ongoing PPI and pathway analyses connect significant proteins to shared inflammatory and neuroimmune pathways.</li>
+            <li><strong>Subtype-focused analysis:</strong> Distinguished neurocognitive and non-neurocognitive Long COVID using protein-level signatures.</li>
+            <li><strong>Replication at scale:</strong> Extended the workflow to ~50K UK Biobank participants with distributed Spark-based integration.</li>
+            <li><strong>Biological follow-up:</strong> Candidate proteins and pathways point to immune and neuroinflammatory mechanisms underlying Long COVID heterogeneity.</li>
           </ul>
         </div>
       </div>
@@ -140,13 +125,13 @@
       </div>
     </section>
 
-      <section class="project">
+     <section class="project">
         <div class="project-header">
           <h3>Endophenotype-driven GWAS Framework for Asthma Heterogeneity</h3>
 
           <div class="project-summary">
             <p>
-              Developed a machine learning driven GWAS framework to model asthma heterogeneity using PCA-derived clinical endophenotypes. Patients were stratified into five ordinal subgroups (Q1–Q5) spanning mild to severe, atopy-rich disease. These subtypes were integrated into a categorical ANCOVA model, enabling simultaneous association testing across biologically coherent patient groups and improving detection of subtype-specific genetic signals.
+              Developed a subtype-aware GWAS framework for asthma by combining PCA-derived clinical endophenotypes with categorical association modeling, enabling genetic analysis across biologically coherent patient subgroups rather than treating asthma as a single uniform phenotype.
             </p>
           </div>
 
@@ -166,29 +151,26 @@
           <div class="project-image">
             <img src="project_images/Endophenotype_framework.png" alt="Endophenotype-driven GWAS framework illustrating PCA-based stratification and subtype-specific association modeling">
             <p class="img-caption">
-              PCA-based clinical stratification into endophenotypes (Q1–Q5) integrated with categorical GWAS to identify subtype-specific genetic associations.
+              PCA-based clinical stratification into endophenotypes integrated with subtype-aware GWAS to identify asthma-associated loci across disease severity groups.
             </p>
           </div>
 
           <div class="project-insights">
-            <h4>Key insights</h4>
+            <h4>Highlights</h4>
             <ul>
-              <li><strong>Subtype-aware GWAS:</strong> ANCOVA-based modeling across all endophenotypes increased power, identifying 244 significant SNPs versus limited findings from standard approaches.</li>
-              <li><strong>Robust replication:</strong> Six loci (e.g., DGKI, MIR99AHG) replicated across independent cohorts, enriched in severe subgroups (Q4–Q5).</li>
-              <li><strong>Treatment stratification:</strong> Endophenotypes predicted ICS response, with the most severe group showing greatest lung function improvement.</li>
-              <li><strong>Biological alignment:</strong> Genetic signals mapped to clinical gradients (IgE, lung function), improving interpretability for precision medicine.</li>
+              <li><strong>Subtype-aware association testing:</strong> Endophenotype-based modeling improved detection of genetic signals compared with standard case-control GWAS.</li>
+              <li><strong>Replication across cohorts:</strong> Multiple loci, including DGKI and MIR99AHG, replicated in independent asthma datasets.</li>
+              <li><strong>Clinical relevance:</strong> Endophenotypes aligned with severity, IgE, lung function, and differential ICS treatment response.</li>
             </ul>
           </div>
         </div>
 
         <div class="project-body">
           <p class="project-links">
-            <em>Representative publications:</em> <a href="https://link.springer.com/article/10.1186/s12931-025-03426-z" target="_blank"> PCA based endophenotype definiton </a>, <a href="https://www.mdpi.com/2075-4426/16/1/32" target="_blank"> ANOVA for endophenotype specific GWAS </a>, <a href="https://pubmed.ncbi.nlm.nih.gov/39357540/" target="_blank"> Asthma pharmacogenetics through subtype specific associations </a>
-          </p>
-          <p>
-            <a href="https://github.com/shraddhapiparia/ANOVA-like-GWAS-NextFlow/" target="_blank">
-              GitHub
-            </a>
+            <a href="https://link.springer.com/article/10.1186/s12931-025-03426-z" target="_blank">Paper 1</a> ·
+            <a href="https://www.mdpi.com/2075-4426/16/1/32" target="_blank">Paper 2</a> ·
+            <a href="https://pubmed.ncbi.nlm.nih.gov/39357540/" target="_blank">Paper 3</a> ·
+            <a href="https://github.com/shraddhapiparia/ANOVA-like-GWAS-NextFlow/" target="_blank">GitHub</a>
           </p>
         </div>
       </section>
