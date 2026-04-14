@@ -32,11 +32,9 @@
 
         <div class="project-summary">
           <p>
-            Developing a two-stage representation learning framework for high-dimensional genotype data using biologically defined LD blocks. In Phase 1, each asthma-relevant genomic block is encoded independently with a variational autoencoder (VAE) to capture local haplotype structure. In Phase 2, a self-attention transformer contextualizes relationships across blocks to learn subject-level embeddings that reflect higher-order genomic organization.
-          </p>
-
-          <p>
-            In 997 asthma subjects across 174 asthma-relevant LD blocks, this framework recovered meaningful latent genomic structure without using phenotype labels. The dominant embedding axis aligned strongly with HLA class II variation, while masking HLA revealed PDE4D as a secondary orthogonal organizing signal. Phenotype associations were subtle but detectable, with the strongest signal observed for IgE. The framework is now being extended to UK Biobank-scale data for scalable genotype representation learning and downstream phenotype modeling.
+            Built a two-stage LD-block representation learning framework for asthma genotype data,
+            combining block-wise VAEs with transformer-based contextualization to learn biologically
+            meaningful subject embeddings.
           </p>
         </div>
 
@@ -63,11 +61,10 @@
         <div class="project-insights">
           <h4>Key insights</h4>
           <ul>
-            <li><strong>LD-aware representation learning:</strong> Encodes genomic variation at the LD-block level rather than relying on single-variant or LD-pruned PCA representations.</li>
-            <li><strong>Biological structure without labels:</strong> Learned embeddings recovered known asthma-relevant genomic organization, with HLA class II as the dominant axis.</li>
-            <li><strong>Hidden secondary signal:</strong> When HLA was masked, PDE4D emerged as a distinct orthogonal organizing axis in the latent space.</li>
-            <li><strong>Subtle phenotype relevance:</strong> Embedding axes captured small but real phenotype signal, strongest for IgE, despite no phenotype supervision during training.</li>
-            <li><strong>Scalable extension:</strong> The framework is being extended to UK Biobank for large-scale genotype embedding and phenotype modeling across much larger cohorts.</li>
+              <li><strong>Recovered known structure:</strong> HLA class II emerged as the dominant unsupervised axis.</li>
+              <li><strong>Found secondary biology:</strong> PDE4D appeared after masking HLA effects.</li>
+              <li><strong>Scaling next:</strong> The framework is being extended to UK Biobank-scale cohorts.</li>
+          
           </ul>
         </div>
       </div>
@@ -97,7 +94,7 @@
           </p>
 
           <p>
-            Extended the analysis to ~50,000 UK Biobank participants by building scalable PySpark and SQL pipelines for large-scale phenotype and proteomics integration. Stratified participants into neurocognitive and non-neurocognitive Long COVID subgroups and identified replicated protein-level signatures linked to immune and neuroinflammatory pathways.
+            Extended the analysis to ~50,000 UK Biobank participants by building scalable PySpark and SQL pipelines for large-scale phenotype and proteomics integration. Stratified participants into neurocognitive and non-neurocognitive Long COVID subgroups based on WHO symptoms and identified replicated protein-level signatures linked to immune and neuroinflammatory pathways.
           </p>
 
           <p>
@@ -121,7 +118,7 @@
         <div class="project-insights">
           <h4>Key insights</h4>
           <ul>
-            <li><strong>Subtype discovery:</strong> Identified distinct proteomic signatures associated with neurocognitive versus non-neurocognitive Long COVID.</li>
+            <li><strong>Subtype specific discovery:</strong> Identified distinct proteomic signatures associated with neurocognitive versus non-neurocognitive Long COVID.</li>
 
             <li><strong>Replication at scale:</strong> Replicated pediatric findings in ~50K UK Biobank participants using distributed Spark-based pipelines.</li>
 
@@ -149,7 +146,7 @@
 
           <div class="project-summary">
             <p>
-              Developed a machine learning–driven GWAS framework to model asthma heterogeneity using PCA-derived clinical endophenotypes. Patients were stratified into five ordinal subgroups (Q1–Q5) spanning mild to severe, atopy-rich disease. These subtypes were integrated into a categorical ANCOVA model, enabling simultaneous association testing across biologically coherent patient groups and improving detection of subtype-specific genetic signals.
+              Developed a machine learning driven GWAS framework to model asthma heterogeneity using PCA-derived clinical endophenotypes. Patients were stratified into five ordinal subgroups (Q1–Q5) spanning mild to severe, atopy-rich disease. These subtypes were integrated into a categorical ANCOVA model, enabling simultaneous association testing across biologically coherent patient groups and improving detection of subtype-specific genetic signals.
             </p>
           </div>
 
