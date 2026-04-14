@@ -175,117 +175,71 @@
         </div>
       </section>
 
-    <section class="project">
-      <div class="project-header">
-        <h3>miRNA Modifiers of Inhaled Corticosteroid Response in Asthma</h3>
+    <section class="project project--compact">
+  <div class="project-header">
+    <h3>miRNA Modifiers of Inhaled Corticosteroid Response in Asthma</h3>
 
-        <div class="project-summary">
-          <p>
-            Investigated molecular drivers of variable response to inhaled corticosteroids (ICS) in asthma using circulating microRNA (miRNA) profiles. Applied interaction modeling (Exacerbation ~ ICS × miRNA) across two pediatric cohorts (CAMP discovery and GACRS replication) to identify biomarkers associated with treatment resistance.
-          </p>
+    <div class="project-summary">
+      <p>
+        Identified miR-584-5p as a potential biomarker of inhaled corticosteroid resistance in asthma using interaction modeling across two pediatric cohorts.
+      </p>
+    </div>
 
-          <p>
-            Identified miR-584-5p as a novel modifier of ICS response, where higher expression was associated with increased exacerbation risk specifically in treated patients, highlighting its potential as a biomarker for steroid resistance.
-          </p>
-        </div>
+    <div class="tags">
+      <span>miRNA</span>
+      <span>Pharmacogenomics</span>
+      <span>Asthma</span>
+      <span>ICS Response</span>
+      <span>RNA-seq</span>
+    </div>
+  </div>
 
-        <div class="tags">
-          <span>miRNA</span>
-          <span>Interaction Modeling</span>
-          <span>Pharmacogenomics</span>
-          <span>Asthma</span>
-          <span>RNA-seq</span>
-          <span>FDR</span>
-          <span>Pathway Analysis</span>
-          <span>R</span>
-        </div>
-      </div>
+  <div class="project-body">
+    <p class="project-links">
+      <strong>Key finding:</strong> Higher miR-584-5p expression was associated with increased exacerbation risk specifically in ICS-treated patients. <br>
+      <a href="https://academic.oup.com/ajrccm/article/211/Supplement_1/A5441/8336421?searchresult=1" target="_blank">
+        Paper
+      </a>
+      ·
+      <a href="https://github.com/shraddhapiparia/miRNA_ics_interaction" target="_blank">
+        GitHub
+      </a>
+    </p>
+  </div>
+</section>
 
-      <div class="project-feature">
+<section class="project project--compact">
+  <div class="project-header">
+    <h3>Machine Learning Analysis of Pediatric COVID-19 Clinical Data</h3>
 
-        <!-- IMAGE -->
-        <div class="project-image">
-          <img src="project_images/Pathway_enrichment.png" alt="Pathway enrichment analysis showing signaling pathways associated with miR-584-5p and corticosteroid response">
-          <p class="img-caption">
-            Pathway enrichment highlighting TGF-β, NF-κB, and immune signaling pathways linked to miR-584-5p–mediated corticosteroid response.
-          </p>
-        </div>
+    <div class="project-summary">
+      <p>
+        Built a Random Forest model integrating chest X-ray impressions, symptoms, and demographics to predict pediatric COVID-19 infection status.
+      </p>
+    </div>
 
-        <div class="project-insights">
-          <h4>Key insights</h4>
-          <ul>
-            <li><strong>Interaction-based discovery:</strong> ICS × miRNA modeling identified modifiers missed by standard differential expression approaches.</li>
-            <li><strong>Novel biomarker:</strong> miR-584-5p was associated with increased exacerbation risk specifically in ICS-treated patients.</li>
-            <li><strong>Cross-cohort validation:</strong> Findings were consistent across independent pediatric cohorts (CAMP, GACRS).</li>
-            <li><strong>Biological relevance:</strong> Enriched pathways (TGF-β, NF-κB, T cell signaling) link miRNA regulation to airway inflammation and remodeling.</li>
-          </ul>
-        </div>
+    <div class="tags">
+      <span>Random Forest</span>
+      <span>Clinical NLP</span>
+      <span>SHAP</span>
+      <span>Chest X-ray</span>
+      <span>EHR</span>
+    </div>
+  </div>
 
-      </div>
-
-      <!-- BODY -->
-      <div class="project-body">
-
-        <p class="project-links">
-          <em>Representative publication:</em> <a href="https://academic.oup.com/ajrccm/article/211/Supplement_1/A5441/8336421?searchresult=1" target="_blank"> Micro-RNA-584-5p as a key modulator of ICS resistance (Full paper in progress) </a>
-        </p>
-        <p>
-          <a href="https://github.com/shraddhapiparia/miRNA_ics_interaction" target="_blank">GitHub</a>
-        </p>
-      </div>
-
-    </section>
-
-    <section class="project">
-      <div class="project-header">
-        <h3>Machine Learning Analysis of Pediatric COVID-19 Clinical Data</h3>
-
-        <div class="project-summary">
-          <p>
-            Developed a Random Forest Classifier to predict COVID-19 infection status in children using a dataset of 2,572 chest X-ray impressions and electronic medical records. By integrating radiological findings, clinical symptoms, and demographic variables, the model achieved an F1-score of 0.79 and an AUC of 0.85.
-          </p>
-        </div>
-
-        <div class="tags">
-          <span>Random Forest</span>
-          <span>Clinical NLP</span>
-          <span>NegEx</span>
-          <span>SHAP</span>
-          <span>Feature Engineering</span>
-          <span>Pediatric COVID-19</span>
-          <span>Chest X-ray</span>
-          <span>EHR</span>
-        </div>
-      </div>
-
-      <div class="project-feature">
-        <div class="project-image">
-          <img src="project_images/COVID_prediction_SAHP.png" alt="SHAP summary plot showing key predictors in pediatric COVID-19 clinical classification">
-          <p class="img-caption">
-            SHAP summary highlighting radiological, symptom, and demographic features that contributed most to pediatric COVID-19 prediction.
-          </p>
-        </div>
-
-        <div class="project-insights">
-          <h4>Key insights</h4>
-          <ul>
-            <li><strong>Feature engineering &amp; selection:</strong> NLP and NegEx were used to identify 16 radiographic findings, including pneumonia, atelectasis, and small airways disease.</li>
-            <li><strong>Model interpretability:</strong> SHAP showed that radiological and constitutional features were more predictive than prior medical history.</li>
-            <li><strong>Demographic insights:</strong> Age, sex, and ethnicity, particularly Hispanic males under age 8, contributed meaningfully to model performance.</li>
-            <li><strong>Incremental modeling:</strong> Compared five Random Forest models to assess feature contributions, showing radiological features as primary predictors, with symptoms and demographics improving performance.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-body">
-        <p class="project-links">
-          <em>Representative publication:</em> <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank" rel="noopener noreferrer"> Case control prediction using clinical data </a>
-        </p>
-        <p>
-          <a href="https://github.com/shraddhapiparia/COVID-Radiology-Study"target="_blank"> GitHub </a>
-        </p>
-      </div>
-    </section>
+  <div class="project-body">
+    <p class="project-links">
+      <strong>Result:</strong> Achieved AUC 0.85 and F1-score 0.79, with radiological findings emerging as the strongest predictors. <br>
+      <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281666" target="_blank">
+        Paper
+      </a>
+      ·
+      <a href="https://github.com/shraddhapiparia/COVID-Radiology-Study" target="_blank">
+        GitHub
+      </a>
+    </p>
+  </div>
+</section>
     <hr>
     
     <section class="project">
