@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Is Fast. Debugging Is Slow. | Shraddha Piparia</title>
+</head>
+
+<body>
+<article class="post">
+
+<header class="post__header">
+  <h1>AI Is Fast. Debugging Is Slow.</h1>
+</header>
+
+<p>
+The first instinct is always the same.
+</p>
+
+<p>
+“Write the whole pipeline.”
+</p>
+
+<p>
+It feels efficient.
+</p>
+
+<p>
+One prompt. Ten scripts. Everything done.
+</p>
+
+<p>
+Then you spend the next three hours fixing filenames, column names, paths, object names, assumptions, thresholds, and one flag that silently broke everything downstream.
+</p>
+
+<p>
+AI is fast.
+</p>
+
+<p>
+Debugging is slow.
+</p>
+
+<p>
+The trick is not getting AI to write more code.
+</p>
+
+<p>
+The trick is giving it less room to be wrong.
+</p>
+
+<p>
+That starts before the code.
+</p>
+
+<p>
+Most people prompt for implementation first.
+</p>
+
+<p>
+The better move is to start with a contract.
+</p>
+
+<p>
+What goes in.
+</p>
+
+<p>
+What comes out.
+</p>
+
+<p>
+What the files are called.
+</p>
+
+<p>
+What columns exist.
+</p>
+
+<p>
+What later scripts are allowed to assume.
+</p>
+
+<p>
+Once those things are fixed, implementation becomes much easier.
+</p>
+
+<p>
+Before that, you are building on moving ground.
+</p>
+
+<p>
+The biggest mistake is asking for everything at once.
+</p>
+
+<p>
+“Build the full multi-step pipeline.”
+</p>
+
+<p>
+That sounds efficient in the same way writing a 40-page plan before starting feels efficient.
+</p>
+
+<p>
+It creates the feeling of progress without the reliability of progress.
+</p>
+
+<p>
+Better:
+</p>
+
+<p>
+Define only the contract for one script.
+</p>
+
+<p>
+Then implement only that script.
+</p>
+
+<p>
+Then patch only two things.
+</p>
+
+<p>
+Then move on.
+</p>
+
+<p>
+Small prompts are how you keep the system stable.
+</p>
+
+<p>
+The other thing that matters is freezing interfaces early.
+</p>
+
+<p>
+Pick the filenames.
+</p>
+
+<p>
+Pick the column names.
+</p>
+
+<p>
+Pick the object names.
+</p>
+
+<p>
+Then stop changing them.
+</p>
+
+<p>
+If one script writes <code>pass_qc</code>, every later script should rely on exactly that.
+</p>
+
+<p>
+Not <code>passed_qc</code>. Not <code>qc_pass</code>. Not “whatever Claude happened to generate this time.”
+</p>
+
+<p>
+Most pipeline failures are not complicated.
+</p>
+
+<p>
+They are tiny inconsistencies repeated across multiple files.
+</p>
+
+<p>
+One wrong reduction name.
+</p>
+
+<p>
+One missing metadata column.
+</p>
+
+<p>
+One output written to the wrong directory.
+</p>
+
+<p>
+That is why the best prompt after the first implementation is usually not:
+</p>
+
+<p>
+“Rewrite the whole thing.”
+</p>
+
+<p>
+It is:
+</p>
+
+<p>
+“Patch only this. Show the diff only.”
+</p>
+
+<p>
+Small diffs are cheaper.
+</p>
+
+<p>
+They are easier to inspect.
+</p>
+
+<p>
+And they are much less likely to break something that was already working.
+</p>
+
+<p>
+The other habit that changed everything for me was testing immediately.
+</p>
+
+<p>
+Not after the entire pipeline.
+</p>
+
+<p>
+After every script.
+</p>
+
+<p>
+Does it run?
+</p>
+
+<p>
+Does it write the file?
+</p>
+
+<p>
+Does the file contain the columns you expected?
+</p>
+
+<p>
+Because the earlier you find an error, the cheaper it is.
+</p>
+
+<p>
+A bad filename in script 03 is easy.
+</p>
+
+<p>
+A bad filename discovered after scripts 04, 05, and 06 already depend on it is not.
+</p>
+
+<p>
+There is a broader lesson here.
+</p>
+
+<p>
+AI does not remove the need for engineering discipline.
+</p>
+
+<p>
+It increases the cost of not having it.
+</p>
+
+<p>
+The fastest way to build scientific code with AI is usually the opposite of what feels fast.
+</p>
+
+<p>
+Think longer.
+</p>
+
+<p>
+Specify more.
+</p>
+
+<p>
+Build smaller.
+</p>
+
+<p>
+Then move quickly once the ground is solid.
+</p>
+
+</article>
+</body>
+</html>
