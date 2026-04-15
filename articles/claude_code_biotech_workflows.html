@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How I Use Claude Code for Biotech Workflows | Shraddha Piparia</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="../index.html">SP</a>
+      <button class="nav__toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__menu">
+        <li><a href="../propub.html">Projects</a></li>
+        <li><a href="../awards.html">Awards</a></li>
+        <li><a href="../bookshelf.html">Book&nbsp;Shelf</a></li>
+        <li><a href="../articles.html" aria-current="page">Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagebox">
+    <article class="post">
+      <header class="post__header">
+        <h1>How I Use Claude Code for Biotech Workflows</h1>
+        <p class="post__meta">
+          Published&nbsp;<time datetime="2026-04-15">15&nbsp;April&nbsp;2026</time>
+        </p>
+      </header>
+
+      <p>
+        Computational biology is already hard because the underlying biology is complex, noisy, and high stakes. But on top of that, the workflows themselves can become hard to manage. Even when the scientific question is clear, progress often slows because too many moving parts have to stay aligned at once.
+
+
+        A Spark join changes one column name. A Nextflow step writes to the wrong path. A single-cell pipeline silently uses the wrong metadata file. By the time the code breaks, the real mistake often happened three steps earlier.
+      </p>
+
+      <p>
+        Over the last year, I have started using Claude Code less like autocomplete and more like a junior collaborator: useful, fast, occasionally wrong, and most effective when given structure. The useful pattern is not one giant prompt. It is a system: clear design, persistent memory, explicit constraints, and constant verification.
+      </p>
+
+      <h2>Why biotech workflows break so easily</h2>
+
+      <p>
+        Most biotech projects are not one script. They are dozens of scripts connected by assumptions. More often, the harder part is keeping track of how all of the pieces fit together. That is where coding agents become useful: not because they replace expertise, but because they help keep track of the details that are easy to lose.
+      </p>
+
+      <h2>Start with the design, not the code</h2>
+
+      <p>
+        Before I ask Claude Code to write anything, I usually sketch the workflow myself. I build the scaffold, write down which scripts should exist, what each script is responsible for, which files move between steps, and what the final outputs should look like. Only after that do I ask the agent to help refine or extend the design. For most projects, I define:
+      </p>
+
+      <ul>
+        <li>the inputs and outputs for each step</li>
+        <li>expected filenames and folder structure</li>
+        <li>required metadata columns</li>
+        <li>how scripts connect to each other</li>
+        <li>what counts as success</li>
+        <li>which failure modes should stop the workflow</li>
+      </ul>
+
+      <p>
+        Without that design, the agent writes code that looks plausible but drifts away from actual analysis. With a clear design, it becomes much easier to generate scaffolding, build the scripts one step at a time, explore edge cases, and pressure-test parts of the workflow that I may not have thought about.
+      </p>
+
+      <p>
+        Depending on the stage of the project, I use Claude Code differently. Early on, I use it for ideation: what scripts are missing, what failure cases could happen, what assumptions might break later. Once the structure is clearer, I use it more as an implementation partner. The more precisely I define the edges of the problem, the more useful the agent becomes, and the less time I spend debugging the middle.
+      </p>
+
+      <h2>Why memory matters</h2>
+
+      <p>
+        The first thing that breaks in a long analysis is memory. Not the model's memory. Mine!
+      </p>
+
+      <p>
+        By the third day of debugging, I have forgotten which file was the correct one, which comparison already failed, whether the protein list changed, and why I renamed a column in the first place. Coding agents have the same problem. Short-term memory is useful for the current task. It can keep track of the last few files, commands, and errors.
+      </p>
+
+      <p>
+        That works well when debugging one issue but projects rarely stay inside one context window. he more useful part is the long-term memory. In practice, I like to think about it in three forms.
+      </p>
+
+      <ul>
+        <li>Episodic memory: what failed before</li>
+        <li>Semantic memory: facts about the project</li>
+        <li>Procedural memory: how the workflow is supposed to run</li>
+      </ul>
+
+      <p>
+       Most mistakes are not new mistakes, they are old mistakes in slightly different clothing.
+      </p>
+
+      <h2>Where Claude Code helps most</h2>
+
+      <p>
+        Claude Code is most useful to me during design and implementation. I use it to turn an idea quickly into a scaffold: which scripts should exist, what each step should produce, what metadata moves through the workflow, and which assumptions or edge cases may fail later. That is especially useful for larger pipelines such as single-cell analysis, proteomics workflows, Nextflow, or Spark analyses. I do use its reasoning traces, but mostly as a monitoring signal rather than a faithful explanation. A confident explanation can still be wrong. What matters is whether the workflow can be verified: do the sample counts match, do the outputs make sense, do the plots look biologically reasonable, do the checks pass, and does the result stay consistent across the project. One can not evaluate the agent by how convincing its reasoning sounds but more by verification, safety, and the quality of the final outputs.
+      </p>
+
+      <h2>Finally, the small file that matters most</h2>
+
+      <p>
+        Before I let Claude Code touch a genomics pipeline or a clinical dataset, I give it a short <code>Claude.md</code> file. Not because I want it to sound smarter, but because I want it to be harder for the agent to sound confident when it is wrong. My version includes rules like:
+      </p>
+
+      <ul>
+        <li>Do not fake expertise. If a task requires domain-specific vaidation that you can't perform, say so upfront and offer to write code or use tools that can.</li>
+        <li>Don't assert runtime behavior, performance, or data outputs. If it can be verified by running code, run it.</li>
+        <li>Push back on requests that have incorrect assumptions rather than building on top of them.</li>
+        <li>State uncertainty explicitly. "I think" and "I'm not sure" are more useful than a confident wrong answer.</li>
+        <li>Ask about the user's context (background, goals, constraints) before giving advice on open-ended questions.</li>
+        <li>Do not use em dashes, use other grammar methods to avoid them.</li>
+      </ul>
+
+      <p>
+        Those rules matter more in biotech than almost anywhere else. If I ask outcome of an analysis, I do not want a guess based on memory, I want the code to run. If I accidentally assume two cohorts are comparable even though all of the cases came from one site and all of the controls came from another, I do not want the agent to continue politely. I want it to stop and say the assumption is flawed.
+      </p>
+
+      <p>
+        The most useful agent is not the one that always has an answer, it is the one that knows when not to pretend.
+      </p>
+
+      <h2>Where coding agents still fail</h2>
+
+      <p>
+        Coding agents are very good at producing code that looks correct which is not the same thing as producing code that is correct. They often invent column names, assume a file exists when it does not, quietly use the wrong group labels, and produce explanations that sound confident but are not actually verified. More often than not, the most dangerous mistakes are the ones that look polished.
+      </p>
+
+      <p>
+        Don't trust the code when it runs succesfully, trust it only after manually verifying including but not limited to row counts, sample sizes, intermediate outputs, whether the results make biological sense, and whether a small hand-checked subset gives the same answer.
+        Reasoning is useful but verification is required.
+      </p>
+
+      <h2>What I still do myself</h2>
+
+      <p>
+        The biology still has to come from the scientist. I still decide:
+      </p>
+
+      <ul>
+        <li>what question matters</li>
+        <li>which confounders are important</li>
+        <li>which assumptions are unsafe</li>
+        <li>what counts as evidence</li>
+        <li>when a result is biologically plausible and when it is just noise</li>
+      </ul>
+
+      <p>
+        Claude Code helps me move faster through the repetitive parts of computational biology: the glue code, the pipeline structure, and the details that are easy to lose. But it does not replace the hard part. The hard part is still deciding what is worth asking in the first place.
+      </p>
+    </article>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu  = document.querySelector('.nav__menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('nav__menu--open'));
+  </script>
+</body>
+</html>
