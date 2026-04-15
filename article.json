@@ -163,7 +163,7 @@
   {
   "title": "How I Use Claude Code for Biotech Workflows",
   "url": "articles/claude_code_biotech_workflows.html",
-  "description": "A reflection on using Claude Code to manage complex biotech workflows. The useful pattern is not one giant prompt, but a system of problem definitions, setups, system design, memory, constraints, and verification.",
+  "description": "A reflection on using Claude Code to manage complex biotech workflows. The useful pattern is not one giant prompt, but a system of problem definitions, setup, system design, memory, constraints, and verification.",
   "categories": ["Research Practice & Reflection"],
   "date": "2026-04-12"
   }
