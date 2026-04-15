@@ -78,11 +78,7 @@
       </p>
 
       <p>
-        By the third day of debugging, I have forgotten which file was the correct one, which comparison already failed, whether the protein list changed, and why I renamed a column in the first place. Coding agents have the same problem. Short-term memory is useful for the current task. It can keep track of the last few files, commands, and errors.
-      </p>
-
-      <p>
-        That works well when debugging one issue but projects rarely stay inside one context window. he more useful part is the long-term memory. In practice, I like to think about it in three forms.
+        By the third day of debugging, I have forgotten which file was the correct one, which comparison already failed, whether the protein list changed, and why I renamed a column in the first place. Turns out, coding agents have the same problem. Short-term memory is useful for the current task. It can keep track of the last few files, commands, and errors. This works well when debugging one issue but projects rarely stay inside one context window. The more useful part is the long-term memory. In practice, I like to think about it in three forms.
       </p>
 
       <ul>
@@ -98,7 +94,7 @@
       <h2>Where Claude Code helps most</h2>
 
       <p>
-        Claude Code is most useful to me during design and implementation. I use it to turn an idea quickly into a scaffold: which scripts should exist, what each step should produce, what metadata moves through the workflow, and which assumptions or edge cases may fail later. That is especially useful for larger pipelines such as single-cell analysis, proteomics workflows, Nextflow, or Spark analyses. I do use its reasoning traces, but mostly as a monitoring signal rather than a faithful explanation. A confident explanation can still be wrong. What matters is whether the workflow can be verified: do the sample counts match, do the outputs make sense, do the plots look biologically reasonable, do the checks pass, and does the result stay consistent across the project. One can not evaluate the agent by how convincing its reasoning sounds but more by verification, safety, and the quality of the final outputs.
+        Claude Code is most useful to me during design and implementation. I use it to turn an idea quickly into a pipeline: which scripts should exist, what each step should produce, what metadata moves through the workflow, and which assumptions or edge cases may fail later. That is especially useful for larger pipelines such as single-cell analysis, proteomics workflows, Nextflow, or Spark analyses. I do use its reasoning traces, but mostly as a monitoring signal rather than a faithful explanation. A confident explanation can still be wrong. One can not evaluate the agent by how convincing its reasoning sounds but more by verification, safety, and the quality of the final outputs.
       </p>
 
       <h2>Finally, the small file that matters most</h2>
@@ -117,11 +113,7 @@
       </ul>
 
       <p>
-        Those rules matter more in biotech than almost anywhere else. If I ask outcome of an analysis, I do not want a guess based on memory, I want the code to run. If I accidentally assume two cohorts are comparable even though all of the cases came from one site and all of the controls came from another, I do not want the agent to continue politely. I want it to stop and say the assumption is flawed.
-      </p>
-
-      <p>
-        The most useful agent is not the one that always has an answer, it is the one that knows when not to pretend.
+        Those rules matter more in biotech than almost anywhere else. The most useful agent is not the one that always has an answer, it is the one that knows when not to pretend.
       </p>
 
       <h2>Where coding agents still fail</h2>
@@ -131,7 +123,7 @@
       </p>
 
       <p>
-        Don't trust the code when it runs succesfully, trust it only after manually verifying including but not limited to row counts, sample sizes, intermediate outputs, whether the results make biological sense, and whether a small hand-checked subset gives the same answer.
+        Don't trust the code when it runs succesfully, trust it only after manually verifying including but not limited to: do the sample counts match, do the outputs make sense, do the plots look biologically reasonable, do the checks pass, and whether a small hand-checked subset gives the same answer.
         Reasoning is useful but verification is required.
       </p>
 
