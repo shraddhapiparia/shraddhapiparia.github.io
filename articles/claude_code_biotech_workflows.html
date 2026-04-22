@@ -51,7 +51,7 @@
       <h2>Start with the design, not the code</h2>
 
       <p>
-        Before I ask Claude Code to write anything, I usually sketch the workflow myself. I build the scaffold, write down which scripts should exist, what each script is responsible for, which files move between steps, and what the final outputs should look like. Only after that do I ask the agent to help refine or extend the design. For most projects, I define:
+        Before I let the agent write code, I define the scaffold. But even with a design, agents often hallucinate outdated APIs. I mitigate this by using Context7, an MCP server that allows Claude to query live, version-specific documentation. Instead of guessing based on 2025 training data, the agent checks the actual documentation for the exact library versions I’m using. I then use the GitHub MCP server to let the agent index my entire repository, ensuring it understands the existing architecture and variable naming conventions before it proposes a single line of new code. For most projects, I define:
       </p>
 
       <ul>
@@ -78,23 +78,35 @@
       </p>
 
       <p>
-        By the third day of debugging, I have forgotten which file was the correct one, which comparison already failed, whether the protein list changed, and why I renamed a column in the first place. Turns out, coding agents have the same problem. Short-term memory is useful for the current task. It can keep track of the last few files, commands, and errors. This works well when debugging one issue but projects rarely stay inside one context window. The more useful part is the long-term memory. In practice, I like to think about it in three forms.
+        By the third day of debugging, I have forgotten which file was the correct one, which comparison already failed, whether the protein list changed, and why I renamed a column in the first place. Turns out, coding agents have the same problem. SShort-term memory works well for one-off tasks, but complex projects rarely stay inside a single context window.
+      </p>
+
+      <p>
+       Most mistakes are not new; they are old mistakes in slightly different clothing. To solve this, I implement a Memory Bank (Claude-Mem) system. This creates a persistent .memory/ directory within my project that stores:
       </p>
 
       <ul>
-        <li>Episodic memory: what failed before</li>
-        <li>Semantic memory: facts about the project</li>
-        <li>Procedural memory: how the workflow is supposed to run</li>
+        <li>Episodic memory: what failed before so that we don't repeat the loop.</li>
+        <li>Semantic memory: key project facts and data schemas.</li>
+        <li>Procedural memory: how the specific workflow is supposed to run.</li>
       </ul>
 
-      <p>
-       Most mistakes are not new mistakes, they are old mistakes in slightly different clothing.
-      </p>
+      
 
       <h2>Where Claude Code helps most</h2>
 
       <p>
         Claude Code is most useful to me during design and implementation. I use it to turn an idea quickly into a pipeline: which scripts should exist, what each step should produce, what metadata moves through the workflow, and which assumptions or edge cases may fail later. That is especially useful for larger pipelines such as single-cell analysis, proteomics workflows, Nextflow, or Spark analyses. I do use its reasoning traces, but mostly as a monitoring signal rather than a faithful explanation. A confident explanation can still be wrong. One can not evaluate the agent by how convincing its reasoning sounds but more by verification, safety, and the quality of the final outputs.
+      </p>
+
+      <h2>Closing the loop with Agentic Verification</h2>
+
+      <p>
+        The real breakthrough in 2026 isn't just generating code; it is <b>Verified Execution</b>. While my population-scale analysis happens on restricted environments like the UK Biobank RAP, I use agentic workflows locally to prototype and verify the underlying logic.
+      </p>
+
+      <p>
+        For instance, I bridge local staging environments via the PostgreSQL MCP. This allows the agent to perform its own schema introspection—verifying that column names and data types actually exist—before writing a single line of SQL. For visualization tools, I replace manual browser testing with Playwright MCP hooks. The agent can drive a headless browser, interact with the UI, and verify that data rendered correctly. This moves the workflow from "I hope this runs" to "the agent ran it, tested it locally, and confirmed the logic holds."
       </p>
 
       <h2>Finally, the small file that matters most</h2>
@@ -104,12 +116,14 @@
       </p>
 
       <ul>
-        <li>Do not fake expertise. If a task requires domain-specific vaidation that you can't perform, say so upfront and offer to write code or use tools that can.</li>
+        <li>Do not fake expertise. If a task requires domain-specific validation that you can't perform, say so upfront and offer to write code or use tools that can.</li>
+        <li><b>Schema-First:</b> Perform schema introspection via MCP before writing SQL to ensure column names are not hallucinated.</li>
+        <li><b>Version Lock:</b> Use Context7 hooks to verify API syntax for libraries updated after 2025.</li>
+        <li><b>Persistent Logging:</b> Update the <code>.memory/</code> log after every successful pipeline run to maintain procedural continuity.</li>
         <li>Don't assert runtime behavior, performance, or data outputs. If it can be verified by running code, run it.</li>
         <li>Push back on requests that have incorrect assumptions rather than building on top of them.</li>
         <li>State uncertainty explicitly. "I think" and "I'm not sure" are more useful than a confident wrong answer.</li>
-        <li>Ask about the user's context (background, goals, constraints) before giving advice on open-ended questions.</li>
-        <li>Do not use em dashes, use other grammar methods to avoid them.</li>
+        <li>Do not use em dashes; use other grammar methods to avoid them.</li>
       </ul>
 
       <p>
